@@ -37,14 +37,14 @@
 #include "MinitaurEventHandler.hpp"
 #include "MinitaurWidget.hpp"
 
-
 int main()
 {
-  dart::simulation::WorldPtr world(new dart::simulation::World());
 
+  dart::simulation::WorldPtr world(new dart::simulation::World());
+  
   // Load ground and Atlas robot and add them to the world
   dart::utils::DartLoader loader;
-  auto minitaur = loader.parseSkeleton("dart://sample/urdf/minitaur/minitaur.urdf");
+  auto minitaur = loader.parseSkeleton("dart://sample/urdf/minitaur/quadruped2.urdf");
   auto ground = loader.parseSkeleton("dart://sample/urdf/minitaur/ground.urdf");
 
   world->addSkeleton(minitaur);
@@ -54,7 +54,6 @@ int main()
   using namespace dart::math::suffixes;
   minitaur->setPosition(0, 180_deg);
   minitaur->setPosition(5, 0.5);
-
 //  auto frontLL = minitaur->getBodyNode("lower_leg_front_leftL_link");
 //  auto frontLR = minitaur->getBodyNode("lower_leg_front_leftR_link");
 //  auto frontRL = minitaur->getBodyNode("lower_leg_front_rightL_link");
@@ -113,7 +112,7 @@ int main()
   // We need to re-dirty the CameraManipulator by passing it into the viewer
   // again, so that the viewer knows to update its HomePosition setting
   viewer.setCameraManipulator(viewer.getCameraManipulator());
-
+  
   // Begin running the application loop
   viewer.run();
 }

@@ -43,6 +43,9 @@ extern uint16_t makeWord( uint8_t h, uint8_t l ) ;
  * @return x mapped from [in_min, in_max] to [out_min, out_max]
  */
 extern float map(float x, float in_min, float in_max, float out_min, float out_max);
+extern float map(uint32_t x, uint32_t in_min, uint32_t in_max, double out_min, double out_max);
+extern float map(float x, double in_min, double in_max, double out_min, double out_max);
+
 /**
  * @brief Linear interpolation between given endpoints
  * @param from Lower endpoint

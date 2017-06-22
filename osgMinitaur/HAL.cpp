@@ -8,14 +8,13 @@
 #include "WMath.h"
 #include "HAL.h"
 #include "Remote.h"
+#include <iostream>
 //#include "IMUObject.h"
 
-extern int DARTTime;
-
-const uint8_t VsourcePin = PF2;
-DLPF VsourceF;
+//const uint8_t VsourcePin = PF2;
+//DLPF VsourceF;
 // LEDs
-const uint8_t led0 = PD1, led1 = PD0;
+//const uint8_t led0 = PD1, led1 = PD0;
 // heartbeat
 volatile uint32_t nIters = 0;
 // volatile uint32_t lastPrint = 0;
@@ -48,7 +47,7 @@ const int CONTROL_RATE = 1000;
 #endif
 
 // OpenLog
-BulkSerial openLog(MBLC_OPENLOG);
+//BulkSerial openLog(MBLC_OPENLOG);
 volatile uint32_t lastOLwrite = 0;
 
 // STATE
@@ -79,25 +78,26 @@ void enable(bool flag) {
 }
 
 void errorStop(const char *msg) {
-  enable(false);
-  digitalWrite(led0, HIGH);
-  while (1) {
-    digitalWrite(led1, LOW);
-    delay(50);
-    digitalWrite(led1, HIGH);
-    Serial1 << msg << endl;
-    delay(1000);
-  }
+  // enable(false);
+  // digitalWrite(led0, HIGH);
+  // while (1) {
+  //   digitalWrite(led1, LOW);
+  //   delay(50);
+  //   digitalWrite(led1, HIGH);
+  //   Serial1 << msg << endl;
+  //   delay(1000);
+  // }
 }
 
 void halInit() {
   // leds
-  pinMode(led0, OUTPUT);
-  pinMode(led1, OUTPUT);
-  digitalWrite(led1, HIGH);
+  //pinMode(led0, OUTPUT);
+  //pinMode(led1, OUTPUT);
+  //digitalWrite(led1, HIGH);
   // Vsource
-  VsourceF.init(0.999, CONTROL_RATE, DLPF_SMOOTH);
-  pinMode(VsourcePin, INPUT_ANALOG);
+  //VsourceF.init(0.999, CONTROL_RATE, DLPF_SMOOTH);
+  //pinMode(VsourcePin, INPUT_ANALOG);
+  std::cout << "halInit commenced" << std::endl;
 
   Motor::updateRate = CONTROL_RATE;
   Motor::velSmooth = 0.55;
@@ -120,7 +120,8 @@ void halInit() {
     uint8_t id = ids8[i];
     M[id].init(&master8, id, motZeros[id], (id<4) ? 1 : -1);
   }
-  delay(1000);
+  //uint32_t startdelay = millis();
+  //while(millis() - startdelay < 1000);
   // Establish comms
   // // Need to call update on motors at least once and then resetOffset()
   // int i=0;
@@ -143,7 +144,8 @@ void halInit() {
 #else
 
   // wait a bit (??)
-  delay(750);
+  //uint32_t startdelay = millis();
+  //while(millis() - startdelay < 750);
 
   for (int i=0; i<NMOT; ++i) {
     uint8_t port = motorPort[i];
@@ -157,20 +159,19 @@ void halInit() {
     // TIMER_IC_PRIORITY = 0;
   }
 #endif//if USE_BUS
-
-  Serial1.begin(115200);
+  //Serial1.begin(115200);
 
   // REMOTE
   remote->begin();
-  imu->begin();
+  //imu->begin();
 
   // Try to init openlog (don't stop if no SD card)
-  openLog.begin(115200, sizeof(X), (void *)&X, 0);
-  openLog.initOpenLog("t,r,p,y,rd,pd,yd,q0,q1,q2,q3,q4,q5,q6,q7,u0,u1,u2,u3,u4,u5,u6,u7,xd,Vb,mo", "IffffffffffffffffffffffffB");
+  //openLog.begin(115200, sizeof(X), (void *)&X, 0);
+  //openLog.initOpenLog("t,r,p,y,rd,pd,yd,q0,q1,q2,q3,q4,q5,q6,q7,u0,u1,u2,u3,u4,u5,u6,u7,xd,Vb,mo", "IffffffffffffffffffffffffB");
 
   // Hardware setup done
-  digitalWrite(led0, HIGH);
-  digitalWrite(led1, HIGH);
+  //digitalWrite(led0, HIGH);
+  //digitalWrite(led1, HIGH);
 }
 
 void halUpdate() {
@@ -196,28 +197,28 @@ void halUpdate() {
 #endif//if USE_BUS
 
   // SAFETY CHECK
-  for (int i=0; i<8; ++i) {
-    // legs get stuck
-    float val = M[i].getOpenLoop();
-    if (fabsf(val) > 0.5) {
-      legStuckTimer[i]++;
-    } else {
-      legStuckTimer[i] = 0;
-    }
-    // if stuck for 1 seconds, disable
-    if (legStuckTimer[i] > CONTROL_RATE) {
-      enable(false);
-      hbFreq = CONTROL_RATE;
-      hbOnFreq = CONTROL_RATE/10;
-    }
-  }
+  // for (int i=0; i<8; ++i) {
+  //   // legs get stuck
+  //   float val = M[i].getOpenLoop();
+  //   if (fabsf(val) > 0.5) {
+  //     legStuckTimer[i]++;
+  //   } else {
+  //     legStuckTimer[i] = 0;
+  //   }
+  //   // if stuck for 1 seconds, disable
+  //   if (legStuckTimer[i] > CONTROL_RATE) {
+  //     enable(false);
+  //     hbFreq = CONTROL_RATE;
+  //     hbOnFreq = CONTROL_RATE/10;
+  //   }
+  // }
 
   // IMU
-  imu->updateInterrupt();
+  //imu->updateInterrupt();
   // Vsource
   // 3.3V, Volt div 470 & 10k, 12bit. So 3.3/4096*(10470/470) = 0.01794745262
   // empirical tuning: 
-  X.Vbatt = VsourceF.update(analogRead(VsourcePin)) * 0.02009387094;
+  //X.Vbatt = VsourceF.update(analogRead(VsourcePin)) * 0.02009387094;
 
 
   // totalPings+=NMOT;
@@ -232,7 +233,7 @@ void halUpdate() {
     X.rolldot = DARTIMUData[3];
     X.pitchdot = DARTIMUData[4];
     X.yawdot = DARTIMUData[5];
-  
+
   for (int i=0; i<NMOT; ++i) {
     X.q[i] = M[i].getPosition();
 //     float rawCur = 0;
@@ -254,11 +255,11 @@ void halUpdate() {
   if (X.t - lastOLwrite > 9) {
     // openLog.write((const uint8_t *)&X);
     lastOLwrite = X.t;
-    openLog.write();
+    //openLog.write();
   }
 
   // heartbeat
   nIters++;
-  digitalWrite(led0, (nIters % hbFreq < hbOnFreq) && halHeartbeatEnabled ? LOW : HIGH);
+  //digitalWrite(led0, (nIters % hbFreq < hbOnFreq) && halHeartbeatEnabled ? LOW : HIGH);
 }
 

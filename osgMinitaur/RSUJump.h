@@ -9,7 +9,7 @@
 
 // This behavior isn't declared to remote, just called from Walk, and return to walk
 
-#include "Behavior.h"
+#include "libraries/Robot/Behavior.h"
 
 enum RSUJumpMode {
   RSUJ_STAND, RSUJ_WAIT, RSUJ_FRONTHOP, RSUJ_PREJUMP, RSUJ_LEAP, 

@@ -131,7 +131,7 @@ void Walk::update() {
     if ((stepLeg == -1 && (flightLeg == i || flightLeg + i == 3)) || (stepLeg == i)) {
       // pair in flight
       // FLIGHT CONTROL
-      frac = map(X.t, tLO, tLO + tflight, 0.0, 1.0);
+      frac = map((float)X.t, (float)tLO, (float)tLO + tflight, 0.0, 1.0);
       // step over obstacle (IGNORE FOR NOW)
       // FIXME use remote for now
       if (signalState == SIGNAL_QUEUE && frac > 0.5) {

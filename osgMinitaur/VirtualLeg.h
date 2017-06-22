@@ -7,7 +7,7 @@
 #ifndef VirtualLeg_h
 #define VirtualLeg_h
 
-#include "MotorController/AbstractMotor.h"
+#include "AbstractMotor.h"
 #include "HAL.h"
 
 enum VirtualLegMode {

@@ -13,7 +13,7 @@
 float speedDes = 0, yawDes = 0, latDes = 0, vertDes = 0;
 uint8_t remoteKnob = 0;// 1--6
 RemoteRC remoteRC;
-RemoteComputer remoteComputer;
+//RemoteComputer remoteComputer;
 
 // locals
 int curBehavior = 0;
@@ -28,8 +28,8 @@ void activateBehavior(Behavior *behav) {
 
 void RemoteRC::begin() {
   // RC receiver
-  for (int i=0; i<NRECPINS; ++i)
-    pinMode(rcRecPin[i], PWM_IN_EXTI);
+  //for (int i=0; i<NRECPINS; ++i)
+  //  pinMode(rcRecPin[i], PWM_IN_EXTI);
 
   // Low pass user desired speed
   speedDesF.init(0.999, CONTROL_RATE, DLPF_SMOOTH);
@@ -38,15 +38,15 @@ void RemoteRC::begin() {
 
 void RemoteRC::updateInterrupt() {
   // RC receiver
-  for (int i=0; i<NRECPINS; ++i) {
-    int period=0, pulsewidth=0;
-    pwmInRaw(rcRecPin[i], &period, &pulsewidth);
-    // no signal if transmitter is off
-    float dummy = (period > 0) ? pulsewidth*100/((float)period) : 0;
-    // some basic error checking
-    if (dummy > 5 && dummy < 10)
-      rcCmd[i] = dummy;
-  }
+  // for (int i=0; i<NRECPINS; ++i) {
+  //   int period=0, pulsewidth=0;
+  //   pwmInRaw(rcRecPin[i], &period, &pulsewidth);
+  //   // no signal if transmitter is off
+  //   float dummy = (period > 0) ? pulsewidth*100/((float)period) : 0;
+  //   // some basic error checking
+  //   if (dummy > 5 && dummy < 10)
+  //     rcCmd[i] = dummy;
+  // }
 
   // this depends on the position of the "throttle", so setting that before flipping the switch could select different behaviors?
   bool throttleMeasurement = (rcCmd[1] > 6.5);
@@ -82,7 +82,7 @@ void RemoteRC::updateInterrupt() {
   if (behavior->running() && !throttle) {
     behavior->end();
     // digitalWrite(led1, HIGH);
-    openLog.enable(false);
+    //openLog.enable(false);
   }
 }
 
@@ -91,7 +91,7 @@ void RemoteRC::updateLoop() {
   if (!behavior->running() && throttle) {
     // digitalWrite(led1, LOW);
     behavior->begin();
-    openLog.enable(true);
+    //openLog.enable(true);
   }
 
   // Cycle through behaviors
@@ -117,11 +117,11 @@ void RemoteRC::updateLoop() {
         halHeartbeatEnabled = false;
         curBehavior = (rcCmd[2] > REMOTE_RC_ZERO) ? curBehavior+1 : curBehavior+NUM_BEHAVIORS-1;
         curBehavior = curBehavior % NUM_BEHAVIORS;
-        for (uint8_t i=0; i<2*(curBehavior+1); ++i) {
+        /*for (uint8_t i=0; i<2*(curBehavior+1); ++i) {
           digitalWrite(led1, TOGGLE);
           digitalWrite(led0, TOGGLE);
           delay(25);
-        }
+        }*/
         behavior = behaviorArray[curBehavior];
         halHeartbeatEnabled = true;
       }
@@ -141,7 +141,7 @@ public:
 };
 DoNothing doNothing;
 
-void RemoteComputer::begin() {
+/*void RemoteComputer::begin() {
   // raspi
   rpi.begin(115200, sizeof(X), (void *)&X, sizeof(computerPacket));
   rpi.enable(true);// always send data
@@ -224,7 +224,7 @@ void RemoteComputer::updateLoop() {
     enable(true);
   }
 }
-
+*/
 // // Nunchuck code
 
 // void RemoteNunchuck::begin() {

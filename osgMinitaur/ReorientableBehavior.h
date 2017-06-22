@@ -9,6 +9,7 @@
 
 #include "libraries/Robot/Behavior.h"
 #include "HAL.h"
+#include <cmath>
 
 class ReorientableBehavior : public Behavior
 {

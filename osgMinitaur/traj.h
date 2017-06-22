@@ -6,7 +6,7 @@ Written by Joe Norby
 
 #include "VirtualLeg.h"
 #include "Interpolator.h"
-#include <Behavior.h>
+#include "libraries/Robot/Behavior.h"
 
 class Traj : public Behavior {
 public:

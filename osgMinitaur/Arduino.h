@@ -17,13 +17,15 @@
   License along with this library; if not, see <http://www.gnu.org/licenses/>.
  */
   
-#ifndef Arduino_h
-#define Arduino_h
+#ifndef Arduino_H
+#define Arduino_H
 
 extern float DARTMotorPos[8];
 extern float DARTMotorVel[8];
 extern float DARTMotorCommand[8];
 extern float DARTTime;
+
+#include <iostream>
 
 #ifdef __cplusplus
 extern "C"{
@@ -59,8 +61,11 @@ extern void loop();
 #define arm_cos_f32(a) cos(a)
 #define arm_sin_f32(a) sin(a)
 
-uint32_t millis(){return floor(DARTTime*1000);}
-uint32_t micros(){return floor(DARTTime*1000000);}
+//uint32_t millis(){return floor(DARTTime*1000);}
+//uint32_t micros(){return floor(DARTTime*1000000);}
+
+#define millis() (floor(DARTTime*1000))
+#define micros() (floor(DARTTime*1000000))
 
 #ifdef __cplusplus
 } // extern "C"

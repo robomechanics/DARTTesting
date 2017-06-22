@@ -36,7 +36,7 @@ float DARTMotorVel[8];
 float DARTTime;
 float DARTIMUData[6];
 
-Interface interface;
+//Interface interface;
 
 //==============================================================================
 MinitaurWorldNode::MinitaurWorldNode(
@@ -46,12 +46,15 @@ MinitaurWorldNode::MinitaurWorldNode(
     mExternalForce(Eigen::Vector3d::Zero()),
     mForceDuration(0.0)
 {
+  std::cout << "World Node construction commenced" << std::endl;
+
   assert(world);
   assert(atlas);
 
   mController.reset(new Controller(atlas, world->getConstraintSolver()));
 
   interface.setup();
+  std::cout << "World Node construction finished" << std::endl;
 }
 
 //==============================================================================
@@ -76,7 +79,6 @@ void MinitaurWorldNode::customPreStep()
     DARTMotorVel[i] = hips[i]->getDof(0)->getVelocity();
   }
   DARTTime = mWorld->getTime();
-  std::cout << DARTTime << std::endl;
 
   Eigen::Matrix3d R = pelvis->getWorldTransform().linear();
   Eigen::Vector3d rpy = dart::math::matrixToEulerXYZ(R);
@@ -91,10 +93,10 @@ void MinitaurWorldNode::customPreStep()
   interface.update();
 
   for(int i = 0;i<8;++i){
-    DARTMotorCommand[i] = 100.0; //This will be replaced with actual commands from DART
+    std::cout << DARTMotorCommand[i] << "\t";//DARTMotorCommand[i] = 100.0; //This will be replaced with actual commands from DART
     hips[i]->getDof(0)->setForce(DARTMotorCommand[i]);
   }
-
+  std::cout << std::endl;
   //std::cout << rcCmd[0] << "\t" << rcCmd[1] << "\t" <<rcCmd[2] << "\t" <<rcCmd[3] << "\t" <<rcCmd[4] << "\t" <<rcCmd[5] <<std::endl;
   //Eigen::Vector3d posGlobal = pelvis->getWorldTransform().translation();
 

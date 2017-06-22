@@ -29,7 +29,7 @@
  */
 
 #include "MinitaurEventHandler.hpp"
-
+float rcCmd[6] = {0,0,0,0,0,6};
 //==============================================================================
 MinitaurEventHandler::MinitaurEventHandler(
     MinitaurWorldNode* node)

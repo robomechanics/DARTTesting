@@ -9,7 +9,7 @@
  * - A. De and D. E. Koditschek, “Vertical hopper compositions for preflexive and feedback-stabilized quadrupedal bounding, pronking, pacing and trotting,” under review, Sep. 2016.
  */
 #include "Bound.h"
-
+#include <iostream>
 // TODO:
 // look at log 9079 to see how vertical the legs are staying in flight / stance
 // may have to do a trial with no FA (stay vertical to see how that is working)
@@ -65,7 +65,10 @@ void Bound::begin() {
     headingDes = X.yaw;
   }
   front.begin();
-  delay(400);
+  
+  std::cout << "Might be a delay issue here (uncommented delay)" << std::endl;
+  //uint32_t startdelay = millis();
+  //while(millis() - startdelay < 400);
   rear.begin();
 }
 

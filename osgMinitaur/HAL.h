@@ -28,11 +28,11 @@ const int NMOT = 8;
 #include <DxlMotor.h>
 extern DxlMotor M[NMOT];
 #else
-#include "MotorController/Motor.h"
+#include "Motor.h"
 extern BlCon34 M[NMOT];
 #endif
 //#include "BulkSerial/BulkSerial.h"
-#include "MotorController/MinitaurLeg.h"
+#include "MinitaurLeg.h"
 
 // OTHER PERIPHERALS
 extern const uint8_t led0, led1;
