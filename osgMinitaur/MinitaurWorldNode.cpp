@@ -60,8 +60,8 @@ MinitaurWorldNode::MinitaurWorldNode(
 //==============================================================================
 void MinitaurWorldNode::customPreStep()
 {
-  auto pelvis = mController->getAtlasRobot()->getBodyNode("base_chassis_link");
-  pelvis->addExtForce(mExternalForce);
+  auto chassis = mController->getAtlasRobot()->getBodyNode("base_chassis_link");
+  chassis->addExtForce(mExternalForce);
   //mController->update();
   std::array<dart::dynamics::Joint*,8> hips;
   hips[0] = mWorld->getSkeleton(0)->getJoint("motor_front_rightR_joint");
@@ -80,11 +80,13 @@ void MinitaurWorldNode::customPreStep()
   }
   DARTTime = mWorld->getTime();
 
-  Eigen::Matrix3d R = pelvis->getWorldTransform().linear();
+  Eigen::Matrix3d R = chassis->getWorldTransform().linear();
   Eigen::Vector3d rpy = dart::math::matrixToEulerXYZ(R);
   rpy[0] = dart::math::wrapToPi(rpy[0] + M_PI);
-  rpy[1] = -rpy[1];
-  Eigen::Vector3d drpy = {0,0,0};
+  Eigen::Vector3d w_w = chassis->getAngularVelocity();
+  Eigen::Matrix3d invJ;
+  invJ << 1,sin(rpy[1])*sin(rpy[0])/cos(rpy[1]),cos(rpy[0])*sin(rpy[1])/cos(rpy[1]),0,cos(rpy[0]),-sin(rpy[0]),0,sin(rpy[0])/cos(rpy[1]),cos(rpy[0])/cos(rpy[1]);
+  Eigen::Vector3d drpy = invJ * R.transpose() * w_w;
   for(int i = 0;i<3;++i){
     DARTIMUData[i] = rpy[i];
     DARTIMUData[i+3] = drpy[i];
@@ -97,7 +99,7 @@ void MinitaurWorldNode::customPreStep()
     hips[i]->getDof(0)->setForce(DARTMotorCommand[i]);
   }
   //std::cout << rcCmd[0] << "\t" << rcCmd[1] << "\t" <<rcCmd[2] << "\t" <<rcCmd[3] << "\t" <<rcCmd[4] << "\t" <<rcCmd[5] <<std::endl;
-  //Eigen::Vector3d posGlobal = pelvis->getWorldTransform().translation();
+  //Eigen::Vector3d posGlobal = chassis->getWorldTransform().translation();
 
   if (mForceDuration > 0)
     mForceDuration--;

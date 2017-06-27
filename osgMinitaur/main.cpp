@@ -77,8 +77,8 @@ int main()
 //  world->getConstraintSolver()->addConstraint(constBackRight);
 
   // Set gravity of the world
-  //world->setGravity(Eigen::Vector3d(0.0, 0.0, -9.81));
-world->setGravity(Eigen::Vector3d(0.0, 0.0, 0));
+  world->setGravity(Eigen::Vector3d(0.0, 0.0, -9.81));
+  // world->setGravity(Eigen::Vector3d(0.0, 0.0, 0));
   // Wrap a WorldNode around it
   osg::ref_ptr<MinitaurWorldNode> node
       = new MinitaurWorldNode(world, minitaur);

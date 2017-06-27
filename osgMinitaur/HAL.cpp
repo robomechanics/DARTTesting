@@ -225,9 +225,9 @@ void halUpdate() {
   // LOGGING
   X.t = millis();
 
-    X.yaw = DARTIMUData[0];
-    X.roll = DARTIMUData[1];
-    X.pitch = DARTIMUData[2];
+    X.roll = DARTIMUData[0];
+    X.pitch = DARTIMUData[1];
+    X.yaw = DARTIMUData[2];
     X.rolldot = DARTIMUData[3];
     X.pitchdot = DARTIMUData[4];
     X.yawdot = DARTIMUData[5];
