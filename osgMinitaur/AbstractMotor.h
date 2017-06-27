@@ -69,6 +69,7 @@ public:
    * @sa Motor::getOpenLoop()
    */
   float getOpenLoop(int i) {
+    std::cout << "AbstractMotor getOpenLoop" <<std::endl;
     return this->val[i];
   }
   // Set motor move commands (but they are actually sent by motorUpdate())
@@ -131,6 +132,7 @@ public:
    * @details Don't call Motor::update() on the constituent motors
    */
   void update() {
+        
     float posCtrlVal[N], physicalVal[N];
 
     for (int i=0; i<N; ++i)
@@ -140,6 +142,7 @@ public:
     physicalToAbstract(physicalPos, pos);
 
     for (int i=0; i<N; ++i) {
+
       // Velocity calculation should happen independent of mode
       // if (bAngle[i])
       //   posCtrlVal[i] = pd[i].update(fmodf_mpi_pi(pos[i] - setpoint[i]));
@@ -160,16 +163,17 @@ public:
       for (int i=0; i<N; ++i) {
         // Send command, but don't modify "val" (set by user)
         correctedPhysicalVal[i] = motors[i]->mapVal(physicalVal[i]);
+        //correctedPhysicalVal[i] = torqueFactor * ((enableFlag) ? val : 0)motors[i]->mapVal(physicalVal[i]);
         // send the command
         motors[i]->sendOpenLoop(correctedPhysicalVal[i]);
         // store so that getOpenLoop works
         motors[i]->correctedVal = correctedPhysicalVal[i];
-		DARTMotorCommand[i] = correctedPhysicalVal[i]; // JN 6/5/17 CHECK IF correctedPhysicalVal IS CORRECT
       }
     } else {
       // User will call update() on individual motors in the proper orders
       for (int i=0; i<N; ++i)
         motors[i]->setOpenLoop(physicalVal[i]);
+
     }
   }
 

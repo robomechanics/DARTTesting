@@ -118,7 +118,7 @@ public:
    * @details Useful to record input when getPosition() is used
    * @return Commanded PWM in [-1, 1]
    */
-  float getOpenLoop() { return correctedVal * direction * driverDirection; }
+  float getOpenLoop() {return correctedVal * direction * driverDirection;}
 
   /**
    * @brief Details for torque estimate in getTorque(). Not used elsewhere.
@@ -181,6 +181,9 @@ public:
    * @brief Run this after you are sure there is non-garbage rawPosition data
    */
   void resetOffset();
+
+  float enableFlagPublic;
+  float torqueFactorPublic;
 
   /**
    * @brief Set expected rate (Hz) at which update() will be called
@@ -274,6 +277,7 @@ public:
   void enable(bool flag);
   float getRawPosition();
   void sendOpenLoop(float val);
+
 
 protected:
   void initCommon(uint8_t outPin_, float zero, int8_t dir, float gearRatio);

@@ -19,6 +19,8 @@
 #ifndef WMath_h
 #define WMath_h
 
+#include <iostream>
+
 
 /** @addtogroup Math Basic and advanced math
  *  @{

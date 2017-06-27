@@ -45,7 +45,6 @@ const uint8_t motorPort[8] = {0, 1, 2, 3, 4, 5, 6, 7};//MINI
 BlCon34 M[NMOT];
 const int CONTROL_RATE = 1000;
 #endif
-
 // OpenLog
 //BulkSerial openLog(MBLC_OPENLOG);
 volatile uint32_t lastOLwrite = 0;
@@ -55,7 +54,7 @@ volatile LogVector X;
 
 // Legs
 // MINITAUR
-const int8_t dir[] = {1, 1, 1, 1, -1, -1, -1, -1};
+const int8_t dir[] = {1, 1, 1, 1, 1, 1, 1, 1};
 MinitaurLeg leg[4] = {MinitaurLeg(&M[1], &M[0]),//0
 MinitaurLeg(&M[3], &M[2]), //1
 MinitaurLeg(&M[4], &M[5]), //2
@@ -97,7 +96,6 @@ void halInit() {
   // Vsource
   //VsourceF.init(0.999, CONTROL_RATE, DLPF_SMOOTH);
   //pinMode(VsourcePin, INPUT_ANALOG);
-  std::cout << "halInit commenced" << std::endl;
 
   Motor::updateRate = CONTROL_RATE;
   Motor::velSmooth = 0.55;
@@ -205,7 +203,7 @@ void halUpdate() {
   //   } else {
   //     legStuckTimer[i] = 0;
   //   }
-  //   // if stuck for 1 seconds, disable
+  //   // if stuck for 1 second, disable
   //   if (legStuckTimer[i] > CONTROL_RATE) {
   //     enable(false);
   //     hbFreq = CONTROL_RATE;

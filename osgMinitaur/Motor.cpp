@@ -17,6 +17,8 @@ int Motor::updateRate = 1000;
 float Motor::velSmooth = 0.8;
 float Motor::rpsLimit = 500; // speed limit in radians per second
 
+
+
 void Motor::init(float zero, int8_t direction, float gearRatio) {
   this->zero = zero;
   // check
@@ -86,6 +88,7 @@ void Motor::setPosition(float setpoint) {
 
 void Motor::setTorqueEstParams(float Kt, float res, float Vsource, float curLim) {
   torqueFactor = gearRatio * Kt * Vsource/res;
+  torqueFactorPublic = torqueFactor;
   if (curLim > 0)
     maxAmplitude = constrain(curLim * res / Vsource, 0, 1);
 }
@@ -122,7 +125,6 @@ float Motor::update() {
 
   // send the command
   sendOpenLoop(correctedVal);
-
   // Return the command so that the slave can do the same thing
   return correctedVal;
 }
@@ -163,6 +165,7 @@ void BlCon34::init(uint8_t outPin_, uint8_t inPin_, float zero, int8_t dir, floa
 
 void BlCon34::enable(bool flag) {
   enableFlag = flag;
+  enableFlagPublic = flag;
 }
 
 float BlCon34::getRawPosition() {
@@ -173,6 +176,7 @@ float BlCon34::getRawPosition() {
 void BlCon34::sendOpenLoop(float val) {
   //analogWriteFloat(outPin, (enableFlag) ? map(val, -1, 1, 0.12, 0.88) : 0);
 
-  DARTMotorCommand[outPin] = torqueFactor * ((enableFlag) ? val : 0);
-  std::cout << "Motor Command " << this->outPin << " sent" << std::endl;
+  // JN Tests:
+  //DARTMotorCommand[outPin] = torqueFactor * ((enableFlag) ? val : 0);
+  this->correctedVal = val;
 }

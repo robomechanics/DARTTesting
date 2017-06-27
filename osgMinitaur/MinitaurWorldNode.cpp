@@ -93,7 +93,7 @@ void MinitaurWorldNode::customPreStep()
   interface.update();
 
   for(int i = 0;i<8;++i){
-    std::cout << DARTMotorCommand[i] << "\t";//DARTMotorCommand[i] = 100.0; //This will be replaced with actual commands from DART
+    //std::cout << DARTMotorCommand[i] << "\t";//DARTMotorCommand[i] = 100.0; //This will be replaced with actual commands from DART
     hips[i]->getDof(0)->setForce(DARTMotorCommand[i]);
   }
   std::cout << std::endl;

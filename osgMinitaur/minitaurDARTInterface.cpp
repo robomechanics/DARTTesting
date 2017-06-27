@@ -31,13 +31,14 @@ Interface::Interface(void){
 
 void Interface::setup(void){
   halInit();
+  enable(true);
 
   // first behavior
   behavior->begin();
 }
 
 void Interface::update() {
-    
+  std::cout << "Interface update" << std::endl;
   // Remote: set parameters, stop behavior
   remote->updateInterrupt();
     
@@ -49,14 +50,26 @@ void Interface::update() {
 
   // BEHAVIOR
   // "soft start"
-  if ((behavior == &bound || behavior == &walk) && softStart.running()) {
-    float behavExtDes = (behavior == &bound) ? 1.5 : 1.0;
-    softStart.update(behavExtDes);
-  } else {
-    behavior->update();
-  }
-    
+  // if ((behavior == &bound || behavior == &walk) && softStart.running()) {
+  //   float behavExtDes = (behavior == &bound) ? 1.5 : 1.0;
+  //   softStart.update(behavExtDes);
+  // } else {
+  //   behavior->update();
+  // }
+  std::cout << leg[0].getOpenLoop(1) << std::endl;
+  std::cout << M[0].getOpenLoop() << std::endl;
+
   halUpdate();
+  behavior->update();
+
+
+  std::cout << leg[0].getOpenLoop(1) << std::endl;
+  std::cout << M[0].getOpenLoop() << std::endl;
+  for (int i = 0;i<8;++i){
+    DARTMotorCommand[i] = M[i].torqueFactorPublic * ((M[i].enableFlagPublic) ? M[i].getOpenLoop() : 0);
+    std::cout << M[i].getOpenLoop() << "\t";
+  }
+
 
   controlTime = micros() - tic;
 }
