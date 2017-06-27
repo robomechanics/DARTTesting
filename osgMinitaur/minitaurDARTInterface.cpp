@@ -38,7 +38,6 @@ void Interface::setup(void){
 }
 
 void Interface::update() {
-  std::cout << "Interface update" << std::endl;
   // Remote: set parameters, stop behavior
   remote->updateInterrupt();
     
@@ -56,18 +55,16 @@ void Interface::update() {
   // } else {
   //   behavior->update();
   // }
-  std::cout << leg[0].getOpenLoop(1) << std::endl;
-  std::cout << M[0].getOpenLoop() << std::endl;
-
-  halUpdate();
+  //std::cout << "Behavior: " << rcCmd[5] << std::endl;
   behavior->update();
+  halUpdate();
 
+  std::cout << "Roll: " << X.roll << " Pitch: " << X.pitch << " Yaw: " << X.yaw << " Rolldot: " << X.rolldot << " Pitchdot: " << X.pitchdot << " Yawdot: " << X.yawdot << std::endl;
 
-  std::cout << leg[0].getOpenLoop(1) << std::endl;
-  std::cout << M[0].getOpenLoop() << std::endl;
   for (int i = 0;i<8;++i){
+    //M[i].update();
     DARTMotorCommand[i] = M[i].torqueFactorPublic * ((M[i].enableFlagPublic) ? M[i].getOpenLoop() : 0);
-    std::cout << M[i].getOpenLoop() << "\t";
+    //std::cout << DARTMotorCommand[i] << "\t";
   }
 
 

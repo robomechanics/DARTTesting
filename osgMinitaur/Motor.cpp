@@ -78,6 +78,7 @@ void Motor::setGain(float Kp, float Kd) {
 void Motor::setOpenLoop(float val) {
   this->mode = OPEN_LOOP_MODE;
   this->val = val;
+  this->correctedVal = mapVal(val); // JN Added
 }
 
 void Motor::setPosition(float setpoint) {

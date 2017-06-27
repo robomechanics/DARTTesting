@@ -58,8 +58,6 @@ public:
   void switchToNormalStrideWalking();
   void switchToWarmingUp();
   void switchToNoControl();
-
-  float rcCmd[6] = {0,0,0,0,0,6.3};
   
 protected:
   std::unique_ptr<Controller> mController;

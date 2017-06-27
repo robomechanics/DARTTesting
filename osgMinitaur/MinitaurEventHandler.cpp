@@ -71,67 +71,79 @@ bool MinitaurEventHandler::handle(
     }
     else if(ea.getKey() == '0') // Right stick vertical
     {
-      mNode->rcCmd[0] += 0.05;
+      rcCmd[0] += 0.05;
+      std::cout << "right stick vertical: " << rcCmd[0] << std::endl;
       return true;
     }
     else if(ea.getKey() == ')')
     {
-      mNode->rcCmd[0] -= 0.05;
+      rcCmd[0] -= 0.05;
+      std::cout << "right stick vertical: " << rcCmd[0] << std::endl;
       return true;
     }
 
     else if(ea.getKey() == '1') // Toggle switch
     {
-      mNode->rcCmd[1] = 10.0;
+      rcCmd[1] = 10.0;
+      std::cout << "toggle switch: " << rcCmd[1] << std::endl;
       return true;
     }
     else if(ea.getKey() == '!')
     {
-      mNode->rcCmd[1] = 0.0;
+      rcCmd[1] = 0.0;
+      std::cout << "toggle switch: " << rcCmd[1] << std::endl;
       return true;
     }
 
     else if(ea.getKey() == '2') // left stick horizontal
     {
-      mNode->rcCmd[2] += 0.05;
+      rcCmd[2] += 0.05;
+      std::cout << "left stick horizontal: " << rcCmd[2] << std::endl;
       return true;
     }
     else if(ea.getKey() == '@')
     {
-      mNode->rcCmd[2] -= 0.05;
+      rcCmd[2] -= 0.05;
+      std::cout << "left stick horizontal: " << rcCmd[2] << std::endl;
       return true;
     }
 
     else if(ea.getKey() == '3') // right stick horizontal
     {
-      mNode->rcCmd[3] += 0.05;
+      rcCmd[3] += 0.05;
+      std::cout << "right stick horizontal: " << rcCmd[3] << std::endl;
       return true;
     }
     else if(ea.getKey() == '#')
     {
-      mNode->rcCmd[3] -= 0.05;
+      rcCmd[3] -= 0.05;
+      std::cout << "right stick horizontal: " << rcCmd[3] << std::endl;
       return true;
     }
 
     else if(ea.getKey() == '4') // left stick vertical
     {
-      mNode->rcCmd[4] += 0.05;
+      rcCmd[4] += 0.05;
+      std::cout << "left stick vertical: " << rcCmd[4] << std::endl;
       return true;
     }
     else if(ea.getKey() == '$')
     {
-      mNode->rcCmd[4] -= 0.05;
+      rcCmd[4] -= 0.05;
+      std::cout << "left stick vertical: " << rcCmd[4] << std::endl;
       return true;
     }
 
     else if(ea.getKey() == '5') // behavior knob
     {
-      mNode->rcCmd[5] += 0.5;
+      rcCmd[5] += 0.5;
+      std::cout << "behavior: " << rcCmd[5] << std::endl;
       return true;
     }
     else if(ea.getKey() == '%')
     {
-      mNode->rcCmd[5] -= 0.5;
+      rcCmd[5] -= 0.5;
+      std::cout << "behavior: " << rcCmd[5] << std::endl;
       return true;
     }
   }

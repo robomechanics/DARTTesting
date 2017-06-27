@@ -96,7 +96,6 @@ void MinitaurWorldNode::customPreStep()
     //std::cout << DARTMotorCommand[i] << "\t";//DARTMotorCommand[i] = 100.0; //This will be replaced with actual commands from DART
     hips[i]->getDof(0)->setForce(DARTMotorCommand[i]);
   }
-  std::cout << std::endl;
   //std::cout << rcCmd[0] << "\t" << rcCmd[1] << "\t" <<rcCmd[2] << "\t" <<rcCmd[3] << "\t" <<rcCmd[4] << "\t" <<rcCmd[5] <<std::endl;
   //Eigen::Vector3d posGlobal = pelvis->getWorldTransform().translation();
 
