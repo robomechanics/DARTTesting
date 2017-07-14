@@ -28,91 +28,140 @@
  *   POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <dart/dart.hpp>
-#include <dart/gui/osg/osg.hpp>
-#include <dart/utils/utils.hpp>
-#include <dart/utils/urdf/urdf.hpp>
+// #include <dart/dart.hpp>
+// #include <dart/gui/osg/osg.hpp>
+// #include <dart/utils/utils.hpp>
+// #include <dart/utils/urdf/urdf.hpp>
 
-#include "MinitaurWorldNode.hpp"
-#include "MinitaurEventHandler.hpp"
-#include "MinitaurWidget.hpp"
+// #include "MinitaurWorldNode.hpp"
+// #include "MinitaurEventHandler.hpp"
+// #include "MinitaurWidget.hpp"
 
-int main()
-{
+// #include "MyWindow.hpp"
+// #include "computeCost.h"
 
-  dart::simulation::WorldPtr world(new dart::simulation::World());
+// int main(int argc, char* argv[]){
+//   double x[4] = {5.0,0.0,0.0,0.0};
+//   int N = 4;
+
+//   double cost = computeCost(x, N, argc, argv);
+//   std::cout << "CoT: " << cost << std::endl;
+
+//   return 0;
+// }
+// //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// int main(int argc, char* argv[])
+// {
+
+//   dart::simulation::WorldPtr world(new dart::simulation::World());
   
-  // Load ground and Atlas robot and add them to the world
-  dart::utils::DartLoader loader;
-  auto minitaur = loader.parseSkeleton("dart://sample/urdf/minitaur/quadruped2.urdf");
-  auto ground = loader.parseSkeleton("dart://sample/urdf/minitaur/ground.urdf");
+//   // Load ground and Atlas robot and add them to the world
+//   dart::utils::DartLoader loader;
+//   auto minitaur = loader.parseSkeleton("dart://sample/urdf/minitaur/quadruped2.urdf");
+//   auto ground = loader.parseSkeleton("dart://sample/urdf/minitaur/ground.urdf");
 
-  world->addSkeleton(minitaur);
-  world->addSkeleton(ground);
+//   world->addSkeleton(minitaur);
+//   world->addSkeleton(ground);
 
-  // Set initial configuration for Minitaur robot
-  using namespace dart::math::suffixes;
-  minitaur->setPosition(0, 180_deg);
-  minitaur->setPosition(5, 0.5);
-//  auto frontLL = minitaur->getBodyNode("lower_leg_front_leftL_link");
-//  auto frontLR = minitaur->getBodyNode("lower_leg_front_leftR_link");
-//  auto frontRL = minitaur->getBodyNode("lower_leg_front_rightL_link");
-//  auto frontRR = minitaur->getBodyNode("lower_leg_front_rightR_link");
-//  auto backLL = minitaur->getBodyNode("lower_leg_back_leftL_link");
-//  auto backLR = minitaur->getBodyNode("lower_leg_back_leftR_link");
-//  auto backRL = minitaur->getBodyNode("lower_leg_back_rightL_link");
-//  auto backRR = minitaur->getBodyNode("lower_leg_back_rightR_link");
-//  Eigen::Vector3d offset(0.0, 0.0, 0.2);
-//  auto constFrontLeft = std::make_shared<dart::constraint::BallJointConstraint>(
-//      frontLL, frontLR, frontLL->getTransform() * offset);
-//  auto constFrontRight = std::make_shared<dart::constraint::BallJointConstraint>(
-//      frontRL, frontRR, frontRL->getTransform() * offset);
-//  auto constBackLeft = std::make_shared<dart::constraint::BallJointConstraint>(
-//      backLL, backLR, backLL->getTransform() * offset);
-//  auto constBackRight = std::make_shared<dart::constraint::BallJointConstraint>(
-//      backRL, backRR, backRL->getTransform() * offset);
-//  world->getConstraintSolver()->addConstraint(constFrontLeft);
-//  world->getConstraintSolver()->addConstraint(constFrontRight);
-//  world->getConstraintSolver()->addConstraint(constBackLeft);
-//  world->getConstraintSolver()->addConstraint(constBackRight);
+//   world->setTimeStep(0.001);
 
-  // Set gravity of the world
-  world->setGravity(Eigen::Vector3d(0.0, 0.0, -9.81));
-  // world->setGravity(Eigen::Vector3d(0.0, 0.0, 0));
-  // Wrap a WorldNode around it
-  osg::ref_ptr<MinitaurWorldNode> node
-      = new MinitaurWorldNode(world, minitaur);
-  node->setNumStepsPerCycle(20);
+//   // Set initial configuration for Minitaur robot
+//   using namespace dart::math::suffixes;
+//   minitaur->setPosition(0, 180_deg);
+//   minitaur->setPosition(5, 0.5);
+// //  auto frontLL = minitaur->getBodyNode("lower_leg_front_leftL_link");
+// //  auto frontLR = minitaur->getBodyNode("lower_leg_front_leftR_link");
+// //  auto frontRL = minitaur->getBodyNode("lower_leg_front_rightL_link");
+// //  auto frontRR = minitaur->getBodyNode("lower_leg_front_rightR_link");
+// //  auto backLL = minitaur->getBodyNode("lower_leg_back_leftL_link");
+// //  auto backLR = minitaur->getBodyNode("lower_leg_back_leftR_link");
+// //  auto backRL = minitaur->getBodyNode("lower_leg_back_rightL_link");
+// //  auto backRR = minitaur->getBodyNode("lower_leg_back_rightR_link");
+// //  Eigen::Vector3d offset(0.0, 0.0, 0.2);
+// //  auto constFrontLeft = std::make_shared<dart::constraint::BallJointConstraint>(
+// //      frontLL, frontLR, frontLL->getTransform() * offset);
+// //  auto constFrontRight = std::make_shared<dart::constraint::BallJointConstraint>(
+// //      frontRL, frontRR, frontRL->getTransform() * offset);
+// //  auto constBackLeft = std::make_shared<dart::constraint::BallJointConstraint>(
+// //      backLL, backLR, backLL->getTransform() * offset);
+// //  auto constBackRight = std::make_shared<dart::constraint::BallJointConstraint>(
+// //      backRL, backRR, backRL->getTransform() * offset);
+// //  world->getConstraintSolver()->addConstraint(constFrontLeft);
+// //  world->getConstraintSolver()->addConstraint(constFrontRight);
+// //  world->getConstraintSolver()->addConstraint(constBackLeft);
+// //  world->getConstraintSolver()->addConstraint(constBackRight);
 
-  // Create a Viewer and set it up with the WorldNode
-  dart::gui::osg::ImGuiViewer viewer;
-  viewer.addWorldNode(node);
+//   // Set gravity of the world
+//   world->setGravity(Eigen::Vector3d(0.0, 0.0, -9.81));
 
-  // Add control widget for atlas
-  viewer.getImGuiHandler()->addWidget(
-        std::make_shared<MinitaurWidget>(&viewer, node.get()));
+//   MyWindow window;
+//   window.setWorld(world);
+//   glutInit(&argc, argv);
+//   window.initWindow(1280, 960, "GR Minitaur");
 
-  // Pass in the custom event handler
-  viewer.addEventHandler(new MinitaurEventHandler(node));
-
-  // Set the dimensions for the window
-  viewer.setUpViewInWindow(0, 0, 1280, 960);
-
-  // Set the window name
-  viewer.realize();
-  osgViewer::Viewer::Windows windows;
-  viewer.getWindows(windows);
-  windows.front()->setWindowName("Ghost Robotics - Minitaur");
-
-  // Adjust the viewpoint of the Viewer
-  viewer.getCameraManipulator()->setHomePosition(
-        ::osg::Vec3d( 2.0, 2.0, 2.0),
-        ::osg::Vec3d( 0.0, 0.0, 0.0),
-        ::osg::Vec3d( 0.0, 0.0, 1.0));
-  // We need to re-dirty the CameraManipulator by passing it into the viewer
-  // again, so that the viewer knows to update its HomePosition setting
-  viewer.setCameraManipulator(viewer.getCameraManipulator());
+//     // Wrap a WorldNode around it
+//   osg::ref_ptr<MinitaurWorldNode> node
+//       = new MinitaurWorldNode(world, minitaur);
+//   node->setNumStepsPerCycle(20);
   
-  // Begin running the application loop
-  viewer.run();
-}
+//   for(int i = 0; i<=1000; ++i){
+//     node->customPreStep();
+//     world->step();
+//     //window.drawWorld();
+//     std::cout << "iteration " << i << std::endl;
+//   }
+//   glutMainLoop();
+
+//   return 0;
+
+
+// /*
+//   // Wrap a WorldNode around it
+//   osg::ref_ptr<MinitaurWorldNode> node
+//       = new MinitaurWorldNode(world, minitaur);
+//   node->setNumStepsPerCycle(20);
+
+//   // Create a Viewer and set it up with the WorldNode
+//   dart::gui::osg::ImGuiViewer viewer;
+//   viewer.addWorldNode(node);
+
+//   // Add control widget for atlas
+//   viewer.getImGuiHandler()->addWidget(
+//         std::make_shared<MinitaurWidget>(&viewer, node.get()));
+
+//   // Pass in the custom event handler
+//   viewer.addEventHandler(new MinitaurEventHandler(node));
+
+//   // Set the dimensions for the window
+//   viewer.setUpViewInWindow(0, 0, 1280, 960);
+
+//   // Set the window name
+//   viewer.realize();
+//   osgViewer::Viewer::Windows windows;
+//   viewer.getWindows(windows);
+//   windows.front()->setWindowName("Ghost Robotics - Minitaur");
+
+//   // Adjust the viewpoint of the Viewer
+//   viewer.getCameraManipulator()->setHomePosition(
+//         ::osg::Vec3d( 2.0, 2.0, 2.0),
+//         ::osg::Vec3d( 0.0, 0.0, 0.0),
+//         ::osg::Vec3d( 0.0, 0.0, 1.0));
+//   // We need to re-dirty the CameraManipulator by passing it into the viewer
+//   // again, so that the viewer knows to update its HomePosition setting
+//   viewer.setCameraManipulator(viewer.getCameraManipulator());
+  
+//   // Begin running the application loop
+//   //viewer.run();
+//   int i = 0;
+//   while(!viewer.done()){
+//     //viewer.frame();
+//     viewer.advance();
+//     viewer.eventTraversal();
+//     viewer.updateTraversal();
+//     i += 1;
+//     std::cout << i << std::endl;
+//     //viewer.renderingTraversals();
+//   }
+// */
+
+// }

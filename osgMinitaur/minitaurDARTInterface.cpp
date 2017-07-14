@@ -59,11 +59,15 @@ void Interface::update() {
   behavior->update();
   halUpdate();
 
-  std::cout << "Roll: " << X.roll << " Pitch: " << X.pitch << " Yaw: " << X.yaw << " Rolldot: " << X.rolldot << " Pitchdot: " << X.pitchdot << " Yawdot: " << X.yawdot << std::endl;
-
+  //std::cout << "Roll: " << X.roll << " Pitch: " << X.pitch << " Yaw: " << X.yaw << " Rolldot: " << X.rolldot << " Pitchdot: " << X.pitchdot << " Yawdot: " << X.yawdot << std::endl;
+  float TorqueCommand[8];
+  float V = 16.0;
+  float kt = 0.0954;
+  float R = 0.186;
   for (int i = 0;i<8;++i){
     //M[i].update();
-    DARTMotorCommand[i] = M[i].torqueFactorPublic * ((M[i].enableFlagPublic) ? M[i].getOpenLoop() : 0);
+    TorqueCommand[i] = M[i].torqueFactorPublic * ((M[i].enableFlagPublic) ? M[i].getOpenLoop() : 0);
+    DARTMotorCommand[i] = TorqueCommand[i] - (kt*kt/R)*DARTMotorVel[i];
     //std::cout << DARTMotorCommand[i] << "\t";
   }
 

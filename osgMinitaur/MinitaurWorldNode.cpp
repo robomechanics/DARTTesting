@@ -46,7 +46,6 @@ MinitaurWorldNode::MinitaurWorldNode(
     mExternalForce(Eigen::Vector3d::Zero()),
     mForceDuration(0.0)
 {
-  std::cout << "World Node construction commenced" << std::endl;
 
   assert(world);
   assert(atlas);
@@ -54,7 +53,6 @@ MinitaurWorldNode::MinitaurWorldNode(
   mController.reset(new Controller(atlas, world->getConstraintSolver()));
 
   interface.setup();
-  std::cout << "World Node construction finished" << std::endl;
 }
 
 //==============================================================================
@@ -91,7 +89,7 @@ void MinitaurWorldNode::customPreStep()
     DARTIMUData[i] = rpy[i];
     DARTIMUData[i+3] = drpy[i];
   }
-
+  //std::cout << "customPreStep?" << std::endl;
   interface.update();
 
   for(int i = 0;i<8;++i){
@@ -99,7 +97,6 @@ void MinitaurWorldNode::customPreStep()
     hips[i]->getDof(0)->setForce(DARTMotorCommand[i]);
   }
   //std::cout << rcCmd[0] << "\t" << rcCmd[1] << "\t" <<rcCmd[2] << "\t" <<rcCmd[3] << "\t" <<rcCmd[4] << "\t" <<rcCmd[5] <<std::endl;
-  //Eigen::Vector3d posGlobal = chassis->getWorldTransform().translation();
 
   if (mForceDuration > 0)
     mForceDuration--;
