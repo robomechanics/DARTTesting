@@ -46,7 +46,6 @@ MinitaurWorldNode::MinitaurWorldNode(
     mExternalForce(Eigen::Vector3d::Zero()),
     mForceDuration(0.0)
 {
-  std::cout << "World Node construction commenced" << std::endl;
 
   assert(world);
   assert(atlas);
@@ -54,7 +53,6 @@ MinitaurWorldNode::MinitaurWorldNode(
   mController.reset(new Controller(atlas, world->getConstraintSolver()));
 
   interface.setup();
-  std::cout << "World Node construction finished" << std::endl;
 }
 
 //==============================================================================
@@ -98,8 +96,10 @@ void MinitaurWorldNode::customPreStep()
     //std::cout << DARTMotorCommand[i] << "\t";//DARTMotorCommand[i] = 100.0; //This will be replaced with actual commands from DART
     hips[i]->getDof(0)->setForce(DARTMotorCommand[i]);
   }
+
+  // Set new tail force to 0 for testing purposes
+  mWorld->getSkeleton(0)->getBodyNode("tailShaft")->getParentJoint()->getDof(0)->setForce(0);
   //std::cout << rcCmd[0] << "\t" << rcCmd[1] << "\t" <<rcCmd[2] << "\t" <<rcCmd[3] << "\t" <<rcCmd[4] << "\t" <<rcCmd[5] <<std::endl;
-  //Eigen::Vector3d posGlobal = chassis->getWorldTransform().translation();
 
   if (mForceDuration > 0)
     mForceDuration--;

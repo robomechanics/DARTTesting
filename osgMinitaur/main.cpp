@@ -29,6 +29,7 @@
  */
 
 #include <dart/dart.hpp>
+#include <dart/gui/gui.hpp>
 #include <dart/gui/osg/osg.hpp>
 #include <dart/utils/utils.hpp>
 #include <dart/utils/urdf/urdf.hpp>
@@ -37,7 +38,149 @@
 #include "MinitaurEventHandler.hpp"
 #include "MinitaurWidget.hpp"
 
-int main()
+using namespace dart::dynamics;
+using namespace dart::simulation;
+
+const double default_height = 0.4; // m
+const double default_width = 0.01;  // m
+const double default_depth = 0.01;  // m
+
+const double default_rest_position = 0.0;
+const double delta_rest_position = 10.0 * M_PI / 180.0;
+
+const double default_stiffness = 0.0;
+const double delta_stiffness = 10;
+
+const double shaft_mass = 0.005;
+const double mass_mass = 0.5;
+
+const double default_damping = 0.0;
+const double delta_damping = 0.0;
+
+void setTailShaftGeometry(const BodyNodePtr& bn)
+{
+  // Create a BoxShape to be used for both visualization and collision checking
+  std::shared_ptr<CylinderShape> cyl(new CylinderShape(
+      default_width, default_height));
+
+  // Create a shape node for visualization and collision checking
+  auto shapeNode
+      = bn->createShapeNodeWith<VisualAspect, CollisionAspect, DynamicsAspect>(cyl);
+  shapeNode->getVisualAspect()->setColor(dart::Color::Black());
+
+  // Set the location of the shape node
+  Eigen::Isometry3d cyl_tf(Eigen::Isometry3d::Identity());
+  Eigen::Vector3d center = Eigen::Vector3d(0, 0, -default_height / 2.0);
+  cyl_tf.translation() = center;
+  shapeNode->setRelativeTransform(cyl_tf);
+
+  // Move the center of mass to the center of the object
+  bn->setLocalCOM(center);
+
+  Inertia inertia;
+  inertia.setMass(shaft_mass);
+  inertia.setMoment(cyl->computeInertia(inertia.getMass()));
+  bn->setInertia(inertia);
+}
+
+BodyNode* addTailShaft(const SkeletonPtr& pendulum, BodyNode* parent,
+                  const std::string& name)
+{
+  // Set up the properties for the Joint
+  RevoluteJoint::Properties properties;
+  properties.mName = name + "_joint";
+  properties.mAxis = Eigen::Vector3d::UnitY();
+  properties.mT_ParentBodyToJoint.translation() =
+      Eigen::Vector3d(0, 0, -0.1);
+  // properties.mRestPositions[0] = default_rest_position;
+  // properties.mSpringStiffnesses[0] = default_stiffness;
+  // properties.mDampingCoefficients[0] = default_damping;
+
+  // Create a new BodyNode, attached to its parent by a RevoluteJoint
+  BodyNodePtr bn = pendulum->createJointAndBodyNodePair<RevoluteJoint>(
+        parent, properties, BodyNode::AspectProperties(name)).second;
+
+  // Make a shape for the Joint
+  const double R = default_width / 2.0;
+  const double h = default_depth;
+  std::shared_ptr<CylinderShape> cyl(new CylinderShape(R, h));
+
+  // Line up the cylinder with the Joint axis
+  Eigen::Isometry3d tf(Eigen::Isometry3d::Identity());
+  tf.linear() = dart::math::eulerXYZToMatrix(
+        Eigen::Vector3d(90.0 * M_PI / 180.0, 0, 0));
+
+  auto shapeNode = bn->createShapeNodeWith<VisualAspect>(cyl);
+  shapeNode->getVisualAspect()->setColor(dart::Color::Blue());
+  shapeNode->setRelativeTransform(tf);
+
+  // Set the geometry of the Body
+  setTailShaftGeometry(bn);
+
+  return bn;
+}
+
+void setTailMassGeometry(const BodyNodePtr& bn)
+{
+  // Create a CylinderShape to be used for both visualization and collision checking
+  const double R = default_width*1.5;
+  const double h = default_depth * 3;
+  std::shared_ptr<CylinderShape> cyl(new CylinderShape(R, h));
+
+  // Create a shape node for visualization and collision checking
+  auto shapeNode
+      = bn->createShapeNodeWith<VisualAspect, CollisionAspect, DynamicsAspect>(cyl);
+  shapeNode->getVisualAspect()->setColor(dart::Color::Gray());
+
+  // Set the location of the shape node
+  Eigen::Isometry3d cyl_tf(Eigen::Isometry3d::Identity());
+  Eigen::Vector3d center = Eigen::Vector3d(0, 0, 0);
+  cyl_tf.translation() = center;
+  shapeNode->setRelativeTransform(cyl_tf);
+
+  // Move the center of mass to the center of the object
+  bn->setLocalCOM(center);
+
+  Inertia inertia;
+  inertia.setMass(mass_mass);
+  inertia.setMoment(cyl->computeInertia(inertia.getMass()));
+  bn->setInertia(inertia);
+}
+
+BodyNode* addTailMass(const SkeletonPtr& pendulum, BodyNode* parent,
+                  const std::string& name)
+{
+  // Set up the properties for the Joint
+  WeldJoint::Properties properties;
+  properties.mName = name + "_joint";
+    properties.mT_ParentBodyToJoint.translation() =
+      Eigen::Vector3d(0 ,0 , -default_height);
+
+  // Create a new BodyNode, attached to its parent by a RevoluteJoint
+  BodyNodePtr bn = pendulum->createJointAndBodyNodePair<WeldJoint>(
+        parent, properties, BodyNode::AspectProperties(name)).second;
+
+  // Make a shape for the Joint
+  const double R = default_width / 2.0;
+  const double h = default_depth;
+  std::shared_ptr<CylinderShape> cyl(new CylinderShape(R, h));
+
+  // Line up the cylinder with the Joint axis
+  Eigen::Isometry3d tf(Eigen::Isometry3d::Identity());
+  tf.linear() = dart::math::eulerXYZToMatrix(
+        Eigen::Vector3d(90.0 * M_PI / 180.0, 0, 0));
+
+  auto shapeNode = bn->createShapeNodeWith<VisualAspect>(cyl);
+  shapeNode->getVisualAspect()->setColor(dart::Color::Blue());
+  shapeNode->setRelativeTransform(tf);
+
+  // Set the geometry of the Body
+  setTailMassGeometry(bn);
+
+  return bn;
+}
+
+int main(int argc, char* argv[])
 {
 
   dart::simulation::WorldPtr world(new dart::simulation::World());
@@ -46,6 +189,12 @@ int main()
   dart::utils::DartLoader loader;
   auto minitaur = loader.parseSkeleton("dart://sample/urdf/minitaur/quadruped2.urdf");
   auto ground = loader.parseSkeleton("dart://sample/urdf/minitaur/ground.urdf");
+
+  auto chassis = minitaur->getBodyNode("base_chassis_link");
+  BodyNode* tailShaft = addTailShaft(minitaur, chassis, "tailShaft");
+  BodyNode* tailMass = addTailMass(minitaur, tailShaft, "tailMass");
+
+  // minitaur->getBodyNode("tailShaft")->getParentJoint()->getDof(0)->setPosition(1);
 
   world->addSkeleton(minitaur);
   world->addSkeleton(ground);
@@ -112,7 +261,7 @@ int main()
   // We need to re-dirty the CameraManipulator by passing it into the viewer
   // again, so that the viewer knows to update its HomePosition setting
   viewer.setCameraManipulator(viewer.getCameraManipulator());
-  
+
   // Begin running the application loop
   viewer.run();
 }

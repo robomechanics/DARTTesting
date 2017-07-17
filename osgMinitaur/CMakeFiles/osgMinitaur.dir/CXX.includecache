@@ -298,6 +298,8 @@ VirtualLeg.h
 ReorientableBehavior.h
 /home/joe/dart_minitaur/osgMinitaur/ReorientableBehavior.h
 
+/home/joe/dart_minitaur/osgMinitaur/libraries/Robot/Behavior.h
+
 /home/joe/dart_minitaur/osgMinitaur/main.cpp
 dart/dart.hpp
 -

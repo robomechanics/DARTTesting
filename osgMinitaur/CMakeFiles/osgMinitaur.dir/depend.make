@@ -11,6 +11,7 @@ CMakeFiles/osgMinitaur.dir/Bound.cpp.o: Motor.h
 CMakeFiles/osgMinitaur.dir/Bound.cpp.o: ReorientableBehavior.h
 CMakeFiles/osgMinitaur.dir/Bound.cpp.o: VirtualLeg.h
 CMakeFiles/osgMinitaur.dir/Bound.cpp.o: WMath.h
+CMakeFiles/osgMinitaur.dir/Bound.cpp.o: libraries/Robot/Behavior.h
 CMakeFiles/osgMinitaur.dir/Bound.cpp.o: wiring_constants.h
 
 CMakeFiles/osgMinitaur.dir/Controller.cpp.o: Controller.cpp
@@ -439,6 +440,7 @@ CMakeFiles/osgMinitaur.dir/Dig.cpp.o: MinitaurLeg.h
 CMakeFiles/osgMinitaur.dir/Dig.cpp.o: Motor.h
 CMakeFiles/osgMinitaur.dir/Dig.cpp.o: VirtualLeg.h
 CMakeFiles/osgMinitaur.dir/Dig.cpp.o: WMath.h
+CMakeFiles/osgMinitaur.dir/Dig.cpp.o: libraries/Robot/Behavior.h
 CMakeFiles/osgMinitaur.dir/Dig.cpp.o: wiring_constants.h
 
 CMakeFiles/osgMinitaur.dir/Flip.cpp.o: AbstractMotor.h
@@ -451,6 +453,7 @@ CMakeFiles/osgMinitaur.dir/Flip.cpp.o: Motor.h
 CMakeFiles/osgMinitaur.dir/Flip.cpp.o: ReorientableBehavior.h
 CMakeFiles/osgMinitaur.dir/Flip.cpp.o: VirtualLeg.h
 CMakeFiles/osgMinitaur.dir/Flip.cpp.o: WMath.h
+CMakeFiles/osgMinitaur.dir/Flip.cpp.o: libraries/Robot/Behavior.h
 CMakeFiles/osgMinitaur.dir/Flip.cpp.o: wiring_constants.h
 
 CMakeFiles/osgMinitaur.dir/HAL.cpp.o: AbstractMotor.h
@@ -467,6 +470,7 @@ CMakeFiles/osgMinitaur.dir/HAL.cpp.o: ReorientableBehavior.h
 CMakeFiles/osgMinitaur.dir/HAL.cpp.o: VirtualLeg.h
 CMakeFiles/osgMinitaur.dir/HAL.cpp.o: WMath.h
 CMakeFiles/osgMinitaur.dir/HAL.cpp.o: Walk.h
+CMakeFiles/osgMinitaur.dir/HAL.cpp.o: libraries/Robot/Behavior.h
 CMakeFiles/osgMinitaur.dir/HAL.cpp.o: pushWalk.h
 CMakeFiles/osgMinitaur.dir/HAL.cpp.o: wiring_constants.h
 
@@ -491,6 +495,7 @@ CMakeFiles/osgMinitaur.dir/MinitaurEventHandler.cpp.o: SoftStart.h
 CMakeFiles/osgMinitaur.dir/MinitaurEventHandler.cpp.o: VirtualLeg.h
 CMakeFiles/osgMinitaur.dir/MinitaurEventHandler.cpp.o: WMath.h
 CMakeFiles/osgMinitaur.dir/MinitaurEventHandler.cpp.o: Walk.h
+CMakeFiles/osgMinitaur.dir/MinitaurEventHandler.cpp.o: libraries/Robot/Behavior.h
 CMakeFiles/osgMinitaur.dir/MinitaurEventHandler.cpp.o: minitaurDARTInterface.h
 CMakeFiles/osgMinitaur.dir/MinitaurEventHandler.cpp.o: pushWalk.h
 CMakeFiles/osgMinitaur.dir/MinitaurEventHandler.cpp.o: wiring_constants.h
@@ -973,6 +978,7 @@ CMakeFiles/osgMinitaur.dir/MinitaurWidget.cpp.o: SoftStart.h
 CMakeFiles/osgMinitaur.dir/MinitaurWidget.cpp.o: VirtualLeg.h
 CMakeFiles/osgMinitaur.dir/MinitaurWidget.cpp.o: WMath.h
 CMakeFiles/osgMinitaur.dir/MinitaurWidget.cpp.o: Walk.h
+CMakeFiles/osgMinitaur.dir/MinitaurWidget.cpp.o: libraries/Robot/Behavior.h
 CMakeFiles/osgMinitaur.dir/MinitaurWidget.cpp.o: minitaurDARTInterface.h
 CMakeFiles/osgMinitaur.dir/MinitaurWidget.cpp.o: pushWalk.h
 CMakeFiles/osgMinitaur.dir/MinitaurWidget.cpp.o: wiring_constants.h
@@ -1448,6 +1454,7 @@ CMakeFiles/osgMinitaur.dir/MinitaurWorldNode.cpp.o: SoftStart.h
 CMakeFiles/osgMinitaur.dir/MinitaurWorldNode.cpp.o: VirtualLeg.h
 CMakeFiles/osgMinitaur.dir/MinitaurWorldNode.cpp.o: WMath.h
 CMakeFiles/osgMinitaur.dir/MinitaurWorldNode.cpp.o: Walk.h
+CMakeFiles/osgMinitaur.dir/MinitaurWorldNode.cpp.o: libraries/Robot/Behavior.h
 CMakeFiles/osgMinitaur.dir/MinitaurWorldNode.cpp.o: minitaurDARTInterface.h
 CMakeFiles/osgMinitaur.dir/MinitaurWorldNode.cpp.o: pushWalk.h
 CMakeFiles/osgMinitaur.dir/MinitaurWorldNode.cpp.o: wiring_constants.h
@@ -1925,6 +1932,7 @@ CMakeFiles/osgMinitaur.dir/RSUJump.cpp.o: ReorientableBehavior.h
 CMakeFiles/osgMinitaur.dir/RSUJump.cpp.o: VirtualLeg.h
 CMakeFiles/osgMinitaur.dir/RSUJump.cpp.o: WMath.h
 CMakeFiles/osgMinitaur.dir/RSUJump.cpp.o: Walk.h
+CMakeFiles/osgMinitaur.dir/RSUJump.cpp.o: libraries/Robot/Behavior.h
 CMakeFiles/osgMinitaur.dir/RSUJump.cpp.o: pushWalk.h
 CMakeFiles/osgMinitaur.dir/RSUJump.cpp.o: wiring_constants.h
 
@@ -1942,6 +1950,7 @@ CMakeFiles/osgMinitaur.dir/Remote.cpp.o: ReorientableBehavior.h
 CMakeFiles/osgMinitaur.dir/Remote.cpp.o: VirtualLeg.h
 CMakeFiles/osgMinitaur.dir/Remote.cpp.o: WMath.h
 CMakeFiles/osgMinitaur.dir/Remote.cpp.o: Walk.h
+CMakeFiles/osgMinitaur.dir/Remote.cpp.o: libraries/Robot/Behavior.h
 CMakeFiles/osgMinitaur.dir/Remote.cpp.o: pushWalk.h
 CMakeFiles/osgMinitaur.dir/Remote.cpp.o: wiring_constants.h
 
@@ -3205,6 +3214,7 @@ CMakeFiles/osgMinitaur.dir/Walk.cpp.o: VirtualLeg.h
 CMakeFiles/osgMinitaur.dir/Walk.cpp.o: WMath.h
 CMakeFiles/osgMinitaur.dir/Walk.cpp.o: Walk.cpp
 CMakeFiles/osgMinitaur.dir/Walk.cpp.o: Walk.h
+CMakeFiles/osgMinitaur.dir/Walk.cpp.o: libraries/Robot/Behavior.h
 CMakeFiles/osgMinitaur.dir/Walk.cpp.o: wiring_constants.h
 
 CMakeFiles/osgMinitaur.dir/main.cpp.o: AbstractMotor.h
@@ -3225,6 +3235,7 @@ CMakeFiles/osgMinitaur.dir/main.cpp.o: SoftStart.h
 CMakeFiles/osgMinitaur.dir/main.cpp.o: VirtualLeg.h
 CMakeFiles/osgMinitaur.dir/main.cpp.o: WMath.h
 CMakeFiles/osgMinitaur.dir/main.cpp.o: Walk.h
+CMakeFiles/osgMinitaur.dir/main.cpp.o: libraries/Robot/Behavior.h
 CMakeFiles/osgMinitaur.dir/main.cpp.o: main.cpp
 CMakeFiles/osgMinitaur.dir/main.cpp.o: minitaurDARTInterface.h
 CMakeFiles/osgMinitaur.dir/main.cpp.o: pushWalk.h
@@ -3700,6 +3711,7 @@ CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o: SoftStart.h
 CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o: VirtualLeg.h
 CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o: WMath.h
 CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o: Walk.h
+CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o: libraries/Robot/Behavior.h
 CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o: minitaurDARTInterface.cpp
 CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o: minitaurDARTInterface.h
 CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o: pushWalk.h
@@ -3714,6 +3726,7 @@ CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o: RSUJump.h
 CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o: ReorientableBehavior.h
 CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o: VirtualLeg.h
 CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o: WMath.h
+CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o: libraries/Robot/Behavior.h
 CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o: pushWalk.cpp
 CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o: pushWalk.h
 CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o: wiring_constants.h
@@ -3726,6 +3739,7 @@ CMakeFiles/osgMinitaur.dir/traj.cpp.o: MinitaurLeg.h
 CMakeFiles/osgMinitaur.dir/traj.cpp.o: Motor.h
 CMakeFiles/osgMinitaur.dir/traj.cpp.o: VirtualLeg.h
 CMakeFiles/osgMinitaur.dir/traj.cpp.o: WMath.h
+CMakeFiles/osgMinitaur.dir/traj.cpp.o: libraries/Robot/Behavior.h
 CMakeFiles/osgMinitaur.dir/traj.cpp.o: traj.cpp
 CMakeFiles/osgMinitaur.dir/traj.cpp.o: traj.h
 CMakeFiles/osgMinitaur.dir/traj.cpp.o: wiring_constants.h

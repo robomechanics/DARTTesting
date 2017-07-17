@@ -59,7 +59,7 @@ void Interface::update() {
   behavior->update();
   halUpdate();
 
-  std::cout << "Roll: " << X.roll << " Pitch: " << X.pitch << " Yaw: " << X.yaw << " Rolldot: " << X.rolldot << " Pitchdot: " << X.pitchdot << " Yawdot: " << X.yawdot << std::endl;
+  // std::cout << "Roll: " << X.roll << " Pitch: " << X.pitch << " Yaw: " << X.yaw << " Rolldot: " << X.rolldot << " Pitchdot: " << X.pitchdot << " Yawdot: " << X.yawdot << std::endl;
 
   for (int i = 0;i<8;++i){
     //M[i].update();

@@ -12,6 +12,7 @@ CMakeFiles/osgMinitaur.dir/Bound.cpp.o
  /home/joe/dart_minitaur/osgMinitaur/ReorientableBehavior.h
  /home/joe/dart_minitaur/osgMinitaur/VirtualLeg.h
  /home/joe/dart_minitaur/osgMinitaur/WMath.h
+ /home/joe/dart_minitaur/osgMinitaur/libraries/Robot/Behavior.h
  /home/joe/dart_minitaur/osgMinitaur/wiring_constants.h
 CMakeFiles/osgMinitaur.dir/Controller.cpp.o
  /home/joe/dart_minitaur/osgMinitaur/Controller.cpp
@@ -440,6 +441,7 @@ CMakeFiles/osgMinitaur.dir/Dig.cpp.o
  /home/joe/dart_minitaur/osgMinitaur/Motor.h
  /home/joe/dart_minitaur/osgMinitaur/VirtualLeg.h
  /home/joe/dart_minitaur/osgMinitaur/WMath.h
+ /home/joe/dart_minitaur/osgMinitaur/libraries/Robot/Behavior.h
  /home/joe/dart_minitaur/osgMinitaur/wiring_constants.h
 CMakeFiles/osgMinitaur.dir/Flip.cpp.o
  /home/joe/dart_minitaur/osgMinitaur/AbstractMotor.h
@@ -452,6 +454,7 @@ CMakeFiles/osgMinitaur.dir/Flip.cpp.o
  /home/joe/dart_minitaur/osgMinitaur/ReorientableBehavior.h
  /home/joe/dart_minitaur/osgMinitaur/VirtualLeg.h
  /home/joe/dart_minitaur/osgMinitaur/WMath.h
+ /home/joe/dart_minitaur/osgMinitaur/libraries/Robot/Behavior.h
  /home/joe/dart_minitaur/osgMinitaur/wiring_constants.h
 CMakeFiles/osgMinitaur.dir/HAL.cpp.o
  /home/joe/dart_minitaur/osgMinitaur/AbstractMotor.h
@@ -468,6 +471,7 @@ CMakeFiles/osgMinitaur.dir/HAL.cpp.o
  /home/joe/dart_minitaur/osgMinitaur/VirtualLeg.h
  /home/joe/dart_minitaur/osgMinitaur/WMath.h
  /home/joe/dart_minitaur/osgMinitaur/Walk.h
+ /home/joe/dart_minitaur/osgMinitaur/libraries/Robot/Behavior.h
  /home/joe/dart_minitaur/osgMinitaur/pushWalk.h
  /home/joe/dart_minitaur/osgMinitaur/wiring_constants.h
 CMakeFiles/osgMinitaur.dir/Interpolator.cpp.o
@@ -492,6 +496,7 @@ CMakeFiles/osgMinitaur.dir/MinitaurEventHandler.cpp.o
  /home/joe/dart_minitaur/osgMinitaur/VirtualLeg.h
  /home/joe/dart_minitaur/osgMinitaur/WMath.h
  /home/joe/dart_minitaur/osgMinitaur/Walk.h
+ /home/joe/dart_minitaur/osgMinitaur/libraries/Robot/Behavior.h
  /home/joe/dart_minitaur/osgMinitaur/minitaurDARTInterface.h
  /home/joe/dart_minitaur/osgMinitaur/pushWalk.h
  /home/joe/dart_minitaur/osgMinitaur/wiring_constants.h
@@ -974,6 +979,7 @@ CMakeFiles/osgMinitaur.dir/MinitaurWidget.cpp.o
  /home/joe/dart_minitaur/osgMinitaur/VirtualLeg.h
  /home/joe/dart_minitaur/osgMinitaur/WMath.h
  /home/joe/dart_minitaur/osgMinitaur/Walk.h
+ /home/joe/dart_minitaur/osgMinitaur/libraries/Robot/Behavior.h
  /home/joe/dart_minitaur/osgMinitaur/minitaurDARTInterface.h
  /home/joe/dart_minitaur/osgMinitaur/pushWalk.h
  /home/joe/dart_minitaur/osgMinitaur/wiring_constants.h
@@ -1449,6 +1455,7 @@ CMakeFiles/osgMinitaur.dir/MinitaurWorldNode.cpp.o
  /home/joe/dart_minitaur/osgMinitaur/VirtualLeg.h
  /home/joe/dart_minitaur/osgMinitaur/WMath.h
  /home/joe/dart_minitaur/osgMinitaur/Walk.h
+ /home/joe/dart_minitaur/osgMinitaur/libraries/Robot/Behavior.h
  /home/joe/dart_minitaur/osgMinitaur/minitaurDARTInterface.h
  /home/joe/dart_minitaur/osgMinitaur/pushWalk.h
  /home/joe/dart_minitaur/osgMinitaur/wiring_constants.h
@@ -1926,6 +1933,7 @@ CMakeFiles/osgMinitaur.dir/RSUJump.cpp.o
  /home/joe/dart_minitaur/osgMinitaur/VirtualLeg.h
  /home/joe/dart_minitaur/osgMinitaur/WMath.h
  /home/joe/dart_minitaur/osgMinitaur/Walk.h
+ /home/joe/dart_minitaur/osgMinitaur/libraries/Robot/Behavior.h
  /home/joe/dart_minitaur/osgMinitaur/pushWalk.h
  /home/joe/dart_minitaur/osgMinitaur/wiring_constants.h
 CMakeFiles/osgMinitaur.dir/Remote.cpp.o
@@ -1943,6 +1951,7 @@ CMakeFiles/osgMinitaur.dir/Remote.cpp.o
  /home/joe/dart_minitaur/osgMinitaur/VirtualLeg.h
  /home/joe/dart_minitaur/osgMinitaur/WMath.h
  /home/joe/dart_minitaur/osgMinitaur/Walk.h
+ /home/joe/dart_minitaur/osgMinitaur/libraries/Robot/Behavior.h
  /home/joe/dart_minitaur/osgMinitaur/pushWalk.h
  /home/joe/dart_minitaur/osgMinitaur/wiring_constants.h
 CMakeFiles/osgMinitaur.dir/State.cpp.o
@@ -3206,6 +3215,7 @@ CMakeFiles/osgMinitaur.dir/Walk.cpp.o
  /home/joe/dart_minitaur/osgMinitaur/WMath.h
  /home/joe/dart_minitaur/osgMinitaur/Walk.cpp
  /home/joe/dart_minitaur/osgMinitaur/Walk.h
+ /home/joe/dart_minitaur/osgMinitaur/libraries/Robot/Behavior.h
  /home/joe/dart_minitaur/osgMinitaur/wiring_constants.h
 CMakeFiles/osgMinitaur.dir/main.cpp.o
  /home/joe/dart_minitaur/osgMinitaur/AbstractMotor.h
@@ -3226,6 +3236,7 @@ CMakeFiles/osgMinitaur.dir/main.cpp.o
  /home/joe/dart_minitaur/osgMinitaur/VirtualLeg.h
  /home/joe/dart_minitaur/osgMinitaur/WMath.h
  /home/joe/dart_minitaur/osgMinitaur/Walk.h
+ /home/joe/dart_minitaur/osgMinitaur/libraries/Robot/Behavior.h
  /home/joe/dart_minitaur/osgMinitaur/main.cpp
  /home/joe/dart_minitaur/osgMinitaur/minitaurDARTInterface.h
  /home/joe/dart_minitaur/osgMinitaur/pushWalk.h
@@ -3701,6 +3712,7 @@ CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o
  /home/joe/dart_minitaur/osgMinitaur/VirtualLeg.h
  /home/joe/dart_minitaur/osgMinitaur/WMath.h
  /home/joe/dart_minitaur/osgMinitaur/Walk.h
+ /home/joe/dart_minitaur/osgMinitaur/libraries/Robot/Behavior.h
  /home/joe/dart_minitaur/osgMinitaur/minitaurDARTInterface.cpp
  /home/joe/dart_minitaur/osgMinitaur/minitaurDARTInterface.h
  /home/joe/dart_minitaur/osgMinitaur/pushWalk.h
@@ -3715,6 +3727,7 @@ CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o
  /home/joe/dart_minitaur/osgMinitaur/ReorientableBehavior.h
  /home/joe/dart_minitaur/osgMinitaur/VirtualLeg.h
  /home/joe/dart_minitaur/osgMinitaur/WMath.h
+ /home/joe/dart_minitaur/osgMinitaur/libraries/Robot/Behavior.h
  /home/joe/dart_minitaur/osgMinitaur/pushWalk.cpp
  /home/joe/dart_minitaur/osgMinitaur/pushWalk.h
  /home/joe/dart_minitaur/osgMinitaur/wiring_constants.h
@@ -3727,6 +3740,7 @@ CMakeFiles/osgMinitaur.dir/traj.cpp.o
  /home/joe/dart_minitaur/osgMinitaur/Motor.h
  /home/joe/dart_minitaur/osgMinitaur/VirtualLeg.h
  /home/joe/dart_minitaur/osgMinitaur/WMath.h
+ /home/joe/dart_minitaur/osgMinitaur/libraries/Robot/Behavior.h
  /home/joe/dart_minitaur/osgMinitaur/traj.cpp
  /home/joe/dart_minitaur/osgMinitaur/traj.h
  /home/joe/dart_minitaur/osgMinitaur/wiring_constants.h
