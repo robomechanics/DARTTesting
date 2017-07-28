@@ -78,7 +78,7 @@ void Motor::setGain(float Kp, float Kd) {
 void Motor::setOpenLoop(float val) {
   this->mode = OPEN_LOOP_MODE;
   this->val = val;
-  this->correctedVal = mapVal(val); // JN Added
+  //this->correctedVal = mapVal(val); // JN Added
 }
 
 void Motor::setPosition(float setpoint) {
@@ -171,7 +171,8 @@ void BlCon34::enable(bool flag) {
 
 float BlCon34::getRawPosition() {
   //return map(pwmIn(inPin), 0.1, 0.9, 0, TWO_PI);
-  return fmod(DARTMotorPos[inPin], TWO_PI);
+  // return fmod(DARTMotorPos[inPin], TWO_PI);
+  return DARTMotorPos[inPin];
 }
 
 void BlCon34::sendOpenLoop(float val) {

@@ -54,7 +54,7 @@ volatile LogVector X;
 
 // Legs
 // MINITAUR
-const int8_t dir[] = {1, 1, 1, 1, 1, 1, 1, 1};
+const int8_t dir[] = {1, -1, 1, -1, -1, 1, -1, 1};
 MinitaurLeg leg[4] = {MinitaurLeg(&M[1], &M[0]),//0
 MinitaurLeg(&M[3], &M[2]), //1
 MinitaurLeg(&M[4], &M[5]), //2

@@ -42,8 +42,8 @@ using namespace dart::dynamics;
 using namespace dart::simulation;
 
 const double default_height = 0.4; // m
-const double default_width = 0.01;  // m
-const double default_depth = 0.01;  // m
+const double default_width = 0.0079;  // m
+const double default_depth = 0.0079;  // m
 
 const double default_rest_position = 0.0;
 const double delta_rest_position = 10.0 * M_PI / 180.0;
@@ -52,7 +52,8 @@ const double default_stiffness = 0.0;
 const double delta_stiffness = 10;
 
 const double shaft_mass = 0.005;
-const double mass_mass = 0.5;
+const double mass_mass = 1;
+const double shaft_length = 0.3;
 
 const double default_damping = 0.0;
 const double delta_damping = 0.0;
@@ -61,7 +62,7 @@ void setTailShaftGeometry(const BodyNodePtr& bn)
 {
   // Create a BoxShape to be used for both visualization and collision checking
   std::shared_ptr<CylinderShape> cyl(new CylinderShape(
-      default_width, default_height));
+      default_width, shaft_length));
 
   // Create a shape node for visualization and collision checking
   auto shapeNode
@@ -70,7 +71,7 @@ void setTailShaftGeometry(const BodyNodePtr& bn)
 
   // Set the location of the shape node
   Eigen::Isometry3d cyl_tf(Eigen::Isometry3d::Identity());
-  Eigen::Vector3d center = Eigen::Vector3d(0, 0, -default_height / 2.0);
+  Eigen::Vector3d center = Eigen::Vector3d(0, 0, -shaft_length / 2.0);
   cyl_tf.translation() = center;
   shapeNode->setRelativeTransform(cyl_tf);
 
@@ -91,13 +92,15 @@ BodyNode* addTailShaft(const SkeletonPtr& pendulum, BodyNode* parent,
   properties.mName = name + "_joint";
   properties.mAxis = Eigen::Vector3d::UnitY();
   properties.mT_ParentBodyToJoint.translation() =
-      Eigen::Vector3d(0, 0, -0.1);
+      Eigen::Vector3d(0, 0, -0.025);
+  properties.mT_ParentBodyToJoint.linear() =
+      dart::math::eulerXYZToMatrix(Eigen::Vector3d(-90.0 * M_PI / 180.0, 0, 0));
   // properties.mRestPositions[0] = default_rest_position;
   // properties.mSpringStiffnesses[0] = default_stiffness;
   // properties.mDampingCoefficients[0] = default_damping;
 
   // Create a new BodyNode, attached to its parent by a RevoluteJoint
-  BodyNodePtr bn = pendulum->createJointAndBodyNodePair<RevoluteJoint>(
+  BodyNodePtr bn = pendulum->createJointAndBodyNodePair<WeldJoint>(
         parent, properties, BodyNode::AspectProperties(name)).second;
 
   // Make a shape for the Joint
@@ -123,8 +126,8 @@ BodyNode* addTailShaft(const SkeletonPtr& pendulum, BodyNode* parent,
 void setTailMassGeometry(const BodyNodePtr& bn)
 {
   // Create a CylinderShape to be used for both visualization and collision checking
-  const double R = default_width*1.5;
-  const double h = default_depth * 3;
+  const double R = default_width * 3;
+  const double h = default_depth * 6;
   std::shared_ptr<CylinderShape> cyl(new CylinderShape(R, h));
 
   // Create a shape node for visualization and collision checking
@@ -154,7 +157,7 @@ BodyNode* addTailMass(const SkeletonPtr& pendulum, BodyNode* parent,
   WeldJoint::Properties properties;
   properties.mName = name + "_joint";
     properties.mT_ParentBodyToJoint.translation() =
-      Eigen::Vector3d(0 ,0 , -default_height);
+      Eigen::Vector3d(0 , 0, -shaft_length);
 
   // Create a new BodyNode, attached to its parent by a RevoluteJoint
   BodyNodePtr bn = pendulum->createJointAndBodyNodePair<WeldJoint>(
@@ -180,6 +183,7 @@ BodyNode* addTailMass(const SkeletonPtr& pendulum, BodyNode* parent,
   return bn;
 }
 
+
 int main(int argc, char* argv[])
 {
 
@@ -187,11 +191,23 @@ int main(int argc, char* argv[])
   
   // Load ground and Atlas robot and add them to the world
   dart::utils::DartLoader loader;
-  auto minitaur = loader.parseSkeleton("dart://sample/urdf/minitaur/quadruped2.urdf");
+  auto minitaur = loader.parseSkeleton("dart://sample/urdf/minitaur/quadruped2Odie.urdf");
   auto ground = loader.parseSkeleton("dart://sample/urdf/minitaur/ground.urdf");
 
+  // double IC[] = {PI,0,PI,0,0,PI,0,PI};
+  double IC[] = {0,PI,0,PI,PI,0,PI,0};
+  minitaur->getJoint("motor_front_leftL_joint")->setPosition(0,IC[0]);
+  minitaur->getJoint("motor_front_leftR_joint")->setPosition(0,IC[1]);
+  minitaur->getJoint("motor_back_leftL_joint")->setPosition(0,IC[2]);
+  minitaur->getJoint("motor_back_leftR_joint")->setPosition(0,IC[3]);
+  minitaur->getJoint("motor_front_rightL_joint")->setPosition(0,IC[4]);
+  minitaur->getJoint("motor_front_rightR_joint")->setPosition(0,IC[5]);
+  minitaur->getJoint("motor_back_rightL_joint")->setPosition(0,IC[6]);
+  minitaur->getJoint("motor_back_rightR_joint")->setPosition(0,IC[7]);
+
   auto chassis = minitaur->getBodyNode("base_chassis_link");
-  BodyNode* tailShaft = addTailShaft(minitaur, chassis, "tailShaft");
+  auto tailRotor = minitaur->getBodyNode("rotor_tail");
+  BodyNode* tailShaft = addTailShaft(minitaur, tailRotor, "tailShaft");
   BodyNode* tailMass = addTailMass(minitaur, tailShaft, "tailMass");
 
   // minitaur->getBodyNode("tailShaft")->getParentJoint()->getDof(0)->setPosition(1);
@@ -201,7 +217,8 @@ int main(int argc, char* argv[])
 
   // Set initial configuration for Minitaur robot
   using namespace dart::math::suffixes;
-  minitaur->setPosition(0, 180_deg);
+  // minitaur->setPosition(0, 180_deg);
+  minitaur->setPosition(0, 0);
   minitaur->setPosition(5, 0.5);
 //  auto frontLL = minitaur->getBodyNode("lower_leg_front_leftL_link");
 //  auto frontLR = minitaur->getBodyNode("lower_leg_front_leftR_link");
@@ -226,8 +243,8 @@ int main(int argc, char* argv[])
 //  world->getConstraintSolver()->addConstraint(constBackRight);
 
   // Set gravity of the world
-  world->setGravity(Eigen::Vector3d(0.0, 0.0, -9.81));
-  // world->setGravity(Eigen::Vector3d(0.0, 0.0, 0));
+  // world->setGravity(Eigen::Vector3d(0.0, 0.0, -9.81));
+  world->setGravity(Eigen::Vector3d(0.0, 0.0, 0));
   // Wrap a WorldNode around it
   osg::ref_ptr<MinitaurWorldNode> node
       = new MinitaurWorldNode(world, minitaur);

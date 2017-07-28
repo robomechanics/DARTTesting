@@ -205,7 +205,7 @@ void State::computeControlForce(double _timestep)
 
   // Apply control torque to the skeleton
   mSkeleton->setForces(mTorque);
-
+std::cout << "state control forces applied" << std::endl;
   mElapsedTime += _timestep;
   mFrame++;
 }

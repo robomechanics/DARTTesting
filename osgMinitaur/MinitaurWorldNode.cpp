@@ -62,14 +62,15 @@ void MinitaurWorldNode::customPreStep()
   chassis->addExtForce(mExternalForce);
   //mController->update();
   std::array<dart::dynamics::Joint*,8> hips;
-  hips[0] = mWorld->getSkeleton(0)->getJoint("motor_front_rightR_joint");
-  hips[1] = mWorld->getSkeleton(0)->getJoint("motor_front_rightL_joint");
-  hips[2] = mWorld->getSkeleton(0)->getJoint("motor_back_rightR_joint");
-  hips[3] = mWorld->getSkeleton(0)->getJoint("motor_back_rightL_joint");
-  hips[4] = mWorld->getSkeleton(0)->getJoint("motor_front_leftL_joint");
-  hips[5] = mWorld->getSkeleton(0)->getJoint("motor_front_leftR_joint");
-  hips[6] = mWorld->getSkeleton(0)->getJoint("motor_back_leftL_joint");
-  hips[7] = mWorld->getSkeleton(0)->getJoint("motor_back_leftR_joint");
+
+  hips[0] = mWorld->getSkeleton(0)->getJoint("motor_front_leftL_joint");
+  hips[1] = mWorld->getSkeleton(0)->getJoint("motor_front_leftR_joint");
+  hips[2] = mWorld->getSkeleton(0)->getJoint("motor_back_leftL_joint");
+  hips[3] = mWorld->getSkeleton(0)->getJoint("motor_back_leftR_joint");
+  hips[4] = mWorld->getSkeleton(0)->getJoint("motor_front_rightL_joint");
+  hips[5] = mWorld->getSkeleton(0)->getJoint("motor_front_rightR_joint");
+  hips[6] = mWorld->getSkeleton(0)->getJoint("motor_back_rightL_joint");
+  hips[7] = mWorld->getSkeleton(0)->getJoint("motor_back_rightR_joint");
 
 
   for(int i=0;i<8;++i){
@@ -77,6 +78,7 @@ void MinitaurWorldNode::customPreStep()
     DARTMotorVel[i] = hips[i]->getDof(0)->getVelocity();
   }
   DARTTime = mWorld->getTime();
+  std::cout << "t = " << DARTTime << " s" << std::endl;
 
   Eigen::Matrix3d R = chassis->getWorldTransform().linear();
   Eigen::Vector3d rpy = dart::math::matrixToEulerXYZ(R);
@@ -97,10 +99,13 @@ void MinitaurWorldNode::customPreStep()
     hips[i]->getDof(0)->setForce(DARTMotorCommand[i]);
   }
 
-  // Set new tail force to 0 for testing purposes
-  mWorld->getSkeleton(0)->getBodyNode("tailShaft")->getParentJoint()->getDof(0)->setForce(0);
-  //std::cout << rcCmd[0] << "\t" << rcCmd[1] << "\t" <<rcCmd[2] << "\t" <<rcCmd[3] << "\t" <<rcCmd[4] << "\t" <<rcCmd[5] <<std::endl;
+  // std::cout << "DARTMotor Pos " << DARTMotorPos[0] << std::endl;
+  // std::cout << "GR Motor Raw Pos " << M[0].getRawPosition() << std::endl;
+  // std::cout << "GR Motor Pos " << M[0].getPosition() << std::endl;
 
+  // Set new tail force to 0 for testing purposes
+  auto tailForce = mWorld->getSkeleton(0)->getBodyNode("rotor_tail")->getParentJoint()->getDof(0)->getForce();
+  // std::cout << rcCmd[0] << "\t" << rcCmd[1] << "\t" <<rcCmd[2] << "\t" <<rcCmd[3] << "\t" <<rcCmd[4] << "\t" <<rcCmd[5] <<std::endl;
   if (mForceDuration > 0)
     mForceDuration--;
   else

@@ -12,7 +12,7 @@ void Dig::begin() {
 }
 
 void Dig::update() {
-  //std::cout << "Dig update" << std::endl;
+  std::cout << "Dig update" << std::endl;
   MinitaurLeg::useLengths = false;
   
   float standAng = 0,standExt = 1.57; 
@@ -25,20 +25,30 @@ void Dig::update() {
   int tReturn = tReady;
   float sweep = -0.5;
   float lift = -1.2;
-  
+
   int time = X.t % (tLower+tReady+tSweep+tRaise+tReturn);
   //std::cout << "Motor vel from getVelocity is " << M[5].getVelocity() << std::endl;
   //std::cout << "Motor vel from DART is " << DARTMotorVel[5] << std::endl;
 
   for(int i=0; i<4; ++i){
-    //M[i].setOpenLoop(1);
-    //M[i].setGain(1);
-    //M[i].setPosition(1);
-     leg[i].setGain(ANGLE,1);
-     leg[i].setGain(EXTENSION,1);
-     leg[i].setPosition(ANGLE,0);
-     leg[i].setPosition(EXTENSION,0.5*PI);
+    // M[i].setOpenLoop(1);
+    // M[i].setGain(10);
+    // M[i].setPosition(1.5*PI);
+    // leg[i].setGain(ANGLE,1);
+    // leg[i].setGain(EXTENSION,1);
+    // leg[i].setPosition(ANGLE,0*PI);
+    // leg[i].setPosition(EXTENSION,0.5*PI);
+    leg[i].setOpenLoop(ANGLE,0);
+    leg[i].setOpenLoop(EXTENSION,1);
+    std::cout << leg[i].getPosition(ANGLE) << '\t';
+    std::cout << leg[i].getPosition(EXTENSION) << '\t';
   }
+
+  for(int i=0;i<4;++i){
+    //std::cout << leg[i].getPosition(ANGLE) << '\t';
+  }
+
+  std::cout << std::endl;
 
 /*
   for(int i=0; i<4; ++i){
