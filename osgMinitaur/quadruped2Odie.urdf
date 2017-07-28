@@ -5,8 +5,8 @@
       <geometry>
         <box size=".226 0.16 .07"/>
       </geometry>
-      <material name="black">
-        <color rgba="0 0 0 1"/>
+      <material name="grey">
+        <color rgba="0.65 0.65 0.75 1"/>
       </material>
     </visual>
     <collision>
@@ -19,9 +19,35 @@
       <inertia ixx="0.020687" ixy="0.0" ixz="0.0" iyy="0.05365" iyz="0.0" izz="0.035710"/>
     </inertial>
   </link>
-  
-  
-  <link name="motor_front_rightR_link">
+
+
+  <link name="stator_tail">
+    <visual>
+      <geometry>
+        <box size= "0.06 0.06 0.02"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size= "0.06 0.06 0.02"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.398"/>
+      <inertia ixx="0.000093696" ixy="0.0" ixz="0.0" iyy="0.00028321" iyz="0.0" izz="0.00028321"/>
+    </inertial>
+  </link>
+  <joint name="stator_tail_joint" type="fixed">
+    <axis xyz="0 0 1"/>
+    <parent link="base_chassis_link"/>
+    <child link="stator_tail"/>
+    <origin rpy="1.57075 0 0" xyz="0.0 -0.05 0.1"/>
+    <limit effort="100" velocity="1000"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="rotor_tail">
     <visual>
       <geometry>
         <cylinder length="0.026" radius="0.0434"/>
@@ -38,14 +64,94 @@
       <inertia ixx="0.000093696" ixy="0.0" ixz="0.0" iyy="0.00028321" iyz="0.0" izz="0.00028321"/>
     </inertial>
   </link>
+  <joint name="rotor_tail_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="stator_tail"/>
+    <child link="rotor_tail"/>
+    <origin rpy="0 0 3.14159" xyz="0.0 0 -0.025"/>
+    <limit effort="100" velocity="1000"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+  
+  <link name="stator_front_rightR_link">
+    <visual>
+      <geometry>
+        <box size= "0.06 0.06 0.02"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size= "0.06 0.06 0.02"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.398"/>
+      <inertia ixx="0.000093696" ixy="0.0" ixz="0.0" iyy="0.00028321" iyz="0.0" izz="0.00028321"/>
+    </inertial>
+  </link>
+  <joint name="stator_front_rightR_joint" type="fixed">
+    <axis xyz="0 0 1"/>
+    <parent link="base_chassis_link"/>
+    <child link="stator_front_rightR_link"/>
+    <origin rpy="1.57075 0 0" xyz="0.21 -0.165 0"/>
+    <limit effort="100" velocity="1000"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="stator_front_rightL_link">
+    <visual>
+      <geometry>
+        <box size= "0.06 0.06 0.02"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size= "0.06 0.06 0.02"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.398"/>
+      <inertia ixx="0.000093696" ixy="0.0" ixz="0.0" iyy="0.00028321" iyz="0.0" izz="0.00028321"/>
+    </inertial>
+  </link>
+  <joint name="stator_front_rightL_joint" type="fixed">
+    <axis xyz="0 0 1"/>
+    <parent link="base_chassis_link"/>
+    <child link="stator_front_rightL_link"/>
+    <origin rpy="1.57075 0 0" xyz="0.21 -0.055 0"/>
+    <limit effort="100" velocity="1000"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+
+  <link name="motor_front_rightR_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.026" radius="0.0434"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.026" radius="0.0434"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.000093696" ixy="0.0" ixz="0.0" iyy="0.00028321" iyz="0.0" izz="0.00028321"/>
+    </inertial>
+  </link>
   <joint name="motor_front_rightR_joint" type="continuous">
     <axis xyz="0 0 1"/>
     <parent link="base_chassis_link"/>
     <child link="motor_front_rightR_link"/>
-    <origin rpy="1.57075 0 0" xyz="0.21 -0.125 0"/>
+    <origin rpy="1.57075 0 0" xyz="0.21 -0.14 0"/>
     <limit effort="100" velocity="1000"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
+
 
 
 	<link name="motor_front_rightL_link">
@@ -61,7 +167,7 @@
       </geometry>
     </collision>
     <inertial>
-      <mass value="0.398"/>
+      <mass value="0.00001"/>
       <inertia ixx="0.000093696" ixy="0.0" ixz="0.0" iyy="0.00028321" iyz="0.0" izz="0.00028321"/>
     </inertial>
   </link>
@@ -69,22 +175,21 @@
     <axis xyz="0 0 1"/>
     <parent link="base_chassis_link"/>
     <child link="motor_front_rightL_link"/>
-    <origin rpy="1.57075 0 0" xyz="0.21 -0.06 0"/>
+    <origin rpy="-1.57075 0 0" xyz="0.21 -0.08 0"/>
     <limit effort="100" velocity="1000"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
-  
-  
-  <link name="motor_front_leftR_link">
+
+    <link name="stator_front_leftL_link">
     <visual>
       <geometry>
-        <cylinder length="0.026" radius="0.0434"/>
+        <box size= "0.06 0.06 0.02"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
       <geometry>
-        <cylinder length="0.026" radius="0.0434"/>
+        <box size= "0.06 0.06 0.02"/>
       </geometry>
     </collision>
     <inertial>
@@ -92,17 +197,43 @@
       <inertia ixx="0.000093696" ixy="0.0" ixz="0.0" iyy="0.00028321" iyz="0.0" izz="0.00028321"/>
     </inertial>
   </link>
-  <joint name="motor_front_leftR_joint" type="continuous">
+  <joint name="stator_front_leftL_joint" type="fixed">
     <axis xyz="0 0 1"/>
     <parent link="base_chassis_link"/>
-    <child link="motor_front_leftR_link"/>
-    <origin rpy="1.57075 0 0" xyz="0.21 0.125 0"/>
+    <child link="stator_front_leftL_link"/>
+    <origin rpy="1.57075 0 0" xyz="0.21 0.165 0"/>
     <limit effort="100" velocity="1000"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
 
-
-	<link name="motor_front_leftL_link">
+  <link name="stator_front_leftR_link">
+    <visual>
+      <geometry>
+        <box size= "0.06 0.06 0.02"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size= "0.06 0.06 0.02"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.398"/>
+      <inertia ixx="0.000093696" ixy="0.0" ixz="0.0" iyy="0.00028321" iyz="0.0" izz="0.00028321"/>
+    </inertial>
+  </link>
+  <joint name="stator_front_leftR_joint" type="fixed">
+    <axis xyz="0 0 1"/>
+    <parent link="base_chassis_link"/>
+    <child link="stator_front_leftR_link"/>
+    <origin rpy="1.57075 0 0" xyz="0.21 0.055 0"/>
+    <limit effort="100" velocity="1000"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+  
+  
+  <link name="motor_front_leftL_link">
     <visual>
       <geometry>
         <cylinder length="0.026" radius="0.0434"/>
@@ -115,7 +246,7 @@
       </geometry>
     </collision>
     <inertial>
-      <mass value="0.398"/>
+      <mass value="0.00001"/>
       <inertia ixx="0.000093696" ixy="0.0" ixz="0.0" iyy="0.00028321" iyz="0.0" izz="0.00028321"/>
     </inertial>
   </link>
@@ -123,7 +254,86 @@
     <axis xyz="0 0 1"/>
     <parent link="base_chassis_link"/>
     <child link="motor_front_leftL_link"/>
-    <origin rpy="1.57075 0 0" xyz="0.21 0.06 0"/>
+    <origin rpy="1.57075 0 0" xyz="0.21 0.14 0"/>
+    <limit effort="100" velocity="1000"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+
+	<link name="motor_front_leftR_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.026" radius="0.0434"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.026" radius="0.0434"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.000093696" ixy="0.0" ixz="0.0" iyy="0.00028321" iyz="0.0" izz="0.00028321"/>
+    </inertial>
+  </link>
+  <joint name="motor_front_leftR_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="base_chassis_link"/>
+    <child link="motor_front_leftR_link"/>
+    <origin rpy="-1.57075 0 0" xyz="0.21 0.08 0"/>
+    <limit effort="100" velocity="1000"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="stator_back_rightR_link">
+    <visual>
+      <geometry>
+        <box size= "0.06 0.06 0.02"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size= "0.06 0.06 0.02"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.398"/>
+      <inertia ixx="0.000093696" ixy="0.0" ixz="0.0" iyy="0.00028321" iyz="0.0" izz="0.00028321"/>
+    </inertial>
+  </link>
+  <joint name="stator_back_rightR_joint" type="fixed">
+    <axis xyz="0 0 1"/>
+    <parent link="base_chassis_link"/>
+    <child link="stator_back_rightR_link"/>
+    <origin rpy="1.57075 0 0" xyz="-0.21 -0.165 0"/>
+    <limit effort="100" velocity="1000"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="stator_back_rightL_link">
+    <visual>
+      <geometry>
+        <box size= "0.06 0.06 0.02"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size= "0.06 0.06 0.02"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.398"/>
+      <inertia ixx="0.000093696" ixy="0.0" ixz="0.0" iyy="0.00028321" iyz="0.0" izz="0.00028321"/>
+    </inertial>
+  </link>
+  <joint name="stator_back_rightL_joint" type="fixed">
+    <axis xyz="0 0 1"/>
+    <parent link="base_chassis_link"/>
+    <child link="stator_back_rightL_link"/>
+    <origin rpy="1.57075 0 0" xyz="-0.21 -0.055 0"/>
     <limit effort="100" velocity="1000"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
@@ -142,7 +352,7 @@
       </geometry>
     </collision>
     <inertial>
-      <mass value="0.398"/>
+      <mass value="0.00001"/>
       <inertia ixx="0.000093696" ixy="0.0" ixz="0.0" iyy="0.00028321" iyz="0.0" izz="0.00028321"/>
     </inertial>
   </link>
@@ -150,7 +360,7 @@
     <axis xyz="0 0 1"/>
     <parent link="base_chassis_link"/>
     <child link="motor_back_rightR_link"/>
-    <origin rpy="1.57075 0 0" xyz="-0.21 -0.125 0"/>
+    <origin rpy="1.57075 0 0" xyz="-0.21 -0.14 0"/>
     <limit effort="100" velocity="1000"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
@@ -169,7 +379,7 @@
       </geometry>
     </collision>
     <inertial>
-      <mass value="0.398"/>
+      <mass value="0.00001"/>
       <inertia ixx="0.000093696" ixy="0.0" ixz="0.0" iyy="0.00028321" iyz="0.0" izz="0.00028321"/>
     </inertial>
   </link>
@@ -177,22 +387,21 @@
     <axis xyz="0 0 1"/>
     <parent link="base_chassis_link"/>
     <child link="motor_back_rightL_link"/>
-    <origin rpy="1.57075 0 0" xyz="-0.21 -0.06 0"/>
+    <origin rpy="-1.57075 0 0" xyz="-0.21 -0.08 0"/>
     <limit effort="100" velocity="1000"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
-  
-  
-  <link name="motor_back_leftR_link">
+
+  <link name="stator_back_leftL_link">
     <visual>
       <geometry>
-        <cylinder length="0.026" radius="0.0434"/>
+        <box size= "0.06 0.06 0.02"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
       <geometry>
-        <cylinder length="0.026" radius="0.0434"/>
+        <box size= "0.06 0.06 0.02"/>
       </geometry>
     </collision>
     <inertial>
@@ -200,17 +409,43 @@
       <inertia ixx="0.000093696" ixy="0.0" ixz="0.0" iyy="0.00028321" iyz="0.0" izz="0.00028321"/>
     </inertial>
   </link>
-  <joint name="motor_back_leftR_joint" type="continuous">
+  <joint name="stator_back_leftL_joint" type="fixed">
     <axis xyz="0 0 1"/>
     <parent link="base_chassis_link"/>
-    <child link="motor_back_leftR_link"/>
-    <origin rpy="1.57075 0 0" xyz="-0.21 0.125 0"/>
+    <child link="stator_back_leftL_link"/>
+    <origin rpy="1.57075 0 0" xyz="-0.21 0.165 0"/>
     <limit effort="100" velocity="1000"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
 
-
-	<link name="motor_back_leftL_link">
+  <link name="stator_back_leftR_link">
+    <visual>
+      <geometry>
+        <box size= "0.06 0.06 0.02"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size= "0.06 0.06 0.02"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.398"/>
+      <inertia ixx="0.000093696" ixy="0.0" ixz="0.0" iyy="0.00028321" iyz="0.0" izz="0.00028321"/>
+    </inertial>
+  </link>
+  <joint name="stator_back_leftR_joint" type="fixed">
+    <axis xyz="0 0 1"/>
+    <parent link="base_chassis_link"/>
+    <child link="stator_back_leftR_link"/>
+    <origin rpy="1.57075 0 0" xyz="-0.21 0.055 0"/>
+    <limit effort="100" velocity="1000"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+  
+  
+  <link name="motor_back_leftL_link">
     <visual>
       <geometry>
         <cylinder length="0.026" radius="0.0434"/>
@@ -223,7 +458,7 @@
       </geometry>
     </collision>
     <inertial>
-      <mass value="0.398"/>
+      <mass value="0.00001"/>
       <inertia ixx="0.000093696" ixy="0.0" ixz="0.0" iyy="0.00028321" iyz="0.0" izz="0.00028321"/>
     </inertial>
   </link>
@@ -231,13 +466,40 @@
     <axis xyz="0 0 1"/>
     <parent link="base_chassis_link"/>
     <child link="motor_back_leftL_link"/>
-    <origin rpy="1.57075 0 0" xyz="-0.21 0.06 0"/>
+    <origin rpy="1.57075 0 0" xyz="-0.21 0.14 0"/>
+    <limit effort="100" velocity="1000"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+
+	<link name="motor_back_leftR_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.026" radius="0.0434"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.026" radius="0.0434"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.000093696" ixy="0.0" ixz="0.0" iyy="0.00028321" iyz="0.0" izz="0.00028321"/>
+    </inertial>
+  </link>
+  <joint name="motor_back_leftR_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="base_chassis_link"/>
+    <child link="motor_back_leftR_link"/>
+    <origin rpy="-1.57075 0 0" xyz="-0.21 0.08 0"/>
     <limit effort="100" velocity="1000"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
   
   
-  <link name="upper_leg_back_leftL_link">
+  <link name="upper_leg_back_leftR_link">
     <visual>
       <geometry>
         <box size=".01 0.01 .11"/>
@@ -256,16 +518,16 @@
       <inertia ixx="0.00001375" ixy="0.0" ixz="0.0" iyy="0.00004577" iyz="0.0" izz="0.000056083"/>
     </inertial>
   </link>
-  <joint name="motor_back_leftL_link" type="fixed">
+  <joint name="motor_back_leftR_link" type="fixed">
     <axis xyz="0 0 1"/>
-    <parent link="motor_back_leftL_link"/>
-    <child link="upper_leg_back_leftL_link"/>
+    <parent link="motor_back_leftR_link"/>
+    <child link="upper_leg_back_leftR_link"/>
     <origin rpy="-1.57075 0 0" xyz="0.0 0.06 -0.02"/>
     <limit effort="100" velocity="1000"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
 
-	<link name="upper_leg_back_leftR_link">
+	<link name="upper_leg_back_leftL_link">
     <visual>
       <geometry>
         <box size=".01 0.01 .11"/>
@@ -284,16 +546,72 @@
       <inertia ixx="0.00001375" ixy="0.0" ixz="0.0" iyy="0.00004577" iyz="0.0" izz="0.000056083"/>
     </inertial>
   </link>
-  <joint name="hip_leftR_link" type="fixed">
+  <joint name="hip_leftL_link" type="fixed">
     <axis xyz="0 0 1"/>
-    <parent link="motor_back_leftR_link"/>
-    <child link="upper_leg_back_leftR_link"/>
+    <parent link="motor_back_leftL_link"/>
+    <child link="upper_leg_back_leftL_link"/>
     <origin rpy="-1.57075 0 0" xyz="0.0 0.06 0.02"/>
     <limit effort="100" velocity="1000"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
 
-	<link name="lower_leg_back_leftR_link">
+	<link name="lower_leg_back_leftL_link">
+    <visual>
+    	<origin rpy="0.0 0 0" xyz="0 0 0.11375"/>
+      <geometry>
+        <box size=".01 0.01 .2275"/>
+      </geometry>
+      <material name="grey">
+        <color rgba="0.65 0.65 0.75 1"/>
+      </material>
+    </visual>
+    <collision>
+    	<origin rpy="0.0 0 0" xyz="0 0 0.11375"/>
+      <geometry>
+        <box size=".01 0.01 .2275"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.043"/>
+      <inertia ixx="0.000002404" ixy="0.0" ixz="0.0" iyy="0.000270806" iyz="0.0" izz="0.000270806"/>
+    </inertial>
+  </link>
+  <joint name="knee_back_leftL_link" type="revolute">
+    <axis xyz="0 1 0"/>
+    <parent link="upper_leg_back_leftL_link"/>
+    <child link="lower_leg_back_leftL_link"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 .055"/>
+    <limit effort="100" velocity="1000"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+<link name="foot_back_left_link">
+    <visual>
+      <geometry>
+        <sphere radius="0.0125"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.0125"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <inertia ixx="0.000002404" ixy="0.0" ixz="0.0" iyy="0.000270806" iyz="0.0" izz="0.000270806"/>
+    </inertial>
+  </link>
+  <joint name="toe_back_left_link" type="fixed">
+    <axis xyz="0 1 0"/>
+    <parent link="lower_leg_back_leftL_link"/>
+    <child link="foot_back_left_link"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.2275"/>
+    <limit effort="100" velocity="1000"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+  
+  <link name="lower_leg_back_leftR_link">
     <visual>
     	<origin rpy="0.0 0 0" xyz="0 0 .1"/>
       <geometry>
@@ -310,8 +628,8 @@
       </geometry>
     </collision>
     <inertial>
-      <mass value="0.043"/>
-      <inertia ixx="0.000002404" ixy="0.0" ixz="0.0" iyy="0.000270806" iyz="0.0" izz="0.000270806"/>
+      <mass value="0.05186"/>
+      <inertia ixx="0.0000021756" ixy="0.0" ixz="0.0" iyy="0.0002450" iyz="0.0" izz="0.0002450"/>
     </inertial>
   </link>
   <joint name="knee_back_leftR_link" type="revolute">
@@ -323,37 +641,7 @@
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
   
-  <link name="lower_leg_back_leftL_link">
-    <visual>
-    	<origin rpy="0.0 0 0" xyz="0 0 .1"/>
-      <geometry>
-        <box size=".01 0.01 .2"/>
-      </geometry>
-      <material name="grey">
-        <color rgba="0.65 0.65 0.75 1"/>
-      </material>
-    </visual>
-    <collision>
-    	<origin rpy="0.0 0 0" xyz="0 0 .1"/>
-      <geometry>
-        <box size=".01 0.01 .2"/>
-      </geometry>
-    </collision>
-    <inertial>
-      <mass value="0.05186"/>
-      <inertia ixx="0.0000021756" ixy="0.0" ixz="0.0" iyy="0.0002450" iyz="0.0" izz="0.0002450"/>
-    </inertial>
-  </link>
-  <joint name="knee_back_leftL_link" type="revolute">
-    <axis xyz="0 1 0"/>
-    <parent link="upper_leg_back_leftL_link"/>
-    <child link="lower_leg_back_leftL_link"/>
-    <origin rpy="0 0 0" xyz="0.0 0.0 .055"/>
-    <limit effort="100" velocity="1000"/>
-    <joint_properties damping="0.0" friction="0.0"/>
-  </joint>
-  
-  <link name="upper_leg_front_leftL_link">
+  <link name="upper_leg_front_leftR_link">
     <visual>
       <geometry>
         <box size=".01 0.01 .11"/>
@@ -372,16 +660,16 @@
       <inertia ixx="0.00001375" ixy="0.0" ixz="0.0" iyy="0.00004577" iyz="0.0" izz="0.000056083"/>
     </inertial>
   </link>
-  <joint name="motor_front_leftL_link" type="fixed">
+  <joint name="motor_front_leftR_link" type="fixed">
     <axis xyz="0 0 1"/>
-    <parent link="motor_front_leftL_link"/>
-    <child link="upper_leg_front_leftL_link"/>
+    <parent link="motor_front_leftR_link"/>
+    <child link="upper_leg_front_leftR_link"/>
     <origin rpy="-1.57075 0 0" xyz="0.0 0.06 -0.02"/>
     <limit effort="100" velocity="1000"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
 
-	<link name="upper_leg_front_leftR_link">
+	<link name="upper_leg_front_leftL_link">
     <visual>
       <geometry>
         <box size=".01 0.01 .11"/>
@@ -400,29 +688,29 @@
       <inertia ixx="0.00001375" ixy="0.0" ixz="0.0" iyy="0.00004577" iyz="0.0" izz="0.000056083"/>
     </inertial>
   </link>
-  <joint name="hip_front_leftR_link" type="fixed">
+  <joint name="hip_front_leftL_link" type="fixed">
     <axis xyz="0 0 1"/>
-    <parent link="motor_front_leftR_link"/>
-    <child link="upper_leg_front_leftR_link"/>
+    <parent link="motor_front_leftL_link"/>
+    <child link="upper_leg_front_leftL_link"/>
     <origin rpy="-1.57075 0 0" xyz="0.0 0.06 0.02"/>
     <limit effort="100" velocity="1000"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
 
-	<link name="lower_leg_front_leftR_link">
+	<link name="lower_leg_front_leftL_link">
     <visual>
-    	<origin rpy="0.0 0 0" xyz="0 0 .1"/>
+    	<origin rpy="0.0 0 0" xyz="0 0 0.11375"/>
       <geometry>
-        <box size=".01 0.01 .2"/>
+        <box size=".01 0.01 .2275"/>
       </geometry>
       <material name="grey">
         <color rgba="0.65 0.65 0.75 1"/>
       </material>
     </visual>
     <collision>
-    	<origin rpy="0.0 0 0" xyz="0 0 .1"/>
+    	<origin rpy="0.0 0 0" xyz="0 0 0.11375"/>
       <geometry>
-        <box size=".01 0.01 .2"/>
+        <box size=".01 0.01 .2275"/>
       </geometry>
     </collision>
     <inertial>
@@ -430,16 +718,42 @@
       <inertia ixx="0.000002404" ixy="0.0" ixz="0.0" iyy="0.000270806" iyz="0.0" izz="0.000270806"/>
     </inertial>
   </link>
-  <joint name="knee_front_leftR_link" type="revolute">
+  <joint name="knee_front_leftL_link" type="revolute">
     <axis xyz="0 1 0"/>
-    <parent link="upper_leg_front_leftR_link"/>
-    <child link="lower_leg_front_leftR_link"/>
+    <parent link="upper_leg_front_leftL_link"/>
+    <child link="lower_leg_front_leftL_link"/>
     <origin rpy="0 0 0" xyz="0.0 0.0 .055"/>
     <limit effort="100" velocity="1000"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
+
+  <link name="foot_front_left_link">
+    <visual>
+      <geometry>
+        <sphere radius="0.0125"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.0125"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <inertia ixx="0.000002404" ixy="0.0" ixz="0.0" iyy="0.000270806" iyz="0.0" izz="0.000270806"/>
+    </inertial>
+  </link>
+  <joint name="toe_front_left_link" type="fixed">
+    <axis xyz="0 1 0"/>
+    <parent link="lower_leg_front_leftL_link"/>
+    <child link="foot_front_left_link"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.2275"/>
+    <limit effort="100" velocity="1000"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
   
-  <link name="lower_leg_front_leftL_link">
+  <link name="lower_leg_front_leftR_link">
     <visual>
     	<origin rpy="0.0 0 0" xyz="0 0 .1"/>
       <geometry>
@@ -460,10 +774,10 @@
       <inertia ixx="0.0000021756" ixy="0.0" ixz="0.0" iyy="0.0002450" iyz="0.0" izz="0.0002450"/>
     </inertial>
   </link>
-  <joint name="knee_front_leftL_link" type="revolute">
+  <joint name="knee_front_leftR_link" type="revolute">
     <axis xyz="0 1 0"/>
-    <parent link="upper_leg_front_leftL_link"/>
-    <child link="lower_leg_front_leftL_link"/>
+    <parent link="upper_leg_front_leftR_link"/>
+    <child link="lower_leg_front_leftR_link"/>
     <origin rpy="0 0 0" xyz="0.0 0.0 .055"/>
     <limit effort="100" velocity="1000"/>
     <joint_properties damping="0.0" friction="0.0"/>
@@ -530,18 +844,18 @@
 
 	<link name="lower_leg_back_rightR_link">
     <visual>
-    	<origin rpy="0.0 0 0" xyz="0 0 .1"/>
+    	<origin rpy="0.0 0 0" xyz="0 0 0.11375"/>
       <geometry>
-        <box size=".01 0.01 .2"/>
+        <box size=".01 0.01 0.2275"/>
       </geometry>
       <material name="grey">
         <color rgba="0.65 0.65 0.75 1"/>
       </material>
     </visual>
     <collision>
-    	<origin rpy="0.0 0 0" xyz="0 0 .1"/>
+    	<origin rpy="0.0 0 0" xyz="0 0 0.11375"/>
       <geometry>
-        <box size=".01 0.01 .2"/>
+        <box size=".01 0.01 0.2275"/>
       </geometry>
     </collision>
     <inertial>
@@ -554,6 +868,32 @@
     <parent link="upper_leg_back_rightR_link"/>
     <child link="lower_leg_back_rightR_link"/>
     <origin rpy="0 0 0" xyz="0.0 0.0 .055"/>
+    <limit effort="100" velocity="1000"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="foot_back_right_link">
+    <visual>
+      <geometry>
+        <sphere radius="0.0125"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.0125"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <inertia ixx="0.000002404" ixy="0.0" ixz="0.0" iyy="0.000270806" iyz="0.0" izz="0.000270806"/>
+    </inertial>
+  </link>
+  <joint name="toe_back_right_link" type="fixed">
+    <axis xyz="0 1 0"/>
+    <parent link="lower_leg_back_rightR_link"/>
+    <child link="foot_back_right_link"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.2275"/>
     <limit effort="100" velocity="1000"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
@@ -646,18 +986,18 @@
 
 	<link name="lower_leg_front_rightR_link">
     <visual>
-    	<origin rpy="0.0 0 0" xyz="0 0 .1"/>
+    	<origin rpy="0.0 0 0" xyz="0 0 0.11375"/>
       <geometry>
-        <box size=".01 0.01 .2"/>
+        <box size=".01 0.01 .2275"/>
       </geometry>
       <material name="grey">
         <color rgba="0.65 0.65 0.75 1"/>
       </material>
     </visual>
     <collision>
-    	<origin rpy="0.0 0 0" xyz="0 0 .1"/>
+    	<origin rpy="0.0 0 0" xyz="0 0 0.11375"/>
       <geometry>
-        <box size=".01 0.01 .2"/>
+        <box size=".01 0.01 .2275"/>
       </geometry>
     </collision>
     <inertial>
@@ -670,6 +1010,32 @@
     <parent link="upper_leg_front_rightR_link"/>
     <child link="lower_leg_front_rightR_link"/>
     <origin rpy="0 0 0" xyz="0.0 0.0 .055"/>
+    <limit effort="100" velocity="1000"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="foot_front_right_link">
+    <visual>
+      <geometry>
+        <sphere radius="0.0125"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.0125"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <inertia ixx="0.000002404" ixy="0.0" ixz="0.0" iyy="0.000270806" iyz="0.0" izz="0.000270806"/>
+    </inertial>
+  </link>
+  <joint name="toe_front_right_link" type="fixed">
+    <axis xyz="0 1 0"/>
+    <parent link="lower_leg_front_rightR_link"/>
+    <child link="foot_front_right_link"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.2275"/>
     <limit effort="100" velocity="1000"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
