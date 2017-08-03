@@ -196,14 +196,15 @@ int main(int argc, char* argv[])
 
   // double IC[] = {PI,0,PI,0,0,PI,0,PI};
   double IC[] = {0,PI,0,PI,PI,0,PI,0};
-  minitaur->getJoint("motor_front_leftL_joint")->setPosition(0,IC[0]);
-  minitaur->getJoint("motor_front_leftR_joint")->setPosition(0,IC[1]);
-  minitaur->getJoint("motor_back_leftL_joint")->setPosition(0,IC[2]);
-  minitaur->getJoint("motor_back_leftR_joint")->setPosition(0,IC[3]);
-  minitaur->getJoint("motor_front_rightL_joint")->setPosition(0,IC[4]);
-  minitaur->getJoint("motor_front_rightR_joint")->setPosition(0,IC[5]);
-  minitaur->getJoint("motor_back_rightL_joint")->setPosition(0,IC[6]);
-  minitaur->getJoint("motor_back_rightR_joint")->setPosition(0,IC[7]);
+  double delta = 0.05;
+  minitaur->getJoint("motor_front_leftL_joint")->setPosition(0,IC[0] + delta);
+  minitaur->getJoint("motor_front_leftR_joint")->setPosition(0,IC[1] + delta);
+  minitaur->getJoint("motor_back_leftL_joint")->setPosition(0,IC[2] + delta);
+  minitaur->getJoint("motor_back_leftR_joint")->setPosition(0,IC[3] + delta);
+  minitaur->getJoint("motor_front_rightL_joint")->setPosition(0,IC[4] + delta);
+  minitaur->getJoint("motor_front_rightR_joint")->setPosition(0,IC[5] + delta);
+  minitaur->getJoint("motor_back_rightL_joint")->setPosition(0,IC[6] + delta);
+  minitaur->getJoint("motor_back_rightR_joint")->setPosition(0,IC[7] + delta);
 
   auto chassis = minitaur->getBodyNode("base_chassis_link");
   auto tailRotor = minitaur->getBodyNode("rotor_tail");
@@ -220,27 +221,28 @@ int main(int argc, char* argv[])
   // minitaur->setPosition(0, 180_deg);
   minitaur->setPosition(0, 0);
   minitaur->setPosition(5, 0.5);
-//  auto frontLL = minitaur->getBodyNode("lower_leg_front_leftL_link");
-//  auto frontLR = minitaur->getBodyNode("lower_leg_front_leftR_link");
-//  auto frontRL = minitaur->getBodyNode("lower_leg_front_rightL_link");
-//  auto frontRR = minitaur->getBodyNode("lower_leg_front_rightR_link");
-//  auto backLL = minitaur->getBodyNode("lower_leg_back_leftL_link");
-//  auto backLR = minitaur->getBodyNode("lower_leg_back_leftR_link");
-//  auto backRL = minitaur->getBodyNode("lower_leg_back_rightL_link");
-//  auto backRR = minitaur->getBodyNode("lower_leg_back_rightR_link");
-//  Eigen::Vector3d offset(0.0, 0.0, 0.2);
-//  auto constFrontLeft = std::make_shared<dart::constraint::BallJointConstraint>(
-//      frontLL, frontLR, frontLL->getTransform() * offset);
-//  auto constFrontRight = std::make_shared<dart::constraint::BallJointConstraint>(
-//      frontRL, frontRR, frontRL->getTransform() * offset);
-//  auto constBackLeft = std::make_shared<dart::constraint::BallJointConstraint>(
-//      backLL, backLR, backLL->getTransform() * offset);
-//  auto constBackRight = std::make_shared<dart::constraint::BallJointConstraint>(
-//      backRL, backRR, backRL->getTransform() * offset);
-//  world->getConstraintSolver()->addConstraint(constFrontLeft);
-//  world->getConstraintSolver()->addConstraint(constFrontRight);
-//  world->getConstraintSolver()->addConstraint(constBackLeft);
-//  world->getConstraintSolver()->addConstraint(constBackRight);
+
+ auto frontLL = minitaur->getBodyNode("lower_leg_front_leftL_link");
+ auto frontLR = minitaur->getBodyNode("lower_leg_front_leftR_link");
+ auto frontRL = minitaur->getBodyNode("lower_leg_front_rightL_link");
+ auto frontRR = minitaur->getBodyNode("lower_leg_front_rightR_link");
+ auto backLL = minitaur->getBodyNode("lower_leg_back_leftL_link");
+ auto backLR = minitaur->getBodyNode("lower_leg_back_leftR_link");
+ auto backRL = minitaur->getBodyNode("lower_leg_back_rightL_link");
+ auto backRR = minitaur->getBodyNode("lower_leg_back_rightR_link");
+ Eigen::Vector3d offset(0.0, 0.0, 0.2);
+ auto constFrontLeft = std::make_shared<dart::constraint::BallJointConstraint>(
+     frontLL, frontLR, frontLL->getTransform() * offset);
+ auto constFrontRight = std::make_shared<dart::constraint::BallJointConstraint>(
+     frontRL, frontRR, frontRL->getTransform() * offset);
+ auto constBackLeft = std::make_shared<dart::constraint::BallJointConstraint>(
+     backLL, backLR, backLL->getTransform() * offset);
+ auto constBackRight = std::make_shared<dart::constraint::BallJointConstraint>(
+     backRL, backRR, backRL->getTransform() * offset);
+ world->getConstraintSolver()->addConstraint(constFrontLeft);
+ world->getConstraintSolver()->addConstraint(constFrontRight);
+ world->getConstraintSolver()->addConstraint(constBackLeft);
+ world->getConstraintSolver()->addConstraint(constBackRight);
 
   // Set gravity of the world
   // world->setGravity(Eigen::Vector3d(0.0, 0.0, -9.81));

@@ -34,12 +34,10 @@ void Dig::update() {
     // M[i].setOpenLoop(1);
     // M[i].setGain(10);
     // M[i].setPosition(1.5*PI);
-    // leg[i].setGain(ANGLE,1);
-    // leg[i].setGain(EXTENSION,1);
-    // leg[i].setPosition(ANGLE,0*PI);
-    // leg[i].setPosition(EXTENSION,0.5*PI);
-    leg[i].setOpenLoop(ANGLE,0);
-    leg[i].setOpenLoop(EXTENSION,1);
+    leg[i].setGain(ANGLE,1);
+    leg[i].setGain(EXTENSION,1);
+    leg[i].setPosition(ANGLE,0.25*PI);
+    leg[i].setPosition(EXTENSION,0.5*PI);
     std::cout << leg[i].getPosition(ANGLE) << '\t';
     std::cout << leg[i].getPosition(EXTENSION) << '\t';
   }

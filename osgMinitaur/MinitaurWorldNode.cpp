@@ -97,6 +97,7 @@ void MinitaurWorldNode::customPreStep()
   for(int i = 0;i<8;++i){
     //std::cout << DARTMotorCommand[i] << "\t";//DARTMotorCommand[i] = 100.0; //This will be replaced with actual commands from DART
     hips[i]->getDof(0)->setForce(DARTMotorCommand[i]);
+    // std::cout << hips[i]->getDof(0)->getForce() << "\t";
   }
 
   // std::cout << "DARTMotor Pos " << DARTMotorPos[0] << std::endl;
