@@ -111,6 +111,15 @@ void MinitaurWorldNode::customPreStep()
     mForceDuration--;
   else
     mExternalForce.setZero();
+
+  auto rotorJoint = mWorld->getSkeleton(2)->getJoint("rotor_joint");
+  rotorJoint->getDof(0)->setForce(0.05);
+  std::cout << "Simple motor velocity: " << rotorJoint->getDof(0)->getVelocity() << std::endl;
+
+
+  hips[0]->getDof(0)->setForce(0.05);
+  std::cout << "motor_front_leftL velocity: " << hips[0]->getDof(0)->getVelocity() << std::endl;
+
 }
 
 //==============================================================================

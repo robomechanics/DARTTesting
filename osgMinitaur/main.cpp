@@ -192,6 +192,7 @@ int main(int argc, char* argv[])
   // Load ground and Atlas robot and add them to the world
   dart::utils::DartLoader loader;
   auto minitaur = loader.parseSkeleton("dart://sample/urdf/minitaur/quadruped2Odie.urdf");
+  auto motor = loader.parseSkeleton("dart://sample/urdf/minitaur/motorunit.urdf");
   auto ground = loader.parseSkeleton("dart://sample/urdf/minitaur/ground.urdf");
 
   // double IC[] = {PI,0,PI,0,0,PI,0,PI};
@@ -215,6 +216,7 @@ int main(int argc, char* argv[])
 
   world->addSkeleton(minitaur);
   world->addSkeleton(ground);
+  world->addSkeleton(motor);
 
   // Set initial configuration for Minitaur robot
   using namespace dart::math::suffixes;
@@ -222,31 +224,35 @@ int main(int argc, char* argv[])
   minitaur->setPosition(0, 0);
   minitaur->setPosition(5, 0.5);
 
- auto frontLL = minitaur->getBodyNode("lower_leg_front_leftL_link");
- auto frontLR = minitaur->getBodyNode("lower_leg_front_leftR_link");
- auto frontRL = minitaur->getBodyNode("lower_leg_front_rightL_link");
- auto frontRR = minitaur->getBodyNode("lower_leg_front_rightR_link");
- auto backLL = minitaur->getBodyNode("lower_leg_back_leftL_link");
- auto backLR = minitaur->getBodyNode("lower_leg_back_leftR_link");
- auto backRL = minitaur->getBodyNode("lower_leg_back_rightL_link");
- auto backRR = minitaur->getBodyNode("lower_leg_back_rightR_link");
- Eigen::Vector3d offset(0.0, 0.0, 0.2);
- auto constFrontLeft = std::make_shared<dart::constraint::BallJointConstraint>(
-     frontLL, frontLR, frontLL->getTransform() * offset);
- auto constFrontRight = std::make_shared<dart::constraint::BallJointConstraint>(
-     frontRL, frontRR, frontRL->getTransform() * offset);
- auto constBackLeft = std::make_shared<dart::constraint::BallJointConstraint>(
-     backLL, backLR, backLL->getTransform() * offset);
- auto constBackRight = std::make_shared<dart::constraint::BallJointConstraint>(
-     backRL, backRR, backRL->getTransform() * offset);
- world->getConstraintSolver()->addConstraint(constFrontLeft);
- world->getConstraintSolver()->addConstraint(constFrontRight);
- world->getConstraintSolver()->addConstraint(constBackLeft);
- world->getConstraintSolver()->addConstraint(constBackRight);
+  motor->setPosition(0, 0);
+  motor->setPosition(5, 1.5);
+  motor->setPosition(4, 1);
+
+ // auto frontLL = minitaur->getBodyNode("lower_leg_front_leftL_link");
+ // auto frontLR = minitaur->getBodyNode("lower_leg_front_leftR_link");
+ // auto frontRL = minitaur->getBodyNode("lower_leg_front_rightL_link");
+ // auto frontRR = minitaur->getBodyNode("lower_leg_front_rightR_link");
+ // auto backLL = minitaur->getBodyNode("lower_leg_back_leftL_link");
+ // auto backLR = minitaur->getBodyNode("lower_leg_back_leftR_link");
+ // auto backRL = minitaur->getBodyNode("lower_leg_back_rightL_link");
+ // auto backRR = minitaur->getBodyNode("lower_leg_back_rightR_link");
+ // Eigen::Vector3d offset(0.0, 0.0, 0.2);
+ // auto constFrontLeft = std::make_shared<dart::constraint::BallJointConstraint>(
+ //     frontLL, frontLR, frontLL->getTransform() * offset);
+ // auto constFrontRight = std::make_shared<dart::constraint::BallJointConstraint>(
+ //     frontRL, frontRR, frontRL->getTransform() * offset);
+ // auto constBackLeft = std::make_shared<dart::constraint::BallJointConstraint>(
+ //     backLL, backLR, backLL->getTransform() * offset);
+ // auto constBackRight = std::make_shared<dart::constraint::BallJointConstraint>(
+ //     backRL, backRR, backRL->getTransform() * offset);
+ // world->getConstraintSolver()->addConstraint(constFrontLeft);
+ // world->getConstraintSolver()->addConstraint(constFrontRight);
+ // world->getConstraintSolver()->addConstraint(constBackLeft);
+ // world->getConstraintSolver()->addConstraint(constBackRight);
 
   // Set gravity of the world
-  // world->setGravity(Eigen::Vector3d(0.0, 0.0, -9.81));
-  world->setGravity(Eigen::Vector3d(0.0, 0.0, 0));
+  world->setGravity(Eigen::Vector3d(0.0, 0.0, -9.81));
+  // world->setGravity(Eigen::Vector3d(0.0, 0.0, 0));
   // Wrap a WorldNode around it
   osg::ref_ptr<MinitaurWorldNode> node
       = new MinitaurWorldNode(world, minitaur);

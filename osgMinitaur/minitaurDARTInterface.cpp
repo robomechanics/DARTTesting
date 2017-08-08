@@ -67,9 +67,9 @@ void Interface::update() {
   for (int i = 0;i<8;++i){
     // M[i].update();
     torqueDesired[i] = M[i].torqueFactorPublic * ((M[i].enableFlagPublic) ? M[i].getOpenLoop() : 0);
-    DARTMotorCommand[i] = torqueDesired[i] - (kt*kt/R)*M[i].getVelocity();
+    DARTMotorCommand[i] = torqueDesired[i];// - (kt*kt/R)*M[i].getVelocity();
 
-    //std::cout << DARTMotorCommand[i] << "\t";
+    // std::cout << DARTMotorCommand[i] << "\t";
   }
 
 

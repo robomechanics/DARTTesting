@@ -1,0 +1,76 @@
+<?xml version="0.0" ?>
+<robot name="motor">
+
+
+  <link name="stator">
+    <visual>
+      <geometry>
+        <box size= "0.06 0.06 0.02"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size= "0.06 0.06 0.02"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.398"/>
+      <inertia ixx="0.000093696" ixy="0.0" ixz="0.0" iyy="0.00028321" iyz="0.0" izz="0.00028321"/>
+    </inertial>
+  </link>
+
+  <link name="rotor_tail">
+    <visual>
+      <geometry>
+        <cylinder length="0.026" radius="0.0434"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.026" radius="0.0434"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.000093696" ixy="0.0" ixz="0.0" iyy="0.00028321" iyz="0.0" izz="0.00028321"/>
+    </inertial>
+  </link>
+  <joint name="rotor_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="stator"/>
+    <child link="rotor"/>
+    <origin rpy="0 0 3.14159" xyz="0.0 0 -0.025"/>
+    <limit effort="100" velocity="1000"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+  
+  
+  <link name="leg_link">
+    <visual>
+      <geometry>
+        <box size=".01 0.01 .11"/>
+      </geometry>
+      <material name="grey">
+        <color rgba="0.65 0.65 0.75 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size=".01 0.01 .11"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.026"/>
+      <inertia ixx="0.00001375" ixy="0.0" ixz="0.0" iyy="0.00004577" iyz="0.0" izz="0.000056083"/>
+    </inertial>
+  </link>
+  <joint name="leg_link_joint" type="fixed">
+    <axis xyz="0 0 1"/>
+    <parent link="rotor"/>
+    <child link="leg_link"/>
+    <origin rpy="-1.57075 0 0" xyz="0.0 0.06 -0.02"/>
+    <limit effort="100" velocity="1000"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
