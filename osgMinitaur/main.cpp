@@ -52,8 +52,8 @@ const double default_stiffness = 0.0;
 const double delta_stiffness = 10;
 
 const double shaft_mass = 0.005;
-const double mass_mass = 1;
-const double shaft_length = 0.3;
+const double mass_mass = 0.5;
+const double shaft_length = 0.4;
 
 const double default_damping = 0.0;
 const double delta_damping = 0.0;
@@ -191,21 +191,10 @@ int main(int argc, char* argv[])
   
   // Load ground and Atlas robot and add them to the world
   dart::utils::DartLoader loader;
-  auto minitaur = loader.parseSkeleton("dart://sample/urdf/minitaur/quadruped2Odie.urdf");
-  auto motor = loader.parseSkeleton("dart://sample/urdf/minitaur/motorunit.urdf");
+  auto minitaur = loader.parseSkeleton("dart://sample/urdf/minitaur/quadrupedPrismaticOdie.urdf");
+  //auto motor = loader.parseSkeleton("dart://sample/urdf/minitaur/motorunit.urdf");
   auto ground = loader.parseSkeleton("dart://sample/urdf/minitaur/ground.urdf");
 
-  // double IC[] = {PI,0,PI,0,0,PI,0,PI};
-  double IC[] = {0,PI,0,PI,PI,0,PI,0};
-  double delta = 0.05;
-  minitaur->getJoint("motor_front_leftL_joint")->setPosition(0,IC[0] + delta);
-  minitaur->getJoint("motor_front_leftR_joint")->setPosition(0,IC[1] + delta);
-  minitaur->getJoint("motor_back_leftL_joint")->setPosition(0,IC[2] + delta);
-  minitaur->getJoint("motor_back_leftR_joint")->setPosition(0,IC[3] + delta);
-  minitaur->getJoint("motor_front_rightL_joint")->setPosition(0,IC[4] + delta);
-  minitaur->getJoint("motor_front_rightR_joint")->setPosition(0,IC[5] + delta);
-  minitaur->getJoint("motor_back_rightL_joint")->setPosition(0,IC[6] + delta);
-  minitaur->getJoint("motor_back_rightR_joint")->setPosition(0,IC[7] + delta);
 
   auto chassis = minitaur->getBodyNode("base_chassis_link");
   auto tailRotor = minitaur->getBodyNode("rotor_tail");
@@ -216,7 +205,6 @@ int main(int argc, char* argv[])
 
   world->addSkeleton(minitaur);
   world->addSkeleton(ground);
-  world->addSkeleton(motor);
 
   // Set initial configuration for Minitaur robot
   using namespace dart::math::suffixes;
@@ -224,19 +212,24 @@ int main(int argc, char* argv[])
   minitaur->setPosition(0, 0);
   minitaur->setPosition(5, 0.5);
 
-  motor->setPosition(0, 0);
-  motor->setPosition(5, 1.5);
-  motor->setPosition(4, 1);
+  // motor->setPosition(0, 0);
+  // motor->setPosition(5, 1.5);
+  // motor->setPosition(4, 1);
 
- // auto frontLL = minitaur->getBodyNode("lower_leg_front_leftL_link");
- // auto frontLR = minitaur->getBodyNode("lower_leg_front_leftR_link");
- // auto frontRL = minitaur->getBodyNode("lower_leg_front_rightL_link");
- // auto frontRR = minitaur->getBodyNode("lower_leg_front_rightR_link");
- // auto backLL = minitaur->getBodyNode("lower_leg_back_leftL_link");
- // auto backLR = minitaur->getBodyNode("lower_leg_back_leftR_link");
- // auto backRL = minitaur->getBodyNode("lower_leg_back_rightL_link");
- // auto backRR = minitaur->getBodyNode("lower_leg_back_rightR_link");
- // Eigen::Vector3d offset(0.0, 0.0, 0.2);
+ auto frontLR = minitaur->getBodyNode("lower_leg_front_leftR_link");
+ auto frontRL = minitaur->getBodyNode("lower_leg_front_rightL_link");
+ auto backLR = minitaur->getBodyNode("lower_leg_back_leftR_link");
+ auto backRL = minitaur->getBodyNode("lower_leg_back_rightL_link");
+ minitaur->getJoint("knee_front_leftR_link")->getDof(0)->setPositionLimits(0.01,0.19);
+ minitaur->getJoint("knee_front_leftR_link")->setPositionLimitEnforced(true);
+ minitaur->getJoint("knee_back_leftR_link")->getDof(0)->setPositionLimits(0.01,0.19);
+ minitaur->getJoint("knee_back_leftR_link")->setPositionLimitEnforced(true);
+ minitaur->getJoint("knee_front_rightL_link")->getDof(0)->setPositionLimits(0.01,0.19);
+ minitaur->getJoint("knee_front_rightL_link")->setPositionLimitEnforced(true);
+ minitaur->getJoint("knee_back_rightL_link")->getDof(0)->setPositionLimits(0.01,0.19);
+ minitaur->getJoint("knee_back_rightL_link")->setPositionLimitEnforced(true);
+
+ // Eigen::Vector3d offset(0.0, 0.0, -0.2);
  // auto constFrontLeft = std::make_shared<dart::constraint::BallJointConstraint>(
  //     frontLL, frontLR, frontLL->getTransform() * offset);
  // auto constFrontRight = std::make_shared<dart::constraint::BallJointConstraint>(
@@ -245,10 +238,27 @@ int main(int argc, char* argv[])
  //     backLL, backLR, backLL->getTransform() * offset);
  // auto constBackRight = std::make_shared<dart::constraint::BallJointConstraint>(
  //     backRL, backRR, backRL->getTransform() * offset);
- // world->getConstraintSolver()->addConstraint(constFrontLeft);
- // world->getConstraintSolver()->addConstraint(constFrontRight);
- // world->getConstraintSolver()->addConstraint(constBackLeft);
- // world->getConstraintSolver()->addConstraint(constBackRight);
+ // // world->getConstraintSolver()->addConstraint(constFrontLeft);
+ // // world->getConstraintSolver()->addConstraint(constFrontRight);
+ // // world->getConstraintSolver()->addConstraint(constBackLeft);
+ // // world->getConstraintSolver()->addConstraint(constBackRight);
+
+  // double IC[] = {PI,0,PI,0,0,PI,0,PI};
+  // double IC[] = {0,PI,0,PI,PI,0,PI,0,0.2};
+  double IC[] = {0,0,0,0,0,0,0,0,0.1};
+  double delta = 0.01;
+  minitaur->getJoint("motor_front_leftL_joint")->setPosition(0,IC[0] + delta);
+  minitaur->getJoint("motor_front_leftR_joint")->setPosition(0,IC[1] + delta);
+  minitaur->getJoint("motor_back_leftL_joint")->setPosition(0,IC[2] + delta);
+  minitaur->getJoint("motor_back_leftR_joint")->setPosition(0,IC[3] + delta);
+  minitaur->getJoint("motor_front_rightL_joint")->setPosition(0,IC[4] + delta);
+  minitaur->getJoint("motor_front_rightR_joint")->setPosition(0,IC[5] + delta);
+  minitaur->getJoint("motor_back_rightL_joint")->setPosition(0,IC[6] + delta);
+  minitaur->getJoint("motor_back_rightR_joint")->setPosition(0,IC[7] + delta);
+  minitaur->getJoint("knee_front_leftR_link")->setPosition(0,IC[8]);
+  minitaur->getJoint("knee_back_leftR_link")->setPosition(0,IC[8]);
+  minitaur->getJoint("knee_front_rightL_link")->setPosition(0,IC[8]);
+  minitaur->getJoint("knee_back_rightL_link")->setPosition(0,IC[8]);
 
   // Set gravity of the world
   world->setGravity(Eigen::Vector3d(0.0, 0.0, -9.81));

@@ -36,7 +36,6 @@
 #include <dart/gui/osg/osg.hpp>
 
 #include "minitaurDARTInterface.h"
-#include "Controller.hpp"
 
 class MinitaurWorldNode : public dart::gui::osg::WorldNode
 {
@@ -60,7 +59,6 @@ public:
   void switchToNoControl();
   
 protected:
-  std::unique_ptr<Controller> mController;
   Eigen::Vector3d mExternalForce;
   int mForceDuration;
 };

@@ -150,33 +150,6 @@ Bound.cpp.s:
 	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Bound.cpp.s
 .PHONY : Bound.cpp.s
 
-Controller.o: Controller.cpp.o
-
-.PHONY : Controller.o
-
-# target to build an object file
-Controller.cpp.o:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Controller.cpp.o
-.PHONY : Controller.cpp.o
-
-Controller.i: Controller.cpp.i
-
-.PHONY : Controller.i
-
-# target to preprocess a source file
-Controller.cpp.i:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Controller.cpp.i
-.PHONY : Controller.cpp.i
-
-Controller.s: Controller.cpp.s
-
-.PHONY : Controller.s
-
-# target to generate assembly for a file
-Controller.cpp.s:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Controller.cpp.s
-.PHONY : Controller.cpp.s
-
 Dig.o: Dig.cpp.o
 
 .PHONY : Dig.o
@@ -474,87 +447,6 @@ Remote.cpp.s:
 	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Remote.cpp.s
 .PHONY : Remote.cpp.s
 
-State.o: State.cpp.o
-
-.PHONY : State.o
-
-# target to build an object file
-State.cpp.o:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/State.cpp.o
-.PHONY : State.cpp.o
-
-State.i: State.cpp.i
-
-.PHONY : State.i
-
-# target to preprocess a source file
-State.cpp.i:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/State.cpp.i
-.PHONY : State.cpp.i
-
-State.s: State.cpp.s
-
-.PHONY : State.s
-
-# target to generate assembly for a file
-State.cpp.s:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/State.cpp.s
-.PHONY : State.cpp.s
-
-StateMachine.o: StateMachine.cpp.o
-
-.PHONY : StateMachine.o
-
-# target to build an object file
-StateMachine.cpp.o:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/StateMachine.cpp.o
-.PHONY : StateMachine.cpp.o
-
-StateMachine.i: StateMachine.cpp.i
-
-.PHONY : StateMachine.i
-
-# target to preprocess a source file
-StateMachine.cpp.i:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/StateMachine.cpp.i
-.PHONY : StateMachine.cpp.i
-
-StateMachine.s: StateMachine.cpp.s
-
-.PHONY : StateMachine.s
-
-# target to generate assembly for a file
-StateMachine.cpp.s:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/StateMachine.cpp.s
-.PHONY : StateMachine.cpp.s
-
-TerminalCondition.o: TerminalCondition.cpp.o
-
-.PHONY : TerminalCondition.o
-
-# target to build an object file
-TerminalCondition.cpp.o:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/TerminalCondition.cpp.o
-.PHONY : TerminalCondition.cpp.o
-
-TerminalCondition.i: TerminalCondition.cpp.i
-
-.PHONY : TerminalCondition.i
-
-# target to preprocess a source file
-TerminalCondition.cpp.i:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/TerminalCondition.cpp.i
-.PHONY : TerminalCondition.cpp.i
-
-TerminalCondition.s: TerminalCondition.cpp.s
-
-.PHONY : TerminalCondition.s
-
-# target to generate assembly for a file
-TerminalCondition.cpp.s:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/TerminalCondition.cpp.s
-.PHONY : TerminalCondition.cpp.s
-
 WMath.o: WMath.cpp.o
 
 .PHONY : WMath.o
@@ -729,9 +621,6 @@ help:
 	@echo "... Bound.o"
 	@echo "... Bound.i"
 	@echo "... Bound.s"
-	@echo "... Controller.o"
-	@echo "... Controller.i"
-	@echo "... Controller.s"
 	@echo "... Dig.o"
 	@echo "... Dig.i"
 	@echo "... Dig.s"
@@ -765,15 +654,6 @@ help:
 	@echo "... Remote.o"
 	@echo "... Remote.i"
 	@echo "... Remote.s"
-	@echo "... State.o"
-	@echo "... State.i"
-	@echo "... State.s"
-	@echo "... StateMachine.o"
-	@echo "... StateMachine.i"
-	@echo "... StateMachine.s"
-	@echo "... TerminalCondition.o"
-	@echo "... TerminalCondition.i"
-	@echo "... TerminalCondition.s"
 	@echo "... WMath.o"
 	@echo "... WMath.i"
 	@echo "... WMath.s"

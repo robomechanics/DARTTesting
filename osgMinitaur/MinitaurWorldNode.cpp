@@ -50,33 +50,51 @@ MinitaurWorldNode::MinitaurWorldNode(
   assert(world);
   assert(atlas);
 
-  mController.reset(new Controller(atlas, world->getConstraintSolver()));
-
   interface.setup();
 }
 
 //==============================================================================
 void MinitaurWorldNode::customPreStep()
 {
-  auto chassis = mController->getAtlasRobot()->getBodyNode("base_chassis_link");
+  auto chassis = mWorld->getSkeleton(0)->getBodyNode("base_chassis_link");
   chassis->addExtForce(mExternalForce);
   //mController->update();
-  std::array<dart::dynamics::Joint*,8> hips;
-
-  hips[0] = mWorld->getSkeleton(0)->getJoint("motor_front_leftL_joint");
-  hips[1] = mWorld->getSkeleton(0)->getJoint("motor_front_leftR_joint");
-  hips[2] = mWorld->getSkeleton(0)->getJoint("motor_back_leftL_joint");
-  hips[3] = mWorld->getSkeleton(0)->getJoint("motor_back_leftR_joint");
-  hips[4] = mWorld->getSkeleton(0)->getJoint("motor_front_rightL_joint");
-  hips[5] = mWorld->getSkeleton(0)->getJoint("motor_front_rightR_joint");
-  hips[6] = mWorld->getSkeleton(0)->getJoint("motor_back_rightL_joint");
-  hips[7] = mWorld->getSkeleton(0)->getJoint("motor_back_rightR_joint");
+  std::array<dart::dynamics::Joint*,4> angles;
+  std::array<dart::dynamics::Joint*,4> extensions;
+  float toePos[2];
+  float motorCommands[2];
+  float dartCommands[2];
+  float l1 = 0.1; //m
+  float l2 = 0.2; //m
 
 
-  for(int i=0;i<8;++i){
-    DARTMotorPos[i] = hips[i]->getDof(0)->getPosition();
-    DARTMotorVel[i] = hips[i]->getDof(0)->getVelocity();
+  angles[0] = mWorld->getSkeleton(0)->getJoint("motor_front_leftR_joint");
+  angles[1] = mWorld->getSkeleton(0)->getJoint("motor_back_leftR_joint");
+  angles[2] = mWorld->getSkeleton(0)->getJoint("motor_front_rightL_joint");
+  angles[3] = mWorld->getSkeleton(0)->getJoint("motor_back_rightL_joint");
+  extensions[0] = mWorld->getSkeleton(0)->getJoint("knee_front_leftR_link");
+  extensions[1] = mWorld->getSkeleton(0)->getJoint("knee_back_leftR_link");
+  extensions[2] = mWorld->getSkeleton(0)->getJoint("knee_front_rightL_link");
+  extensions[3] = mWorld->getSkeleton(0)->getJoint("knee_back_rightL_link");
+
+  for(int i=0;i<4;++i){
+    toePos[0] = extensions[i]->getDof(0)->getPosition() + l1;
+    toePos[1] = dart::math::wrapToPi(angles[i]->getDof(0)->getPosition());
+
+    float diffAng = PI - acosf((l1*l1 - l2*l2 + toePos[0]*toePos[0])/(2*l1*toePos[0]));
+
+    // Invert the mean/diff coordinate change
+
+    DARTMotorPos[2*i] = dart::math::wrapToPi(diffAng + ((i<2) ? toePos[1] : (-toePos[1])));
+    DARTMotorPos[2*i+1] = dart::math::wrapToPi(diffAng - ((i<2) ? toePos[1] : (-toePos[1])));
+
+    std::cout << std::endl;
   }
+
+  // for(int i=0;i<8;++i){
+  //   DARTMotorPos[i] = angles[i]->getDof(0)->getPosition();
+  //   DARTMotorVel[i] = angles[i]->getDof(0)->getVelocity();
+  // }
   DARTTime = mWorld->getTime();
   std::cout << "t = " << DARTTime << " s" << std::endl;
 
@@ -94,10 +112,33 @@ void MinitaurWorldNode::customPreStep()
 
   interface.update();
 
-  for(int i = 0;i<8;++i){
+
+  for(int i = 0;i<4;++i){
+    motorCommands[(i<2) ? 0 : 1] = DARTMotorCommand[2*i];
+    motorCommands[(i<2) ? 1 : 0] = DARTMotorCommand[2*i+1];
+
+    float thetaOut = DARTMotorPos[2*i + ((i<2) ? 0 : 1)];
+    float thetaIn  = DARTMotorPos[2*i + ((i<2) ? 1 : 0)];
+    float meanAng = 0.5*(thetaOut - thetaIn);
+    float diffAng = 0.5*(thetaOut + thetaIn);
+    float meanTorque = (motorCommands[0] - motorCommands[1])*0.5;
+    float diffTorque = (motorCommands[0] + motorCommands[1])*0.5;
+
+
+    float angDartCommand = meanTorque;
+    float extDartCommand = (-l1*sin(diffAng) + (-l1*cos(diffAng)*l1*sin(diffAng)/sqrt(l2*l2 - pow(l1*sin(diffAng),2))))*diffTorque;
+
     //std::cout << DARTMotorCommand[i] << "\t";//DARTMotorCommand[i] = 100.0; //This will be replaced with actual commands from DART
-    hips[i]->getDof(0)->setForce(DARTMotorCommand[i]);
-    // std::cout << hips[i]->getDof(0)->getForce() << "\t";
+    extensions[i]->getDof(0)->setForce(extDartCommand);
+    //angles[i]->getDof(0)->setForce(angDartCommand);
+
+    std::cout << "Leg " << i << ":" << std::endl;
+    std::cout << "Inside sqrt: " << l2*l2 - pow(l1*sin(diffAng),2) << std::endl;
+    std::cout << "diffAng: " << diffAng << std::endl;
+    std::cout << "meanAng: " << meanAng << std::endl;
+    std::cout << "Ext: " << extDartCommand << std::endl;
+    std::cout << "Ang: " << angDartCommand << std::endl;
+    // std::cout << angles[i]->getDof(0)->getForce() << "\t";
   }
 
   // std::cout << "DARTMotor Pos " << DARTMotorPos[0] << std::endl;
@@ -105,28 +146,18 @@ void MinitaurWorldNode::customPreStep()
   // std::cout << "GR Motor Pos " << M[0].getPosition() << std::endl;
 
   // Set new tail force to 0 for testing purposes
-  auto tailForce = mWorld->getSkeleton(0)->getBodyNode("rotor_tail")->getParentJoint()->getDof(0)->getForce();
+  mWorld->getSkeleton(0)->getBodyNode("rotor_tail")->getParentJoint()->getDof(0)->setForce(0);
   // std::cout << rcCmd[0] << "\t" << rcCmd[1] << "\t" <<rcCmd[2] << "\t" <<rcCmd[3] << "\t" <<rcCmd[4] << "\t" <<rcCmd[5] <<std::endl;
   if (mForceDuration > 0)
     mForceDuration--;
   else
     mExternalForce.setZero();
-
-  auto rotorJoint = mWorld->getSkeleton(2)->getJoint("rotor_joint");
-  rotorJoint->getDof(0)->setForce(0.05);
-  std::cout << "Simple motor velocity: " << rotorJoint->getDof(0)->getVelocity() << std::endl;
-
-
-  hips[0]->getDof(0)->setForce(0.05);
-  std::cout << "motor_front_leftL velocity: " << hips[0]->getDof(0)->getVelocity() << std::endl;
-
 }
 
 //==============================================================================
 void MinitaurWorldNode::reset()
 {
   mExternalForce.setZero();
-  mController->resetRobot();
 }
 
 //==============================================================================
@@ -160,17 +191,14 @@ void MinitaurWorldNode::pushRightAtlas(double force, int frames)
 //==============================================================================
 void MinitaurWorldNode::switchToNormalStrideWalking()
 {
-  mController->changeStateMachine("walking", mWorld->getTime());
 }
 
 //==============================================================================
 void MinitaurWorldNode::switchToWarmingUp()
 {
-  mController->changeStateMachine("warming up", mWorld->getTime());
 }
 
 //==============================================================================
 void MinitaurWorldNode::switchToNoControl()
 {
-  mController->changeStateMachine("standing", mWorld->getTime());
 }

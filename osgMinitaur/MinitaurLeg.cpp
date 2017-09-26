@@ -58,7 +58,7 @@ void MinitaurLeg::abstractToPhysical(const float toeForce[2], float jointTorque[
     // Use jacobian?
     float meanAng = 0, diffAng = 0;
     meanDiffAngles(physicalPos, &meanAng, &diffAng);
-
+std::cout << physicalPos[0] << " <- mean ang, diff ang-> " << physicalPos[1] << std::endl;
     float l1proj = l1*arm_sin_f32(meanAng);
     fmean = (l1*arm_sin_f32(meanAng) - l1*l1*arm_cos_f32(meanAng)*arm_sin_f32(meanAng)/sqrtf(l2*l2 - l1proj*l1proj)) * toeForce[EXTENSION];
   } else {

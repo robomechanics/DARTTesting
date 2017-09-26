@@ -12,7 +12,7 @@ void Dig::begin() {
 }
 
 void Dig::update() {
-  // std::cout << "Dig update" << std::endl;
+  //std::cout << "Dig update" << std::endl;
   MinitaurLeg::useLengths = false;
   
   float standAng = 0,standExt = 1.57; 
@@ -36,8 +36,8 @@ void Dig::update() {
     // M[i].setPosition(1.5*PI);
     leg[i].setGain(ANGLE,1);
     leg[i].setGain(EXTENSION,1);
-    leg[i].setPosition(ANGLE,0.25*PI);
-    leg[i].setPosition(EXTENSION,0*PI);
+    leg[i].setPosition(ANGLE,0.0*PI);
+    leg[i].setPosition(EXTENSION,0.5*PI);
     // std::cout << leg[i].getPosition(ANGLE) << '\t';
     // std::cout << leg[i].getPosition(EXTENSION) << '\t';
   }

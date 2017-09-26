@@ -257,7 +257,7 @@ CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 DART_DEFINITIONS:INTERNAL=
 DART_INCLUDE_DIRS:INTERNAL=/usr/local/include
-DART_LIBRARIES:INTERNAL=dart-utils-urdf;dart-gui-osg;dart
+DART_LIBRARIES:INTERNAL=dart-utils-urdf;dart-gui-osg;dart;dart-utils-urdf;dart-gui-osg;dart;dart-utils-urdf;dart-gui-osg;dart;dart-utils-urdf;dart-gui-osg;dart;dart-utils-urdf;dart-gui-osg;dart
 DART_dart_DEFINITIONS:INTERNAL=
 DART_dart_DEPENDENCIES:INTERNAL=external-odelcpsolver
 DART_dart_FOUND:INTERNAL=TRUE
@@ -274,5 +274,5 @@ DART_utils-urdf_FOUND:INTERNAL=TRUE
 DART_utils-urdf_INCLUDE_DIRS:INTERNAL=
 DART_utils-urdf_LIBRARIES:INTERNAL=dart-utils-urdf
 //Details about finding DART
-FIND_PACKAGE_MESSAGE_DETAILS_DART:INTERNAL=[/usr/local/include][dart-utils-urdf;dart-gui-osg;dart][cfound components:  utils-urdf gui-osg dart ][v(6.1.1)]
+FIND_PACKAGE_MESSAGE_DETAILS_DART:INTERNAL=[/usr/local/include][dart-utils-urdf;dart-gui-osg;dart;dart-utils-urdf;dart-gui-osg;dart;dart-utils-urdf;dart-gui-osg;dart;dart-utils-urdf;dart-gui-osg;dart;dart-utils-urdf;dart-gui-osg;dart][cfound components:  utils-urdf gui-osg dart ][v(6.1.1)]
 
