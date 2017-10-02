@@ -78,17 +78,15 @@ void MinitaurWorldNode::customPreStep()
   extensions[3] = mWorld->getSkeleton(0)->getJoint("knee_back_rightL_link");
 
   for(int i=0;i<4;++i){
-    toePos[0] = extensions[i]->getDof(0)->getPosition() + l1;
+    toePos[0] = extensions[i]->getDof(0)->getPosition();
     toePos[1] = dart::math::wrapToPi(angles[i]->getDof(0)->getPosition());
 
     float diffAng = PI - acosf((l1*l1 - l2*l2 + toePos[0]*toePos[0])/(2*l1*toePos[0]));
 
     // Invert the mean/diff coordinate change
 
-    DARTMotorPos[2*i] = dart::math::wrapToPi(diffAng + ((i<2) ? toePos[1] : (-toePos[1])));
-    DARTMotorPos[2*i+1] = dart::math::wrapToPi(diffAng - ((i<2) ? toePos[1] : (-toePos[1])));
-
-    std::cout << std::endl;
+    DARTMotorPos[2*i+1] = dart::math::wrapToPi(diffAng + ((i<2) ? toePos[1] : (-toePos[1])));
+    DARTMotorPos[2*i] = dart::math::wrapToPi(diffAng - ((i<2) ? toePos[1] : (-toePos[1])));
   }
 
   // for(int i=0;i<8;++i){
@@ -112,10 +110,25 @@ void MinitaurWorldNode::customPreStep()
 
   interface.update();
 
+  for(int i = 0;i<8;++i){
+    std::cout << "DARTMotorPos: " << DARTMotorPos[i] << std::endl;
+    std::cout << "getPosition (ANGLE): " << leg[i/2].getPosition(ANGLE) << std::endl;
+  }
+
 
   for(int i = 0;i<4;++i){
-    motorCommands[(i<2) ? 0 : 1] = DARTMotorCommand[2*i];
-    motorCommands[(i<2) ? 1 : 0] = DARTMotorCommand[2*i+1];
+    
+    // motorCommands[(i<2) ? 1 : 0] = DARTMotorCommand[2*i];
+    // motorCommands[(i<2) ? 0 : 1] = DARTMotorCommand[2*i+1];
+    // leg[i].useLengths = true;
+    // leg[i].physicalToAbstract(motorCommands, dartCommands);
+    // leg[i].useLengths = false;
+    // float extDartCommand = dartCommands[0];
+    // float angDartCommand = dartCommands[1];
+
+
+    motorCommands[(i<2) ? 1 : 0] = DARTMotorCommand[2*i];
+    motorCommands[(i<2) ? 0 : 1] = DARTMotorCommand[2*i+1];
 
     float thetaOut = DARTMotorPos[2*i + ((i<2) ? 0 : 1)];
     float thetaIn  = DARTMotorPos[2*i + ((i<2) ? 1 : 0)];
@@ -124,21 +137,22 @@ void MinitaurWorldNode::customPreStep()
     float meanTorque = (motorCommands[0] - motorCommands[1])*0.5;
     float diffTorque = (motorCommands[0] + motorCommands[1])*0.5;
 
-
     float angDartCommand = meanTorque;
-    float extDartCommand = (-l1*sin(diffAng) + (-l1*cos(diffAng)*l1*sin(diffAng)/sqrt(l2*l2 - pow(l1*sin(diffAng),2))))*diffTorque;
+    float extDartCommand = (l1*sin(diffAng) + (-l1*cos(diffAng)*l1*sin(diffAng)/sqrt(l2*l2 - pow(l1*sin(diffAng),2))))*diffTorque;
+
 
     //std::cout << DARTMotorCommand[i] << "\t";//DARTMotorCommand[i] = 100.0; //This will be replaced with actual commands from DART
     extensions[i]->getDof(0)->setForce(extDartCommand);
-    //angles[i]->getDof(0)->setForce(angDartCommand);
+    angles[i]->getDof(0)->setForce(angDartCommand);
 
     std::cout << "Leg " << i << ":" << std::endl;
-    std::cout << "Inside sqrt: " << l2*l2 - pow(l1*sin(diffAng),2) << std::endl;
-    std::cout << "diffAng: " << diffAng << std::endl;
-    std::cout << "meanAng: " << meanAng << std::endl;
+    std::cout << "Motor Commands (out, in): " << motorCommands[1] << ", " << motorCommands[0] << std::endl;
+    std::cout << "Leg Commands (angle, extension): " << angDartCommand << ", " << extDartCommand << std::endl;
+    // std::cout << "Inside sqrt: " << l2*l2 - pow(l1*sin(diffAng),2) << std::endl;
+    // std::cout << "diffAng: " << diffAng << std::endl;
+    // std::cout << "meanAng: " << meanAng << std::endl;
     std::cout << "Ext: " << extDartCommand << std::endl;
     std::cout << "Ang: " << angDartCommand << std::endl;
-    // std::cout << angles[i]->getDof(0)->getForce() << "\t";
   }
 
   // std::cout << "DARTMotor Pos " << DARTMotorPos[0] << std::endl;

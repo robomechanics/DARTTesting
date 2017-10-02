@@ -34,10 +34,10 @@ void Dig::update() {
     // M[i].setOpenLoop(1);
     // M[i].setGain(10);
     // M[i].setPosition(1.5*PI);
-    leg[i].setGain(ANGLE,1);
-    leg[i].setGain(EXTENSION,1);
-    leg[i].setPosition(ANGLE,0.0*PI);
-    leg[i].setPosition(EXTENSION,0.5*PI);
+    leg[i].setGain(ANGLE,1, 0.1);
+    leg[i].setGain(EXTENSION,1, 0.1);
+    // leg[i].setPosition(ANGLE,0.0*PI);
+    // leg[i].setPosition(EXTENSION,0.5*PI);
     // std::cout << leg[i].getPosition(ANGLE) << '\t';
     // std::cout << leg[i].getPosition(EXTENSION) << '\t';
   }
@@ -48,12 +48,12 @@ void Dig::update() {
   }
 
 
-/*
-  for(int i=0; i<4; ++i){
-    leg[i].setGain(ANGLE, kAng+0.1);
-    leg[i].setGain(EXTENSION, kExt);
-  }
-  leg[0].setGain(EXTENSION, kExt/4);
+
+  // for(int i=0; i<4; ++i){
+  //   leg[i].setGain(ANGLE, kAng+0.1);
+  //   leg[i].setGain(EXTENSION, kExt);
+  // }
+  // leg[0].setGain(EXTENSION, kExt/4);
 
   for(int i=0; i<4;++i){
     leg[i].setPosition(ANGLE, standAng);
@@ -83,7 +83,7 @@ void Dig::update() {
       leg[0].setPosition(ANGLE, (standAng - sweep) + (float)(time-(tReady+tLower+tSweep+tRaise))*(sweep)/(float)(tReturn));
       leg[0].setPosition(EXTENSION, standExt + lift); 
   }
-  */
+
 
 //  
 //  Serial1.print(time);    

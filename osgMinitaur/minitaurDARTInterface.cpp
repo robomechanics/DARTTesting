@@ -13,7 +13,7 @@ const bool REMOTE_RC_6CH = true;//false if only 4 channels connected
 
 
 // This must be set per robot zeros must be checked before running!
-const float motZeros[8] = {0,PI,0,PI,PI,0,PI,0}; //DART Mini
+const float motZeros[8] = {0,0,0,0,0,0,0,0}; //DART Mini
 //const float motZeros[8] = {0.631, 4.076, 1.852, 3.414, 1.817, 1.169, 1.078, 6.252}; //RML Mini
 //const float motZeros[8] = {2.041, 1.616, 5.522, 2.484, 1.712, 5.356, 0.652, 2.017}; // MLab Mini
 

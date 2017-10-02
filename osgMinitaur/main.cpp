@@ -220,13 +220,13 @@ int main(int argc, char* argv[])
  auto frontRL = minitaur->getBodyNode("lower_leg_front_rightL_link");
  auto backLR = minitaur->getBodyNode("lower_leg_back_leftR_link");
  auto backRL = minitaur->getBodyNode("lower_leg_back_rightL_link");
- minitaur->getJoint("knee_front_leftR_link")->getDof(0)->setPositionLimits(0.01,0.19);
+ minitaur->getJoint("knee_front_leftR_link")->getDof(0)->setPositionLimits(0.11,0.29);
  minitaur->getJoint("knee_front_leftR_link")->setPositionLimitEnforced(true);
- minitaur->getJoint("knee_back_leftR_link")->getDof(0)->setPositionLimits(0.01,0.19);
+ minitaur->getJoint("knee_back_leftR_link")->getDof(0)->setPositionLimits(0.11,0.29);
  minitaur->getJoint("knee_back_leftR_link")->setPositionLimitEnforced(true);
- minitaur->getJoint("knee_front_rightL_link")->getDof(0)->setPositionLimits(0.01,0.19);
+ minitaur->getJoint("knee_front_rightL_link")->getDof(0)->setPositionLimits(0.11,0.29);
  minitaur->getJoint("knee_front_rightL_link")->setPositionLimitEnforced(true);
- minitaur->getJoint("knee_back_rightL_link")->getDof(0)->setPositionLimits(0.01,0.19);
+ minitaur->getJoint("knee_back_rightL_link")->getDof(0)->setPositionLimits(0.11,0.29);
  minitaur->getJoint("knee_back_rightL_link")->setPositionLimitEnforced(true);
 
  // Eigen::Vector3d offset(0.0, 0.0, -0.2);
