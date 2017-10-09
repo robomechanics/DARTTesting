@@ -43,7 +43,7 @@
     <child link="rotor"/>
     <origin rpy="0 0 3.14159" xyz="0.0 0 -0.025"/>
     <limit effort="100" velocity="1000"/>
-    <joint_properties damping="0.0" friction="0.0"/>
+    <joint_properties damping="10000.0" friction="0.0"/>
   </joint>
   
   

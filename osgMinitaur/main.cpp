@@ -192,42 +192,42 @@ int main(int argc, char* argv[])
   // Load ground and Atlas robot and add them to the world
   dart::utils::DartLoader loader;
   auto minitaur = loader.parseSkeleton("dart://sample/urdf/minitaur/quadrupedPrismaticOdie.urdf");
-  //auto motor = loader.parseSkeleton("dart://sample/urdf/minitaur/motorunit.urdf");
+  auto motor = loader.parseSkeleton("dart://sample/urdf/minitaur/motorunit.urdf");
   auto ground = loader.parseSkeleton("dart://sample/urdf/minitaur/ground.urdf");
 
 
-  auto chassis = minitaur->getBodyNode("base_chassis_link");
-  auto tailRotor = minitaur->getBodyNode("rotor_tail");
-  BodyNode* tailShaft = addTailShaft(minitaur, tailRotor, "tailShaft");
-  BodyNode* tailMass = addTailMass(minitaur, tailShaft, "tailMass");
+  // auto chassis = minitaur->getBodyNode("base_chassis_link");
+  // auto tailRotor = minitaur->getBodyNode("rotor_tail");
+  // BodyNode* tailShaft = addTailShaft(minitaur, tailRotor, "tailShaft");
+  // BodyNode* tailMass = addTailMass(minitaur, tailShaft, "tailMass");
 
   // minitaur->getBodyNode("tailShaft")->getParentJoint()->getDof(0)->setPosition(1);
 
-  world->addSkeleton(minitaur);
+  world->addSkeleton(motor);
   world->addSkeleton(ground);
 
   // Set initial configuration for Minitaur robot
   using namespace dart::math::suffixes;
   // minitaur->setPosition(0, 180_deg);
-  minitaur->setPosition(0, 0);
-  minitaur->setPosition(5, 0.3);
+  // minitaur->setPosition(0, 0);
+  // minitaur->setPosition(5, 0.3);
 
-  // motor->setPosition(0, 0);
-  // motor->setPosition(5, 1.5);
-  // motor->setPosition(4, 1);
+  motor->setPosition(0, 0);
+  motor->setPosition(5, 0.5);
+  motor->setPosition(4, 0);
 
- auto frontLR = minitaur->getBodyNode("lower_leg_front_leftR_link");
- auto frontRL = minitaur->getBodyNode("lower_leg_front_rightL_link");
- auto backLR = minitaur->getBodyNode("lower_leg_back_leftR_link");
- auto backRL = minitaur->getBodyNode("lower_leg_back_rightL_link");
- minitaur->getJoint("knee_front_leftR_link")->getDof(0)->setPositionLimits(0.11,0.29);
- minitaur->getJoint("knee_front_leftR_link")->setPositionLimitEnforced(true);
- minitaur->getJoint("knee_back_leftR_link")->getDof(0)->setPositionLimits(0.11,0.29);
- minitaur->getJoint("knee_back_leftR_link")->setPositionLimitEnforced(true);
- minitaur->getJoint("knee_front_rightL_link")->getDof(0)->setPositionLimits(0.11,0.29);
- minitaur->getJoint("knee_front_rightL_link")->setPositionLimitEnforced(true);
- minitaur->getJoint("knee_back_rightL_link")->getDof(0)->setPositionLimits(0.11,0.29);
- minitaur->getJoint("knee_back_rightL_link")->setPositionLimitEnforced(true);
+ // auto frontLR = minitaur->getBodyNode("lower_leg_front_leftR_link");
+ // auto frontRL = minitaur->getBodyNode("lower_leg_front_rightL_link");
+ // auto backLR = minitaur->getBodyNode("lower_leg_back_leftR_link");
+ // auto backRL = minitaur->getBodyNode("lower_leg_back_rightL_link");
+ // minitaur->getJoint("knee_front_leftR_link")->getDof(0)->setPositionLimits(0.11,0.29);
+ // minitaur->getJoint("knee_front_leftR_link")->setPositionLimitEnforced(true);
+ // minitaur->getJoint("knee_back_leftR_link")->getDof(0)->setPositionLimits(0.11,0.29);
+ // minitaur->getJoint("knee_back_leftR_link")->setPositionLimitEnforced(true);
+ // minitaur->getJoint("knee_front_rightL_link")->getDof(0)->setPositionLimits(0.11,0.29);
+ // minitaur->getJoint("knee_front_rightL_link")->setPositionLimitEnforced(true);
+ // minitaur->getJoint("knee_back_rightL_link")->getDof(0)->setPositionLimits(0.11,0.29);
+ // minitaur->getJoint("knee_back_rightL_link")->setPositionLimitEnforced(true);
 
  // Eigen::Vector3d offset(0.0, 0.0, -0.2);
  // auto constFrontLeft = std::make_shared<dart::constraint::BallJointConstraint>(
@@ -245,27 +245,27 @@ int main(int argc, char* argv[])
 
   // double IC[] = {PI,0,PI,0,0,PI,0,PI};
   // double IC[] = {0,PI,0,PI,PI,0,PI,0,0.2};
-  double IC[] = {0,0,0,0,0,0,0,0,0.2};
-  double delta = 0.01;
-  minitaur->getJoint("motor_front_leftL_joint")->setPosition(0,IC[0] + delta);
-  minitaur->getJoint("motor_front_leftR_joint")->setPosition(0,IC[1] + delta);
-  minitaur->getJoint("motor_back_leftL_joint")->setPosition(0,IC[2] + delta);
-  minitaur->getJoint("motor_back_leftR_joint")->setPosition(0,IC[3] + delta);
-  minitaur->getJoint("motor_front_rightL_joint")->setPosition(0,IC[4] + delta);
-  minitaur->getJoint("motor_front_rightR_joint")->setPosition(0,IC[5] + delta);
-  minitaur->getJoint("motor_back_rightL_joint")->setPosition(0,IC[6] + delta);
-  minitaur->getJoint("motor_back_rightR_joint")->setPosition(0,IC[7] + delta);
-  minitaur->getJoint("knee_front_leftR_link")->setPosition(0,IC[8]);
-  minitaur->getJoint("knee_back_leftR_link")->setPosition(0,IC[8]);
-  minitaur->getJoint("knee_front_rightL_link")->setPosition(0,IC[8]);
-  minitaur->getJoint("knee_back_rightL_link")->setPosition(0,IC[8]);
+  // double IC[] = {0,0,0,0,0,0,0,0,0.2};
+  // double delta = 0.01;
+  // minitaur->getJoint("motor_front_leftL_joint")->setPosition(0,IC[0] + delta);
+  // minitaur->getJoint("motor_front_leftR_joint")->setPosition(0,IC[1] + delta);
+  // minitaur->getJoint("motor_back_leftL_joint")->setPosition(0,IC[2] + delta);
+  // minitaur->getJoint("motor_back_leftR_joint")->setPosition(0,IC[3] + delta);
+  // minitaur->getJoint("motor_front_rightL_joint")->setPosition(0,IC[4] + delta);
+  // minitaur->getJoint("motor_front_rightR_joint")->setPosition(0,IC[5] + delta);
+  // minitaur->getJoint("motor_back_rightL_joint")->setPosition(0,IC[6] + delta);
+  // minitaur->getJoint("motor_back_rightR_joint")->setPosition(0,IC[7] + delta);
+  // minitaur->getJoint("knee_front_leftR_link")->setPosition(0,IC[8]);
+  // minitaur->getJoint("knee_back_leftR_link")->setPosition(0,IC[8]);
+  // minitaur->getJoint("knee_front_rightL_link")->setPosition(0,IC[8]);
+  // minitaur->getJoint("knee_back_rightL_link")->setPosition(0,IC[8]);
 
   // Set gravity of the world
   // world->setGravity(Eigen::Vector3d(0.0, 0.0, -9.81));
   world->setGravity(Eigen::Vector3d(0.0, 0.0, 0));
   // Wrap a WorldNode around it
   osg::ref_ptr<MinitaurWorldNode> node
-      = new MinitaurWorldNode(world, minitaur);
+      = new MinitaurWorldNode(world, motor);
   node->setNumStepsPerCycle(20);
 
   // Create a Viewer and set it up with the WorldNode
