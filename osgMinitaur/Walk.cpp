@@ -101,7 +101,6 @@ void Walk::update() {
   // Forces
   // const float kTDthresh = 5;//;
 
-
   // Variables ----------------------------------------------------------------
   float rollDes = 0;//(nextFlightLeg > 1) ? -0.1 : 0.1;
   // float rollDes = yawDes;

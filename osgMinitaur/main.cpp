@@ -210,7 +210,7 @@ int main(int argc, char* argv[])
   using namespace dart::math::suffixes;
   // minitaur->setPosition(0, 180_deg);
   minitaur->setPosition(0, 0);
-  minitaur->setPosition(5, 0.5);
+  minitaur->setPosition(5, 0.3);
 
   // motor->setPosition(0, 0);
   // motor->setPosition(5, 1.5);
@@ -245,7 +245,7 @@ int main(int argc, char* argv[])
 
   // double IC[] = {PI,0,PI,0,0,PI,0,PI};
   // double IC[] = {0,PI,0,PI,PI,0,PI,0,0.2};
-  double IC[] = {0,0,0,0,0,0,0,0,0.1};
+  double IC[] = {0,0,0,0,0,0,0,0,0.2};
   double delta = 0.01;
   minitaur->getJoint("motor_front_leftL_joint")->setPosition(0,IC[0] + delta);
   minitaur->getJoint("motor_front_leftR_joint")->setPosition(0,IC[1] + delta);
@@ -261,8 +261,8 @@ int main(int argc, char* argv[])
   minitaur->getJoint("knee_back_rightL_link")->setPosition(0,IC[8]);
 
   // Set gravity of the world
-  world->setGravity(Eigen::Vector3d(0.0, 0.0, -9.81));
-  // world->setGravity(Eigen::Vector3d(0.0, 0.0, 0));
+  // world->setGravity(Eigen::Vector3d(0.0, 0.0, -9.81));
+  world->setGravity(Eigen::Vector3d(0.0, 0.0, 0));
   // Wrap a WorldNode around it
   osg::ref_ptr<MinitaurWorldNode> node
       = new MinitaurWorldNode(world, minitaur);

@@ -62,7 +62,7 @@ void MinitaurWorldNode::customPreStep()
   std::array<dart::dynamics::Joint*,4> angles;
   std::array<dart::dynamics::Joint*,4> extensions;
   float toePos[2];
-  float motorCommands[2];
+  
   float dartCommands[2];
   float l1 = 0.1; //m
   float l2 = 0.2; //m
@@ -126,19 +126,44 @@ void MinitaurWorldNode::customPreStep()
     // float extDartCommand = dartCommands[0];
     // float angDartCommand = dartCommands[1];
 
+    Eigen::Vector2d motorCommands;
+    Eigen::Matrix2d J1;
+    Eigen::Matrix2d J2;
+    Eigen::Matrix2d J;
+    Eigen::Matrix2d JT;
+    Eigen::Vector2d f;
 
-    motorCommands[(i<2) ? 1 : 0] = DARTMotorCommand[2*i];
-    motorCommands[(i<2) ? 0 : 1] = DARTMotorCommand[2*i+1];
+    motorCommands(0) = DARTMotorCommand[2*i + ((i<2) ? 1 : 0)];
+    motorCommands(1) = DARTMotorCommand[2*i + ((i<2) ? 0 : 1)];
 
-    float thetaOut = DARTMotorPos[2*i + ((i<2) ? 0 : 1)];
     float thetaIn  = DARTMotorPos[2*i + ((i<2) ? 1 : 0)];
-    float meanAng = 0.5*(thetaOut - thetaIn);
+    float thetaOut = DARTMotorPos[2*i + ((i<2) ? 0 : 1)];
+    float meanAng = 0.5*(thetaIn - thetaOut);
     float diffAng = 0.5*(thetaOut + thetaIn);
     float meanTorque = (motorCommands[0] - motorCommands[1])*0.5;
     float diffTorque = (motorCommands[0] + motorCommands[1])*0.5;
 
-    float angDartCommand = meanTorque;
-    float extDartCommand = (l1*sin(diffAng) + (-l1*cos(diffAng)*l1*sin(diffAng)/sqrt(l2*l2 - pow(l1*sin(diffAng),2))))*diffTorque;
+    
+    J1(0,0) = (l1*sin(diffAng) + (-l1*cos(diffAng)*l1*sin(diffAng)/sqrt(l2*l2 - pow(l1*sin(diffAng),2))));
+    J1(0,1) = 0;
+    J1(1,0) = 0;
+    J1(1,1) = 1;
+    J2(0,0) = 0.5;
+    J2(0,1) = 0.5;
+    J2(1,0) = 0.5;
+    J2(1,1) = -0.5;
+
+
+    J = J1*J2;
+    JT = J.transpose();
+    f = JT.inverse()*motorCommands;
+
+
+    float extDartCommand = f(0);
+    float angDartCommand = f(1);
+
+    // float angDartCommand = meanTorque;
+    // float extDartCommand = (l1*sin(diffAng) + (-l1*cos(diffAng)*l1*sin(diffAng)/sqrt(l2*l2 - pow(l1*sin(diffAng),2))))*diffTorque;
 
 
     //std::cout << DARTMotorCommand[i] << "\t";//DARTMotorCommand[i] = 100.0; //This will be replaced with actual commands from DART
@@ -146,8 +171,8 @@ void MinitaurWorldNode::customPreStep()
     angles[i]->getDof(0)->setForce(angDartCommand);
 
     std::cout << "Leg " << i << ":" << std::endl;
-    std::cout << "Motor Commands (out, in): " << motorCommands[1] << ", " << motorCommands[0] << std::endl;
-    std::cout << "Leg Commands (angle, extension): " << angDartCommand << ", " << extDartCommand << std::endl;
+    std::cout << "Motor Commands (in, out): " << motorCommands[0] << ", " << motorCommands[1] << std::endl;
+    std::cout << "Leg Commands (extension, angle): " << extDartCommand << ", " << angDartCommand << std::endl;
     // std::cout << "Inside sqrt: " << l2*l2 - pow(l1*sin(diffAng),2) << std::endl;
     // std::cout << "diffAng: " << diffAng << std::endl;
     // std::cout << "meanAng: " << meanAng << std::endl;
@@ -160,7 +185,11 @@ void MinitaurWorldNode::customPreStep()
   // std::cout << "GR Motor Pos " << M[0].getPosition() << std::endl;
 
   // Set new tail force to 0 for testing purposes
-  mWorld->getSkeleton(0)->getBodyNode("rotor_tail")->getParentJoint()->getDof(0)->setForce(0);
+  float tailPos = mWorld->getSkeleton(0)->getBodyNode("rotor_tail")->getParentJoint()->getDof(0)->getPosition();
+  float tailVel = mWorld->getSkeleton(0)->getBodyNode("rotor_tail")->getParentJoint()->getDof(0)->getVelocity();
+  float kp = 10;
+  float kd = 1;
+  mWorld->getSkeleton(0)->getBodyNode("rotor_tail")->getParentJoint()->getDof(0)->setForce(-kp*tailPos - kd*tailVel);
   // std::cout << rcCmd[0] << "\t" << rcCmd[1] << "\t" <<rcCmd[2] << "\t" <<rcCmd[3] << "\t" <<rcCmd[4] << "\t" <<rcCmd[5] <<std::endl;
   if (mForceDuration > 0)
     mForceDuration--;

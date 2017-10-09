@@ -49,17 +49,17 @@ void Dig::update() {
 
 
 
-  // for(int i=0; i<4; ++i){
-  //   leg[i].setGain(ANGLE, kAng+0.1);
-  //   leg[i].setGain(EXTENSION, kExt);
-  // }
-  // leg[0].setGain(EXTENSION, kExt/4);
+  for(int i=0; i<4; ++i){
+    leg[i].setGain(ANGLE, kAng+0.1);
+    leg[i].setGain(EXTENSION, kExt);
+  }
+  leg[0].setGain(EXTENSION, kExt);
 
   for(int i=0; i<4;++i){
     leg[i].setPosition(ANGLE, standAng);
     leg[i].setPosition(EXTENSION, standExt);
   }
-  leg[3].setPosition(EXTENSION, standExt/2);
+  leg[3].setPosition(EXTENSION, standExt/1.4);
   
   standExt = 2;  
   
