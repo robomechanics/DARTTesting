@@ -35,8 +35,6 @@
 #include <dart/utils/utils.hpp>
 #include <dart/gui/osg/osg.hpp>
 
-#include "minitaurDARTInterface.h"
-
 class MinitaurWorldNode : public dart::gui::osg::WorldNode
 {
 public:

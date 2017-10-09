@@ -123,141 +123,6 @@ osgMinitaur/fast:
 	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/build
 .PHONY : osgMinitaur/fast
 
-Bound.o: Bound.cpp.o
-
-.PHONY : Bound.o
-
-# target to build an object file
-Bound.cpp.o:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Bound.cpp.o
-.PHONY : Bound.cpp.o
-
-Bound.i: Bound.cpp.i
-
-.PHONY : Bound.i
-
-# target to preprocess a source file
-Bound.cpp.i:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Bound.cpp.i
-.PHONY : Bound.cpp.i
-
-Bound.s: Bound.cpp.s
-
-.PHONY : Bound.s
-
-# target to generate assembly for a file
-Bound.cpp.s:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Bound.cpp.s
-.PHONY : Bound.cpp.s
-
-Dig.o: Dig.cpp.o
-
-.PHONY : Dig.o
-
-# target to build an object file
-Dig.cpp.o:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Dig.cpp.o
-.PHONY : Dig.cpp.o
-
-Dig.i: Dig.cpp.i
-
-.PHONY : Dig.i
-
-# target to preprocess a source file
-Dig.cpp.i:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Dig.cpp.i
-.PHONY : Dig.cpp.i
-
-Dig.s: Dig.cpp.s
-
-.PHONY : Dig.s
-
-# target to generate assembly for a file
-Dig.cpp.s:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Dig.cpp.s
-.PHONY : Dig.cpp.s
-
-Flip.o: Flip.cpp.o
-
-.PHONY : Flip.o
-
-# target to build an object file
-Flip.cpp.o:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Flip.cpp.o
-.PHONY : Flip.cpp.o
-
-Flip.i: Flip.cpp.i
-
-.PHONY : Flip.i
-
-# target to preprocess a source file
-Flip.cpp.i:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Flip.cpp.i
-.PHONY : Flip.cpp.i
-
-Flip.s: Flip.cpp.s
-
-.PHONY : Flip.s
-
-# target to generate assembly for a file
-Flip.cpp.s:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Flip.cpp.s
-.PHONY : Flip.cpp.s
-
-HAL.o: HAL.cpp.o
-
-.PHONY : HAL.o
-
-# target to build an object file
-HAL.cpp.o:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/HAL.cpp.o
-.PHONY : HAL.cpp.o
-
-HAL.i: HAL.cpp.i
-
-.PHONY : HAL.i
-
-# target to preprocess a source file
-HAL.cpp.i:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/HAL.cpp.i
-.PHONY : HAL.cpp.i
-
-HAL.s: HAL.cpp.s
-
-.PHONY : HAL.s
-
-# target to generate assembly for a file
-HAL.cpp.s:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/HAL.cpp.s
-.PHONY : HAL.cpp.s
-
-Interpolator.o: Interpolator.cpp.o
-
-.PHONY : Interpolator.o
-
-# target to build an object file
-Interpolator.cpp.o:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Interpolator.cpp.o
-.PHONY : Interpolator.cpp.o
-
-Interpolator.i: Interpolator.cpp.i
-
-.PHONY : Interpolator.i
-
-# target to preprocess a source file
-Interpolator.cpp.i:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Interpolator.cpp.i
-.PHONY : Interpolator.cpp.i
-
-Interpolator.s: Interpolator.cpp.s
-
-.PHONY : Interpolator.s
-
-# target to generate assembly for a file
-Interpolator.cpp.s:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Interpolator.cpp.s
-.PHONY : Interpolator.cpp.s
-
 MinitaurEventHandler.o: MinitaurEventHandler.cpp.o
 
 .PHONY : MinitaurEventHandler.o
@@ -284,33 +149,6 @@ MinitaurEventHandler.s: MinitaurEventHandler.cpp.s
 MinitaurEventHandler.cpp.s:
 	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/MinitaurEventHandler.cpp.s
 .PHONY : MinitaurEventHandler.cpp.s
-
-MinitaurLeg.o: MinitaurLeg.cpp.o
-
-.PHONY : MinitaurLeg.o
-
-# target to build an object file
-MinitaurLeg.cpp.o:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/MinitaurLeg.cpp.o
-.PHONY : MinitaurLeg.cpp.o
-
-MinitaurLeg.i: MinitaurLeg.cpp.i
-
-.PHONY : MinitaurLeg.i
-
-# target to preprocess a source file
-MinitaurLeg.cpp.i:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/MinitaurLeg.cpp.i
-.PHONY : MinitaurLeg.cpp.i
-
-MinitaurLeg.s: MinitaurLeg.cpp.s
-
-.PHONY : MinitaurLeg.s
-
-# target to generate assembly for a file
-MinitaurLeg.cpp.s:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/MinitaurLeg.cpp.s
-.PHONY : MinitaurLeg.cpp.s
 
 MinitaurWidget.o: MinitaurWidget.cpp.o
 
@@ -366,141 +204,6 @@ MinitaurWorldNode.cpp.s:
 	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/MinitaurWorldNode.cpp.s
 .PHONY : MinitaurWorldNode.cpp.s
 
-Motor.o: Motor.cpp.o
-
-.PHONY : Motor.o
-
-# target to build an object file
-Motor.cpp.o:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Motor.cpp.o
-.PHONY : Motor.cpp.o
-
-Motor.i: Motor.cpp.i
-
-.PHONY : Motor.i
-
-# target to preprocess a source file
-Motor.cpp.i:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Motor.cpp.i
-.PHONY : Motor.cpp.i
-
-Motor.s: Motor.cpp.s
-
-.PHONY : Motor.s
-
-# target to generate assembly for a file
-Motor.cpp.s:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Motor.cpp.s
-.PHONY : Motor.cpp.s
-
-RSUJump.o: RSUJump.cpp.o
-
-.PHONY : RSUJump.o
-
-# target to build an object file
-RSUJump.cpp.o:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/RSUJump.cpp.o
-.PHONY : RSUJump.cpp.o
-
-RSUJump.i: RSUJump.cpp.i
-
-.PHONY : RSUJump.i
-
-# target to preprocess a source file
-RSUJump.cpp.i:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/RSUJump.cpp.i
-.PHONY : RSUJump.cpp.i
-
-RSUJump.s: RSUJump.cpp.s
-
-.PHONY : RSUJump.s
-
-# target to generate assembly for a file
-RSUJump.cpp.s:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/RSUJump.cpp.s
-.PHONY : RSUJump.cpp.s
-
-Remote.o: Remote.cpp.o
-
-.PHONY : Remote.o
-
-# target to build an object file
-Remote.cpp.o:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Remote.cpp.o
-.PHONY : Remote.cpp.o
-
-Remote.i: Remote.cpp.i
-
-.PHONY : Remote.i
-
-# target to preprocess a source file
-Remote.cpp.i:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Remote.cpp.i
-.PHONY : Remote.cpp.i
-
-Remote.s: Remote.cpp.s
-
-.PHONY : Remote.s
-
-# target to generate assembly for a file
-Remote.cpp.s:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Remote.cpp.s
-.PHONY : Remote.cpp.s
-
-WMath.o: WMath.cpp.o
-
-.PHONY : WMath.o
-
-# target to build an object file
-WMath.cpp.o:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/WMath.cpp.o
-.PHONY : WMath.cpp.o
-
-WMath.i: WMath.cpp.i
-
-.PHONY : WMath.i
-
-# target to preprocess a source file
-WMath.cpp.i:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/WMath.cpp.i
-.PHONY : WMath.cpp.i
-
-WMath.s: WMath.cpp.s
-
-.PHONY : WMath.s
-
-# target to generate assembly for a file
-WMath.cpp.s:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/WMath.cpp.s
-.PHONY : WMath.cpp.s
-
-Walk.o: Walk.cpp.o
-
-.PHONY : Walk.o
-
-# target to build an object file
-Walk.cpp.o:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Walk.cpp.o
-.PHONY : Walk.cpp.o
-
-Walk.i: Walk.cpp.i
-
-.PHONY : Walk.i
-
-# target to preprocess a source file
-Walk.cpp.i:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Walk.cpp.i
-.PHONY : Walk.cpp.i
-
-Walk.s: Walk.cpp.s
-
-.PHONY : Walk.s
-
-# target to generate assembly for a file
-Walk.cpp.s:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Walk.cpp.s
-.PHONY : Walk.cpp.s
-
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -528,87 +231,6 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-minitaurDARTInterface.o: minitaurDARTInterface.cpp.o
-
-.PHONY : minitaurDARTInterface.o
-
-# target to build an object file
-minitaurDARTInterface.cpp.o:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o
-.PHONY : minitaurDARTInterface.cpp.o
-
-minitaurDARTInterface.i: minitaurDARTInterface.cpp.i
-
-.PHONY : minitaurDARTInterface.i
-
-# target to preprocess a source file
-minitaurDARTInterface.cpp.i:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.i
-.PHONY : minitaurDARTInterface.cpp.i
-
-minitaurDARTInterface.s: minitaurDARTInterface.cpp.s
-
-.PHONY : minitaurDARTInterface.s
-
-# target to generate assembly for a file
-minitaurDARTInterface.cpp.s:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.s
-.PHONY : minitaurDARTInterface.cpp.s
-
-pushWalk.o: pushWalk.cpp.o
-
-.PHONY : pushWalk.o
-
-# target to build an object file
-pushWalk.cpp.o:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o
-.PHONY : pushWalk.cpp.o
-
-pushWalk.i: pushWalk.cpp.i
-
-.PHONY : pushWalk.i
-
-# target to preprocess a source file
-pushWalk.cpp.i:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/pushWalk.cpp.i
-.PHONY : pushWalk.cpp.i
-
-pushWalk.s: pushWalk.cpp.s
-
-.PHONY : pushWalk.s
-
-# target to generate assembly for a file
-pushWalk.cpp.s:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/pushWalk.cpp.s
-.PHONY : pushWalk.cpp.s
-
-traj.o: traj.cpp.o
-
-.PHONY : traj.o
-
-# target to build an object file
-traj.cpp.o:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/traj.cpp.o
-.PHONY : traj.cpp.o
-
-traj.i: traj.cpp.i
-
-.PHONY : traj.i
-
-# target to preprocess a source file
-traj.cpp.i:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/traj.cpp.i
-.PHONY : traj.cpp.i
-
-traj.s: traj.cpp.s
-
-.PHONY : traj.s
-
-# target to generate assembly for a file
-traj.cpp.s:
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/traj.cpp.s
-.PHONY : traj.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -618,60 +240,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... osgMinitaur"
-	@echo "... Bound.o"
-	@echo "... Bound.i"
-	@echo "... Bound.s"
-	@echo "... Dig.o"
-	@echo "... Dig.i"
-	@echo "... Dig.s"
-	@echo "... Flip.o"
-	@echo "... Flip.i"
-	@echo "... Flip.s"
-	@echo "... HAL.o"
-	@echo "... HAL.i"
-	@echo "... HAL.s"
-	@echo "... Interpolator.o"
-	@echo "... Interpolator.i"
-	@echo "... Interpolator.s"
 	@echo "... MinitaurEventHandler.o"
 	@echo "... MinitaurEventHandler.i"
 	@echo "... MinitaurEventHandler.s"
-	@echo "... MinitaurLeg.o"
-	@echo "... MinitaurLeg.i"
-	@echo "... MinitaurLeg.s"
 	@echo "... MinitaurWidget.o"
 	@echo "... MinitaurWidget.i"
 	@echo "... MinitaurWidget.s"
 	@echo "... MinitaurWorldNode.o"
 	@echo "... MinitaurWorldNode.i"
 	@echo "... MinitaurWorldNode.s"
-	@echo "... Motor.o"
-	@echo "... Motor.i"
-	@echo "... Motor.s"
-	@echo "... RSUJump.o"
-	@echo "... RSUJump.i"
-	@echo "... RSUJump.s"
-	@echo "... Remote.o"
-	@echo "... Remote.i"
-	@echo "... Remote.s"
-	@echo "... WMath.o"
-	@echo "... WMath.i"
-	@echo "... WMath.s"
-	@echo "... Walk.o"
-	@echo "... Walk.i"
-	@echo "... Walk.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... minitaurDARTInterface.o"
-	@echo "... minitaurDARTInterface.i"
-	@echo "... minitaurDARTInterface.s"
-	@echo "... pushWalk.o"
-	@echo "... pushWalk.i"
-	@echo "... pushWalk.s"
-	@echo "... traj.o"
-	@echo "... traj.i"
-	@echo "... traj.s"
 .PHONY : help
 
 

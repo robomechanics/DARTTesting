@@ -81,81 +81,9 @@ CMakeFiles/osgMinitaur.dir/MinitaurWidget.cpp.o.provides: CMakeFiles/osgMinitaur
 CMakeFiles/osgMinitaur.dir/MinitaurWidget.cpp.o.provides.build: CMakeFiles/osgMinitaur.dir/MinitaurWidget.cpp.o
 
 
-CMakeFiles/osgMinitaur.dir/Remote.cpp.o: CMakeFiles/osgMinitaur.dir/flags.make
-CMakeFiles/osgMinitaur.dir/Remote.cpp.o: Remote.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joe/dart_minitaur/osgMinitaur/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/osgMinitaur.dir/Remote.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/osgMinitaur.dir/Remote.cpp.o -c /home/joe/dart_minitaur/osgMinitaur/Remote.cpp
-
-CMakeFiles/osgMinitaur.dir/Remote.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/osgMinitaur.dir/Remote.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joe/dart_minitaur/osgMinitaur/Remote.cpp > CMakeFiles/osgMinitaur.dir/Remote.cpp.i
-
-CMakeFiles/osgMinitaur.dir/Remote.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/osgMinitaur.dir/Remote.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joe/dart_minitaur/osgMinitaur/Remote.cpp -o CMakeFiles/osgMinitaur.dir/Remote.cpp.s
-
-CMakeFiles/osgMinitaur.dir/Remote.cpp.o.requires:
-
-.PHONY : CMakeFiles/osgMinitaur.dir/Remote.cpp.o.requires
-
-CMakeFiles/osgMinitaur.dir/Remote.cpp.o.provides: CMakeFiles/osgMinitaur.dir/Remote.cpp.o.requires
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Remote.cpp.o.provides.build
-.PHONY : CMakeFiles/osgMinitaur.dir/Remote.cpp.o.provides
-
-CMakeFiles/osgMinitaur.dir/Remote.cpp.o.provides.build: CMakeFiles/osgMinitaur.dir/Remote.cpp.o
-
-
-CMakeFiles/osgMinitaur.dir/MinitaurLeg.cpp.o: CMakeFiles/osgMinitaur.dir/flags.make
-CMakeFiles/osgMinitaur.dir/MinitaurLeg.cpp.o: MinitaurLeg.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joe/dart_minitaur/osgMinitaur/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/osgMinitaur.dir/MinitaurLeg.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/osgMinitaur.dir/MinitaurLeg.cpp.o -c /home/joe/dart_minitaur/osgMinitaur/MinitaurLeg.cpp
-
-CMakeFiles/osgMinitaur.dir/MinitaurLeg.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/osgMinitaur.dir/MinitaurLeg.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joe/dart_minitaur/osgMinitaur/MinitaurLeg.cpp > CMakeFiles/osgMinitaur.dir/MinitaurLeg.cpp.i
-
-CMakeFiles/osgMinitaur.dir/MinitaurLeg.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/osgMinitaur.dir/MinitaurLeg.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joe/dart_minitaur/osgMinitaur/MinitaurLeg.cpp -o CMakeFiles/osgMinitaur.dir/MinitaurLeg.cpp.s
-
-CMakeFiles/osgMinitaur.dir/MinitaurLeg.cpp.o.requires:
-
-.PHONY : CMakeFiles/osgMinitaur.dir/MinitaurLeg.cpp.o.requires
-
-CMakeFiles/osgMinitaur.dir/MinitaurLeg.cpp.o.provides: CMakeFiles/osgMinitaur.dir/MinitaurLeg.cpp.o.requires
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/MinitaurLeg.cpp.o.provides.build
-.PHONY : CMakeFiles/osgMinitaur.dir/MinitaurLeg.cpp.o.provides
-
-CMakeFiles/osgMinitaur.dir/MinitaurLeg.cpp.o.provides.build: CMakeFiles/osgMinitaur.dir/MinitaurLeg.cpp.o
-
-
-CMakeFiles/osgMinitaur.dir/Walk.cpp.o: CMakeFiles/osgMinitaur.dir/flags.make
-CMakeFiles/osgMinitaur.dir/Walk.cpp.o: Walk.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joe/dart_minitaur/osgMinitaur/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/osgMinitaur.dir/Walk.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/osgMinitaur.dir/Walk.cpp.o -c /home/joe/dart_minitaur/osgMinitaur/Walk.cpp
-
-CMakeFiles/osgMinitaur.dir/Walk.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/osgMinitaur.dir/Walk.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joe/dart_minitaur/osgMinitaur/Walk.cpp > CMakeFiles/osgMinitaur.dir/Walk.cpp.i
-
-CMakeFiles/osgMinitaur.dir/Walk.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/osgMinitaur.dir/Walk.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joe/dart_minitaur/osgMinitaur/Walk.cpp -o CMakeFiles/osgMinitaur.dir/Walk.cpp.s
-
-CMakeFiles/osgMinitaur.dir/Walk.cpp.o.requires:
-
-.PHONY : CMakeFiles/osgMinitaur.dir/Walk.cpp.o.requires
-
-CMakeFiles/osgMinitaur.dir/Walk.cpp.o.provides: CMakeFiles/osgMinitaur.dir/Walk.cpp.o.requires
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Walk.cpp.o.provides.build
-.PHONY : CMakeFiles/osgMinitaur.dir/Walk.cpp.o.provides
-
-CMakeFiles/osgMinitaur.dir/Walk.cpp.o.provides.build: CMakeFiles/osgMinitaur.dir/Walk.cpp.o
-
-
 CMakeFiles/osgMinitaur.dir/main.cpp.o: CMakeFiles/osgMinitaur.dir/flags.make
 CMakeFiles/osgMinitaur.dir/main.cpp.o: main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joe/dart_minitaur/osgMinitaur/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/osgMinitaur.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joe/dart_minitaur/osgMinitaur/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/osgMinitaur.dir/main.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/osgMinitaur.dir/main.cpp.o -c /home/joe/dart_minitaur/osgMinitaur/main.cpp
 
 CMakeFiles/osgMinitaur.dir/main.cpp.i: cmake_force
@@ -179,7 +107,7 @@ CMakeFiles/osgMinitaur.dir/main.cpp.o.provides.build: CMakeFiles/osgMinitaur.dir
 
 CMakeFiles/osgMinitaur.dir/MinitaurEventHandler.cpp.o: CMakeFiles/osgMinitaur.dir/flags.make
 CMakeFiles/osgMinitaur.dir/MinitaurEventHandler.cpp.o: MinitaurEventHandler.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joe/dart_minitaur/osgMinitaur/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/osgMinitaur.dir/MinitaurEventHandler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joe/dart_minitaur/osgMinitaur/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/osgMinitaur.dir/MinitaurEventHandler.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/osgMinitaur.dir/MinitaurEventHandler.cpp.o -c /home/joe/dart_minitaur/osgMinitaur/MinitaurEventHandler.cpp
 
 CMakeFiles/osgMinitaur.dir/MinitaurEventHandler.cpp.i: cmake_force
@@ -201,105 +129,9 @@ CMakeFiles/osgMinitaur.dir/MinitaurEventHandler.cpp.o.provides: CMakeFiles/osgMi
 CMakeFiles/osgMinitaur.dir/MinitaurEventHandler.cpp.o.provides.build: CMakeFiles/osgMinitaur.dir/MinitaurEventHandler.cpp.o
 
 
-CMakeFiles/osgMinitaur.dir/WMath.cpp.o: CMakeFiles/osgMinitaur.dir/flags.make
-CMakeFiles/osgMinitaur.dir/WMath.cpp.o: WMath.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joe/dart_minitaur/osgMinitaur/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/osgMinitaur.dir/WMath.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/osgMinitaur.dir/WMath.cpp.o -c /home/joe/dart_minitaur/osgMinitaur/WMath.cpp
-
-CMakeFiles/osgMinitaur.dir/WMath.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/osgMinitaur.dir/WMath.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joe/dart_minitaur/osgMinitaur/WMath.cpp > CMakeFiles/osgMinitaur.dir/WMath.cpp.i
-
-CMakeFiles/osgMinitaur.dir/WMath.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/osgMinitaur.dir/WMath.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joe/dart_minitaur/osgMinitaur/WMath.cpp -o CMakeFiles/osgMinitaur.dir/WMath.cpp.s
-
-CMakeFiles/osgMinitaur.dir/WMath.cpp.o.requires:
-
-.PHONY : CMakeFiles/osgMinitaur.dir/WMath.cpp.o.requires
-
-CMakeFiles/osgMinitaur.dir/WMath.cpp.o.provides: CMakeFiles/osgMinitaur.dir/WMath.cpp.o.requires
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/WMath.cpp.o.provides.build
-.PHONY : CMakeFiles/osgMinitaur.dir/WMath.cpp.o.provides
-
-CMakeFiles/osgMinitaur.dir/WMath.cpp.o.provides.build: CMakeFiles/osgMinitaur.dir/WMath.cpp.o
-
-
-CMakeFiles/osgMinitaur.dir/Dig.cpp.o: CMakeFiles/osgMinitaur.dir/flags.make
-CMakeFiles/osgMinitaur.dir/Dig.cpp.o: Dig.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joe/dart_minitaur/osgMinitaur/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/osgMinitaur.dir/Dig.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/osgMinitaur.dir/Dig.cpp.o -c /home/joe/dart_minitaur/osgMinitaur/Dig.cpp
-
-CMakeFiles/osgMinitaur.dir/Dig.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/osgMinitaur.dir/Dig.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joe/dart_minitaur/osgMinitaur/Dig.cpp > CMakeFiles/osgMinitaur.dir/Dig.cpp.i
-
-CMakeFiles/osgMinitaur.dir/Dig.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/osgMinitaur.dir/Dig.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joe/dart_minitaur/osgMinitaur/Dig.cpp -o CMakeFiles/osgMinitaur.dir/Dig.cpp.s
-
-CMakeFiles/osgMinitaur.dir/Dig.cpp.o.requires:
-
-.PHONY : CMakeFiles/osgMinitaur.dir/Dig.cpp.o.requires
-
-CMakeFiles/osgMinitaur.dir/Dig.cpp.o.provides: CMakeFiles/osgMinitaur.dir/Dig.cpp.o.requires
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Dig.cpp.o.provides.build
-.PHONY : CMakeFiles/osgMinitaur.dir/Dig.cpp.o.provides
-
-CMakeFiles/osgMinitaur.dir/Dig.cpp.o.provides.build: CMakeFiles/osgMinitaur.dir/Dig.cpp.o
-
-
-CMakeFiles/osgMinitaur.dir/Bound.cpp.o: CMakeFiles/osgMinitaur.dir/flags.make
-CMakeFiles/osgMinitaur.dir/Bound.cpp.o: Bound.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joe/dart_minitaur/osgMinitaur/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/osgMinitaur.dir/Bound.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/osgMinitaur.dir/Bound.cpp.o -c /home/joe/dart_minitaur/osgMinitaur/Bound.cpp
-
-CMakeFiles/osgMinitaur.dir/Bound.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/osgMinitaur.dir/Bound.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joe/dart_minitaur/osgMinitaur/Bound.cpp > CMakeFiles/osgMinitaur.dir/Bound.cpp.i
-
-CMakeFiles/osgMinitaur.dir/Bound.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/osgMinitaur.dir/Bound.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joe/dart_minitaur/osgMinitaur/Bound.cpp -o CMakeFiles/osgMinitaur.dir/Bound.cpp.s
-
-CMakeFiles/osgMinitaur.dir/Bound.cpp.o.requires:
-
-.PHONY : CMakeFiles/osgMinitaur.dir/Bound.cpp.o.requires
-
-CMakeFiles/osgMinitaur.dir/Bound.cpp.o.provides: CMakeFiles/osgMinitaur.dir/Bound.cpp.o.requires
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Bound.cpp.o.provides.build
-.PHONY : CMakeFiles/osgMinitaur.dir/Bound.cpp.o.provides
-
-CMakeFiles/osgMinitaur.dir/Bound.cpp.o.provides.build: CMakeFiles/osgMinitaur.dir/Bound.cpp.o
-
-
-CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o: CMakeFiles/osgMinitaur.dir/flags.make
-CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o: pushWalk.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joe/dart_minitaur/osgMinitaur/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o -c /home/joe/dart_minitaur/osgMinitaur/pushWalk.cpp
-
-CMakeFiles/osgMinitaur.dir/pushWalk.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/osgMinitaur.dir/pushWalk.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joe/dart_minitaur/osgMinitaur/pushWalk.cpp > CMakeFiles/osgMinitaur.dir/pushWalk.cpp.i
-
-CMakeFiles/osgMinitaur.dir/pushWalk.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/osgMinitaur.dir/pushWalk.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joe/dart_minitaur/osgMinitaur/pushWalk.cpp -o CMakeFiles/osgMinitaur.dir/pushWalk.cpp.s
-
-CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o.requires:
-
-.PHONY : CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o.requires
-
-CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o.provides: CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o.requires
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o.provides.build
-.PHONY : CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o.provides
-
-CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o.provides.build: CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o
-
-
 CMakeFiles/osgMinitaur.dir/MinitaurWorldNode.cpp.o: CMakeFiles/osgMinitaur.dir/flags.make
 CMakeFiles/osgMinitaur.dir/MinitaurWorldNode.cpp.o: MinitaurWorldNode.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joe/dart_minitaur/osgMinitaur/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/osgMinitaur.dir/MinitaurWorldNode.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joe/dart_minitaur/osgMinitaur/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/osgMinitaur.dir/MinitaurWorldNode.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/osgMinitaur.dir/MinitaurWorldNode.cpp.o -c /home/joe/dart_minitaur/osgMinitaur/MinitaurWorldNode.cpp
 
 CMakeFiles/osgMinitaur.dir/MinitaurWorldNode.cpp.i: cmake_force
@@ -321,216 +153,20 @@ CMakeFiles/osgMinitaur.dir/MinitaurWorldNode.cpp.o.provides: CMakeFiles/osgMinit
 CMakeFiles/osgMinitaur.dir/MinitaurWorldNode.cpp.o.provides.build: CMakeFiles/osgMinitaur.dir/MinitaurWorldNode.cpp.o
 
 
-CMakeFiles/osgMinitaur.dir/HAL.cpp.o: CMakeFiles/osgMinitaur.dir/flags.make
-CMakeFiles/osgMinitaur.dir/HAL.cpp.o: HAL.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joe/dart_minitaur/osgMinitaur/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/osgMinitaur.dir/HAL.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/osgMinitaur.dir/HAL.cpp.o -c /home/joe/dart_minitaur/osgMinitaur/HAL.cpp
-
-CMakeFiles/osgMinitaur.dir/HAL.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/osgMinitaur.dir/HAL.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joe/dart_minitaur/osgMinitaur/HAL.cpp > CMakeFiles/osgMinitaur.dir/HAL.cpp.i
-
-CMakeFiles/osgMinitaur.dir/HAL.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/osgMinitaur.dir/HAL.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joe/dart_minitaur/osgMinitaur/HAL.cpp -o CMakeFiles/osgMinitaur.dir/HAL.cpp.s
-
-CMakeFiles/osgMinitaur.dir/HAL.cpp.o.requires:
-
-.PHONY : CMakeFiles/osgMinitaur.dir/HAL.cpp.o.requires
-
-CMakeFiles/osgMinitaur.dir/HAL.cpp.o.provides: CMakeFiles/osgMinitaur.dir/HAL.cpp.o.requires
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/HAL.cpp.o.provides.build
-.PHONY : CMakeFiles/osgMinitaur.dir/HAL.cpp.o.provides
-
-CMakeFiles/osgMinitaur.dir/HAL.cpp.o.provides.build: CMakeFiles/osgMinitaur.dir/HAL.cpp.o
-
-
-CMakeFiles/osgMinitaur.dir/traj.cpp.o: CMakeFiles/osgMinitaur.dir/flags.make
-CMakeFiles/osgMinitaur.dir/traj.cpp.o: traj.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joe/dart_minitaur/osgMinitaur/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/osgMinitaur.dir/traj.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/osgMinitaur.dir/traj.cpp.o -c /home/joe/dart_minitaur/osgMinitaur/traj.cpp
-
-CMakeFiles/osgMinitaur.dir/traj.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/osgMinitaur.dir/traj.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joe/dart_minitaur/osgMinitaur/traj.cpp > CMakeFiles/osgMinitaur.dir/traj.cpp.i
-
-CMakeFiles/osgMinitaur.dir/traj.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/osgMinitaur.dir/traj.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joe/dart_minitaur/osgMinitaur/traj.cpp -o CMakeFiles/osgMinitaur.dir/traj.cpp.s
-
-CMakeFiles/osgMinitaur.dir/traj.cpp.o.requires:
-
-.PHONY : CMakeFiles/osgMinitaur.dir/traj.cpp.o.requires
-
-CMakeFiles/osgMinitaur.dir/traj.cpp.o.provides: CMakeFiles/osgMinitaur.dir/traj.cpp.o.requires
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/traj.cpp.o.provides.build
-.PHONY : CMakeFiles/osgMinitaur.dir/traj.cpp.o.provides
-
-CMakeFiles/osgMinitaur.dir/traj.cpp.o.provides.build: CMakeFiles/osgMinitaur.dir/traj.cpp.o
-
-
-CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o: CMakeFiles/osgMinitaur.dir/flags.make
-CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o: minitaurDARTInterface.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joe/dart_minitaur/osgMinitaur/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o -c /home/joe/dart_minitaur/osgMinitaur/minitaurDARTInterface.cpp
-
-CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joe/dart_minitaur/osgMinitaur/minitaurDARTInterface.cpp > CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.i
-
-CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joe/dart_minitaur/osgMinitaur/minitaurDARTInterface.cpp -o CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.s
-
-CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o.requires:
-
-.PHONY : CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o.requires
-
-CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o.provides: CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o.requires
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o.provides.build
-.PHONY : CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o.provides
-
-CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o.provides.build: CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o
-
-
-CMakeFiles/osgMinitaur.dir/Flip.cpp.o: CMakeFiles/osgMinitaur.dir/flags.make
-CMakeFiles/osgMinitaur.dir/Flip.cpp.o: Flip.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joe/dart_minitaur/osgMinitaur/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/osgMinitaur.dir/Flip.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/osgMinitaur.dir/Flip.cpp.o -c /home/joe/dart_minitaur/osgMinitaur/Flip.cpp
-
-CMakeFiles/osgMinitaur.dir/Flip.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/osgMinitaur.dir/Flip.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joe/dart_minitaur/osgMinitaur/Flip.cpp > CMakeFiles/osgMinitaur.dir/Flip.cpp.i
-
-CMakeFiles/osgMinitaur.dir/Flip.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/osgMinitaur.dir/Flip.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joe/dart_minitaur/osgMinitaur/Flip.cpp -o CMakeFiles/osgMinitaur.dir/Flip.cpp.s
-
-CMakeFiles/osgMinitaur.dir/Flip.cpp.o.requires:
-
-.PHONY : CMakeFiles/osgMinitaur.dir/Flip.cpp.o.requires
-
-CMakeFiles/osgMinitaur.dir/Flip.cpp.o.provides: CMakeFiles/osgMinitaur.dir/Flip.cpp.o.requires
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Flip.cpp.o.provides.build
-.PHONY : CMakeFiles/osgMinitaur.dir/Flip.cpp.o.provides
-
-CMakeFiles/osgMinitaur.dir/Flip.cpp.o.provides.build: CMakeFiles/osgMinitaur.dir/Flip.cpp.o
-
-
-CMakeFiles/osgMinitaur.dir/Interpolator.cpp.o: CMakeFiles/osgMinitaur.dir/flags.make
-CMakeFiles/osgMinitaur.dir/Interpolator.cpp.o: Interpolator.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joe/dart_minitaur/osgMinitaur/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/osgMinitaur.dir/Interpolator.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/osgMinitaur.dir/Interpolator.cpp.o -c /home/joe/dart_minitaur/osgMinitaur/Interpolator.cpp
-
-CMakeFiles/osgMinitaur.dir/Interpolator.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/osgMinitaur.dir/Interpolator.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joe/dart_minitaur/osgMinitaur/Interpolator.cpp > CMakeFiles/osgMinitaur.dir/Interpolator.cpp.i
-
-CMakeFiles/osgMinitaur.dir/Interpolator.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/osgMinitaur.dir/Interpolator.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joe/dart_minitaur/osgMinitaur/Interpolator.cpp -o CMakeFiles/osgMinitaur.dir/Interpolator.cpp.s
-
-CMakeFiles/osgMinitaur.dir/Interpolator.cpp.o.requires:
-
-.PHONY : CMakeFiles/osgMinitaur.dir/Interpolator.cpp.o.requires
-
-CMakeFiles/osgMinitaur.dir/Interpolator.cpp.o.provides: CMakeFiles/osgMinitaur.dir/Interpolator.cpp.o.requires
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Interpolator.cpp.o.provides.build
-.PHONY : CMakeFiles/osgMinitaur.dir/Interpolator.cpp.o.provides
-
-CMakeFiles/osgMinitaur.dir/Interpolator.cpp.o.provides.build: CMakeFiles/osgMinitaur.dir/Interpolator.cpp.o
-
-
-CMakeFiles/osgMinitaur.dir/Motor.cpp.o: CMakeFiles/osgMinitaur.dir/flags.make
-CMakeFiles/osgMinitaur.dir/Motor.cpp.o: Motor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joe/dart_minitaur/osgMinitaur/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/osgMinitaur.dir/Motor.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/osgMinitaur.dir/Motor.cpp.o -c /home/joe/dart_minitaur/osgMinitaur/Motor.cpp
-
-CMakeFiles/osgMinitaur.dir/Motor.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/osgMinitaur.dir/Motor.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joe/dart_minitaur/osgMinitaur/Motor.cpp > CMakeFiles/osgMinitaur.dir/Motor.cpp.i
-
-CMakeFiles/osgMinitaur.dir/Motor.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/osgMinitaur.dir/Motor.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joe/dart_minitaur/osgMinitaur/Motor.cpp -o CMakeFiles/osgMinitaur.dir/Motor.cpp.s
-
-CMakeFiles/osgMinitaur.dir/Motor.cpp.o.requires:
-
-.PHONY : CMakeFiles/osgMinitaur.dir/Motor.cpp.o.requires
-
-CMakeFiles/osgMinitaur.dir/Motor.cpp.o.provides: CMakeFiles/osgMinitaur.dir/Motor.cpp.o.requires
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/Motor.cpp.o.provides.build
-.PHONY : CMakeFiles/osgMinitaur.dir/Motor.cpp.o.provides
-
-CMakeFiles/osgMinitaur.dir/Motor.cpp.o.provides.build: CMakeFiles/osgMinitaur.dir/Motor.cpp.o
-
-
-CMakeFiles/osgMinitaur.dir/RSUJump.cpp.o: CMakeFiles/osgMinitaur.dir/flags.make
-CMakeFiles/osgMinitaur.dir/RSUJump.cpp.o: RSUJump.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joe/dart_minitaur/osgMinitaur/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/osgMinitaur.dir/RSUJump.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/osgMinitaur.dir/RSUJump.cpp.o -c /home/joe/dart_minitaur/osgMinitaur/RSUJump.cpp
-
-CMakeFiles/osgMinitaur.dir/RSUJump.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/osgMinitaur.dir/RSUJump.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joe/dart_minitaur/osgMinitaur/RSUJump.cpp > CMakeFiles/osgMinitaur.dir/RSUJump.cpp.i
-
-CMakeFiles/osgMinitaur.dir/RSUJump.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/osgMinitaur.dir/RSUJump.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joe/dart_minitaur/osgMinitaur/RSUJump.cpp -o CMakeFiles/osgMinitaur.dir/RSUJump.cpp.s
-
-CMakeFiles/osgMinitaur.dir/RSUJump.cpp.o.requires:
-
-.PHONY : CMakeFiles/osgMinitaur.dir/RSUJump.cpp.o.requires
-
-CMakeFiles/osgMinitaur.dir/RSUJump.cpp.o.provides: CMakeFiles/osgMinitaur.dir/RSUJump.cpp.o.requires
-	$(MAKE) -f CMakeFiles/osgMinitaur.dir/build.make CMakeFiles/osgMinitaur.dir/RSUJump.cpp.o.provides.build
-.PHONY : CMakeFiles/osgMinitaur.dir/RSUJump.cpp.o.provides
-
-CMakeFiles/osgMinitaur.dir/RSUJump.cpp.o.provides.build: CMakeFiles/osgMinitaur.dir/RSUJump.cpp.o
-
-
 # Object files for target osgMinitaur
 osgMinitaur_OBJECTS = \
 "CMakeFiles/osgMinitaur.dir/MinitaurWidget.cpp.o" \
-"CMakeFiles/osgMinitaur.dir/Remote.cpp.o" \
-"CMakeFiles/osgMinitaur.dir/MinitaurLeg.cpp.o" \
-"CMakeFiles/osgMinitaur.dir/Walk.cpp.o" \
 "CMakeFiles/osgMinitaur.dir/main.cpp.o" \
 "CMakeFiles/osgMinitaur.dir/MinitaurEventHandler.cpp.o" \
-"CMakeFiles/osgMinitaur.dir/WMath.cpp.o" \
-"CMakeFiles/osgMinitaur.dir/Dig.cpp.o" \
-"CMakeFiles/osgMinitaur.dir/Bound.cpp.o" \
-"CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o" \
-"CMakeFiles/osgMinitaur.dir/MinitaurWorldNode.cpp.o" \
-"CMakeFiles/osgMinitaur.dir/HAL.cpp.o" \
-"CMakeFiles/osgMinitaur.dir/traj.cpp.o" \
-"CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o" \
-"CMakeFiles/osgMinitaur.dir/Flip.cpp.o" \
-"CMakeFiles/osgMinitaur.dir/Interpolator.cpp.o" \
-"CMakeFiles/osgMinitaur.dir/Motor.cpp.o" \
-"CMakeFiles/osgMinitaur.dir/RSUJump.cpp.o"
+"CMakeFiles/osgMinitaur.dir/MinitaurWorldNode.cpp.o"
 
 # External object files for target osgMinitaur
 osgMinitaur_EXTERNAL_OBJECTS =
 
 osgMinitaur: CMakeFiles/osgMinitaur.dir/MinitaurWidget.cpp.o
-osgMinitaur: CMakeFiles/osgMinitaur.dir/Remote.cpp.o
-osgMinitaur: CMakeFiles/osgMinitaur.dir/MinitaurLeg.cpp.o
-osgMinitaur: CMakeFiles/osgMinitaur.dir/Walk.cpp.o
 osgMinitaur: CMakeFiles/osgMinitaur.dir/main.cpp.o
 osgMinitaur: CMakeFiles/osgMinitaur.dir/MinitaurEventHandler.cpp.o
-osgMinitaur: CMakeFiles/osgMinitaur.dir/WMath.cpp.o
-osgMinitaur: CMakeFiles/osgMinitaur.dir/Dig.cpp.o
-osgMinitaur: CMakeFiles/osgMinitaur.dir/Bound.cpp.o
-osgMinitaur: CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o
 osgMinitaur: CMakeFiles/osgMinitaur.dir/MinitaurWorldNode.cpp.o
-osgMinitaur: CMakeFiles/osgMinitaur.dir/HAL.cpp.o
-osgMinitaur: CMakeFiles/osgMinitaur.dir/traj.cpp.o
-osgMinitaur: CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o
-osgMinitaur: CMakeFiles/osgMinitaur.dir/Flip.cpp.o
-osgMinitaur: CMakeFiles/osgMinitaur.dir/Interpolator.cpp.o
-osgMinitaur: CMakeFiles/osgMinitaur.dir/Motor.cpp.o
-osgMinitaur: CMakeFiles/osgMinitaur.dir/RSUJump.cpp.o
 osgMinitaur: CMakeFiles/osgMinitaur.dir/build.make
 osgMinitaur: /usr/local/lib/libdart-utils-urdf.so.6.2.0
 osgMinitaur: /usr/local/lib/libdart-gui-osg.so.6.2.0
@@ -564,7 +200,7 @@ osgMinitaur: /usr/lib/x86_64-linux-gnu/libosgGA.so
 osgMinitaur: /usr/lib/x86_64-linux-gnu/libosgDB.so
 osgMinitaur: /usr/lib/x86_64-linux-gnu/libOpenThreads.so
 osgMinitaur: CMakeFiles/osgMinitaur.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/joe/dart_minitaur/osgMinitaur/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking CXX executable osgMinitaur"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/joe/dart_minitaur/osgMinitaur/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable osgMinitaur"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/osgMinitaur.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -573,23 +209,9 @@ CMakeFiles/osgMinitaur.dir/build: osgMinitaur
 .PHONY : CMakeFiles/osgMinitaur.dir/build
 
 CMakeFiles/osgMinitaur.dir/requires: CMakeFiles/osgMinitaur.dir/MinitaurWidget.cpp.o.requires
-CMakeFiles/osgMinitaur.dir/requires: CMakeFiles/osgMinitaur.dir/Remote.cpp.o.requires
-CMakeFiles/osgMinitaur.dir/requires: CMakeFiles/osgMinitaur.dir/MinitaurLeg.cpp.o.requires
-CMakeFiles/osgMinitaur.dir/requires: CMakeFiles/osgMinitaur.dir/Walk.cpp.o.requires
 CMakeFiles/osgMinitaur.dir/requires: CMakeFiles/osgMinitaur.dir/main.cpp.o.requires
 CMakeFiles/osgMinitaur.dir/requires: CMakeFiles/osgMinitaur.dir/MinitaurEventHandler.cpp.o.requires
-CMakeFiles/osgMinitaur.dir/requires: CMakeFiles/osgMinitaur.dir/WMath.cpp.o.requires
-CMakeFiles/osgMinitaur.dir/requires: CMakeFiles/osgMinitaur.dir/Dig.cpp.o.requires
-CMakeFiles/osgMinitaur.dir/requires: CMakeFiles/osgMinitaur.dir/Bound.cpp.o.requires
-CMakeFiles/osgMinitaur.dir/requires: CMakeFiles/osgMinitaur.dir/pushWalk.cpp.o.requires
 CMakeFiles/osgMinitaur.dir/requires: CMakeFiles/osgMinitaur.dir/MinitaurWorldNode.cpp.o.requires
-CMakeFiles/osgMinitaur.dir/requires: CMakeFiles/osgMinitaur.dir/HAL.cpp.o.requires
-CMakeFiles/osgMinitaur.dir/requires: CMakeFiles/osgMinitaur.dir/traj.cpp.o.requires
-CMakeFiles/osgMinitaur.dir/requires: CMakeFiles/osgMinitaur.dir/minitaurDARTInterface.cpp.o.requires
-CMakeFiles/osgMinitaur.dir/requires: CMakeFiles/osgMinitaur.dir/Flip.cpp.o.requires
-CMakeFiles/osgMinitaur.dir/requires: CMakeFiles/osgMinitaur.dir/Interpolator.cpp.o.requires
-CMakeFiles/osgMinitaur.dir/requires: CMakeFiles/osgMinitaur.dir/Motor.cpp.o.requires
-CMakeFiles/osgMinitaur.dir/requires: CMakeFiles/osgMinitaur.dir/RSUJump.cpp.o.requires
 
 .PHONY : CMakeFiles/osgMinitaur.dir/requires
 
