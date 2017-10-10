@@ -1,0 +1,3 @@
+/home/joe/dart_minitaur/osgMinitaur/CMakeFiles/edit_cache.dir
+/home/joe/dart_minitaur/osgMinitaur/CMakeFiles/rebuild_cache.dir
+/home/joe/dart_minitaur/osgMinitaur/CMakeFiles/osgMinitaur.dir
