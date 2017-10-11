@@ -23,7 +23,7 @@
   <link name="rotor_tail">
     <visual>
       <geometry>
-        <cylinder length="0.026" radius="0.0434"/>
+        <cylinder length="1.026" radius="0.0434"/>
       </geometry>
       <material name="black"/>
     </visual>
@@ -68,9 +68,11 @@
   </link>
   <joint name="leg_link_joint" type="fixed">
     <axis xyz="0 0 1"/>
-    <parent link="rotor"/>
+    <parent link="rotor_tail"/>
     <child link="leg_link"/>
     <origin rpy="-1.57075 0 0" xyz="0.0 0.06 -0.02"/>
     <limit effort="100" velocity="1000"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
+
+</robot>
